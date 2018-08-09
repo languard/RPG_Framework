@@ -58,14 +58,19 @@ public class CharController_RPG_Framework : MonoBehaviour {
         currentHorizontal = Input.GetAxis("Horizontal");
         currentVertical = Input.GetAxis("Vertical");
 
+        if(!isMoving)
+        {
+            if(Input.GetButtonDown("UseAction"))
+            {
+                CheckForUsableObject(animationDirection);
+            }
+        }
+
     }
 
-    // Update is called once per frame
+    //Keeping the player on the grid with smooth movement requires a fixed framerate.
     void FixedUpdate() {
 
-        //determine if on grid
-        //float deltaX = Mathf.Abs(transform.position.x - Mathf.Floor(transform.position.x));
-        //float deltaY = Mathf.Abs(transform.position.y - Mathf.Floor(transform.position.y));
 
         isOnGrid = false;
 
@@ -74,68 +79,57 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
         if (deltaX <= delta && deltaY <= delta) isOnGrid = true;
 
-        //Vector3 temp = Vector3.zero;
-
-        //if(deltaX <= delta)
-        //{
-        //    temp = transform.position;
-        //    temp.x = Mathf.Floor(temp.x);
-        //}
-        //if (deltaY <= delta)
-        //{
-        //    temp = transform.position;
-        //    temp.y = Mathf.Floor(temp.y);
-        //}
-
-
 
         //movement
         if (isOnGrid)
         {
-            isMoving = false;
+            isMoving = false;            
             if (currentVertical < -0.2f)
             {
-                //Move up
+                //Move Down
+                animationDirection = DIR_DOWN;
                 //check for collision
                 if (!CheckForCollision(DIR_DOWN))
                 {
                     isMoving = true;
                     moveVector = Vector3.zero;
-                    moveVector.y = -1;
-                    animationDirection = DIR_DOWN;
+                    moveVector.y = -1;                    
                 }
             }
-            if (currentVertical > 0.2f)
+            else if (currentVertical > 0.2f)
             {
                 //Move down
+                animationDirection = DIR_UP;
                 if (!CheckForCollision(DIR_UP))
                 {
                     isMoving = true;
                     moveVector = Vector3.zero;
                     moveVector.y = 1;
-                    animationDirection = DIR_UP;
+                    
                 }
             }
-            if (currentHorizontal > 0.2f)
+            else if (currentHorizontal > 0.2f)
             {
                 //Move right
+                animationDirection = DIR_RIGHT;
                 if (!CheckForCollision(DIR_RIGHT))
                 {
                     isMoving = true;
                     moveVector = Vector3.zero;
                     moveVector.x = 1;
-                    animationDirection = DIR_RIGHT;
+                    
                 }
             }
-            if (currentHorizontal < -0.2f)
+            else if (currentHorizontal < -0.2f)
             {
                 //Move left
+                animationDirection = DIR_LEFT;
                 if (!CheckForCollision(DIR_LEFT))
                 {
                     isMoving = true;
                     moveVector = Vector3.zero;
                     moveVector.x = -1;
-                    animationDirection = DIR_LEFT;
+                    
                 }
             }
         } // end movement
@@ -173,13 +167,22 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
     }
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        
+        if(isOnGrid)
+        {
+            //other.GetComponent<TriggerInteract>().DoAction();
+        }
+    }
+
     bool CheckForCollision(int direction)
     {
         bool result = false;
-        RaycastHit2D[] junk = new RaycastHit2D[5];
+        RaycastHit2D[] hitList = new RaycastHit2D[5];
 
 
-        Vector3 offset = Vector3.zero;
+        Vector2 offset = Vector2.zero;
 
         switch(direction)
         {
@@ -200,10 +203,62 @@ public class CharController_RPG_Framework : MonoBehaviour {
                 break;
         }
 
-        offset = offset * grid;
+        //offset = offset * grid ;
 
-        if (rb.Cast(offset, junk) > 0) result = true;
+        int hitCount = rb.Cast(offset, hitList, grid / 2);
+        if (hitCount > 5) Debug.LogError("Do not have more than 5 items stacked on one tile!  Bad designer, no twinkie!");
+          
+        for(int i=0; i<hitCount; i++)
+        {
+            if (hitList[i].collider.isTrigger) result = false;
+            else result = true;
+        }
+            
+        
 
         return result;
     }
+
+    void CheckForUsableObject(int direction)
+    {
+        Vector2 checkDir = Vector2.zero;
+        RaycastHit2D[] hitList = new RaycastHit2D[5];
+
+        switch (direction)
+        {
+            case DIR_UP:
+                checkDir.y = 1;
+                break;
+
+            case DIR_DOWN:
+                checkDir.y = -1;
+                break;
+
+            case DIR_RIGHT:
+                checkDir.x = 1;
+                break;
+
+            case DIR_LEFT:
+                checkDir.x = -1;
+                break;
+        }
+
+        int hitCount = rb.Cast(checkDir, hitList, grid / 2);
+        if (hitCount > 5) Debug.LogError("Do not have more than 5 items stacked on one tile!  Bad designer, no twinkie!");
+        for (int i = 0; i < hitCount; i++)
+        {
+            Fungus.Flowchart fc = hitList[i].collider.gameObject.GetComponent<Fungus.Flowchart>();
+            if (fc != null)
+            {
+                Fungus.GameObjectVariable fGO = null;
+                fGO = fc.GetVariable("Self") as Fungus.GameObjectVariable;
+                fGO.Value = hitList[i].collider.gameObject;
+
+                fc.ExecuteBlock("InteractStart");
+                break;
+            }//end if
+        }//end for
+    }//end method
+
+            
 }
