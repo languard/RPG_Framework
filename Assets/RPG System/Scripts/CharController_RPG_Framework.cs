@@ -66,6 +66,11 @@ public class CharController_RPG_Framework : MonoBehaviour {
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            GameObject.Find("GameMaster").GetComponent<GameMaster>().GivePartyMoney(10);
+        }
+
     }
 
     //Keeping the player on the grid with smooth movement requires a fixed framerate.
@@ -134,36 +139,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
             }
         } // end movement
 
-        //animate and move if moving
-        if (isMoving)
-        {
-            animationFrame += animationSpeed;
-            if (animationFrame >= maxAnimationFrame) animationFrame = 1;
-
-            transform.position = transform.position + moveVector * moveSpeed;
-        }
-        else
-        {
-            animationFrame = 0;
-        }
-
-        //update sprite
-        switch (animationDirection)
-        {
-            case DIR_UP:
-                sr.sprite = upSprites[Mathf.FloorToInt(animationFrame)];
-                break;
-            case DIR_LEFT:
-                sr.sprite = leftSprites[Mathf.FloorToInt(animationFrame)];
-                break;
-            case DIR_RIGHT:
-                sr.sprite = rightSprites[Mathf.FloorToInt(animationFrame)];
-                break;
-            case DIR_DOWN:
-                sr.sprite = downSprites[Mathf.FloorToInt(animationFrame)];
-                break;
-
-        }
+        
 
     }
 
