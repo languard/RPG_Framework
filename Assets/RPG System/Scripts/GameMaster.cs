@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour {
 
+    [SerializeField] string firstScene = "NOT SET";
+    [SerializeField, Tooltip("Leave blank if no override needed")] string editorOverride;
+
     Scene currentMap;
     CharController_RPG_Framework playerController;
 
@@ -13,10 +16,16 @@ public class GameMaster : MonoBehaviour {
     bool oldMapUnloaded = false;
     bool newMapLoaded = false;
 
+    WaitForSeconds loadDelay;
+
     // Use this for initialization
     void Start () {
-		
-	}
+#if UNITY_EDITOR
+        currentMap = SceneManager.GetSceneByName(editorOverride);
+#endif
+
+        loadDelay = new WaitForSeconds(0.1f);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -45,11 +54,18 @@ public class GameMaster : MonoBehaviour {
         playerController = curController;
     }
 
-    public void ChangeMap(Scene targetScene, int targetX, int targetY)
+    public void ChangeMap(string targetScene, int targetX, int targetY)
+    {
+        StartCoroutine(HandleChangeMap(targetScene, targetX, targetY));
+    }
+
+    IEnumerator HandleChangeMap(string targetScene, int targetX, int targetY)
     {
         switchingMaps = true;
         newMapLoaded = false;
         oldMapUnloaded = false;
+
+        print("Current scene is:" + currentMap.name);
 
         //disable player's ability to act
         playerController.canAct = false;
@@ -57,10 +73,18 @@ public class GameMaster : MonoBehaviour {
         //unload current map scene 
         AsyncOperation unloadOp = SceneManager.UnloadSceneAsync(currentMap);
         unloadOp.completed += MapUnloaded;
-        currentMap = targetScene;
-        AsyncOperation loadOP = SceneManager.LoadSceneAsync(targetScene.buildIndex, LoadSceneMode.Additive);
-        loadOP.allowSceneActivation = false;
-        loadOP.completed += MapLoaded;
+
+        while (!oldMapUnloaded) yield return loadDelay;
+        print("old map unloaded");
+
+        SceneManager.LoadScene(targetScene, LoadSceneMode.Additive);
+        currentMap = SceneManager.GetSceneByName(targetScene);        
+        yield return loadDelay; //giving scene time to load
+        SceneManager.SetActiveScene(currentMap);
+        newMapLoaded = true;
+
+        print("Setting player location");
+        playerController.SetLocation(targetX, targetY);
     }
 
     private void MapLoaded(AsyncOperation obj)

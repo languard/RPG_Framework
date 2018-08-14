@@ -231,5 +231,10 @@ public class CharController_RPG_Framework : MonoBehaviour {
         }//end for
     }//end method
 
+    public void SetLocation(int x, int y)
+    {
+        Vector3 newPos = new Vector3(x, y, 0);
+        transform.position = newPos;
+    }
             
 }
