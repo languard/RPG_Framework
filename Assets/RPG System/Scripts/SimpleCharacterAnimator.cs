@@ -4,10 +4,30 @@ using UnityEngine;
 
 public class SimpleCharacterAnimator : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    [SerializeField]
+    Sprite[] downSprites;
+    [SerializeField]
+    Sprite[] leftSprites;
+    [SerializeField]
+    Sprite[] rightSprites;
+    [SerializeField]
+    Sprite[] upSprites;
+
+    [SerializeField]
+    float animationSpeed = 1;
+
+    float animationFrame = 0;
+    int maxAnimationFrame;
+
+    SpriteRenderer sr;
+
+    // Use this for initialization
+    void Start () {
+        sr = GetComponent<SpriteRenderer>();
+        maxAnimationFrame = downSprites.Length;
+
+        GetComponent<CharController_RPG_Framework>().AnimationEvent += DoAnimation;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,7 +42,7 @@ public class SimpleCharacterAnimator : MonoBehaviour {
             animationFrame += animationSpeed;
             if (animationFrame >= maxAnimationFrame) animationFrame = 1;
 
-            transform.position = transform.position + moveVector * moveSpeed;
+            
         }
         else
         {
@@ -30,18 +50,18 @@ public class SimpleCharacterAnimator : MonoBehaviour {
         }
 
         //update sprite
-        switch (animationDirection)
+        switch (controler.moveDirection)
         {
-            case DIR_UP:
+            case StaticData.DIR_UP:
                 sr.sprite = upSprites[Mathf.FloorToInt(animationFrame)];
                 break;
-            case DIR_LEFT:
+            case StaticData.DIR_LEFT:
                 sr.sprite = leftSprites[Mathf.FloorToInt(animationFrame)];
                 break;
-            case DIR_RIGHT:
+            case StaticData.DIR_RIGHT:
                 sr.sprite = rightSprites[Mathf.FloorToInt(animationFrame)];
                 break;
-            case DIR_DOWN:
+            case StaticData.DIR_DOWN:
                 sr.sprite = downSprites[Mathf.FloorToInt(animationFrame)];
                 break;
 

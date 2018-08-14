@@ -6,50 +6,41 @@ using UnityEngine.Tilemaps;
 [RequireComponent(typeof(SpriteRenderer))]
 public class CharController_RPG_Framework : MonoBehaviour {
 
-    [SerializeField] Sprite[] downSprites;
-    [SerializeField] Sprite[] leftSprites;
-    [SerializeField] Sprite[] rightSprites;
-    [SerializeField] Sprite[] upSprites;
-
-    [SerializeField] float animationSpeed = 1;
+    
     [SerializeField] float moveSpeed = 3;
 
     [SerializeField] int grid = 1;
 
     [SerializeField] float delta = 0.001f;
 
-    [SerializeField] Tilemap primary;
-    [SerializeField] Tilemap interactive;
 
-    bool isMoving = false;
-    bool isOnGrid = false;
+    public bool isMoving = false;
+    public bool isOnGrid = false;
+    public bool canAct = true;
+
     Vector3 moveVector = Vector3.zero;
 
-    float animationFrame = 0;
-    int maxAnimationFrame;
-    int animationDirection = 0;
+    public delegate void DoAnimate(CharController_RPG_Framework controller);
 
-    const int DIR_UP = 0;
-    const int DIR_LEFT = 1;
-    const int DIR_RIGHT = 2;
-    const int DIR_DOWN = 3;
+    public DoAnimate AnimationEvent; 
+    
+    public int moveDirection = 0;
+
+    
 
     float currentHorizontal = 0;
     float currentVertical = 0;
 
-    SpriteRenderer sr;
+    GameMaster GM;
 
     Rigidbody2D rb;
 
     // Use this for initialization
     void Start() {
-
-        sr = GetComponent<SpriteRenderer>();
-        maxAnimationFrame = downSprites.Length;
+        
         rb = GetComponent<Rigidbody2D>();
-
-        UnityEngine.Tilemaps.Tilemap tmap;
-
+        GM = GameObject.Find("GameMaster").GetComponent<GameMaster>();
+        GM.RegisterPlayerController(this);
         
     }
 
@@ -58,26 +49,30 @@ public class CharController_RPG_Framework : MonoBehaviour {
         currentHorizontal = Input.GetAxis("Horizontal");
         currentVertical = Input.GetAxis("Vertical");
 
-        if(!isMoving)
+        if(!isMoving && canAct)
         {
             if(Input.GetButtonDown("UseAction"))
             {
-                CheckForUsableObject(animationDirection);
+                CheckForUsableObject(moveDirection);
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            GameObject.Find("GameMaster").GetComponent<GameMaster>().GivePartyMoney(10);
-        }
-
+                
     }
 
     //Keeping the player on the grid with smooth movement requires a fixed framerate.
     void FixedUpdate() {
 
+        AnimationEvent(this);
+        //only animation allowed if canAct is off
+        if (!canAct) return;  
 
         isOnGrid = false;
+
+        if(isMoving)
+        {
+            transform.position = transform.position + moveVector * moveSpeed;
+        }
 
         float deltaX = Mathf.Abs(Mathf.RoundToInt(transform.position.x / grid) - (transform.position.x / grid));
         float deltaY = Mathf.Abs(Mathf.RoundToInt(transform.position.y / grid) - (transform.position.y / grid));
@@ -92,9 +87,9 @@ public class CharController_RPG_Framework : MonoBehaviour {
             if (currentVertical < -0.2f)
             {
                 //Move Down
-                animationDirection = DIR_DOWN;
+                moveDirection = StaticData.DIR_DOWN;
                 //check for collision
-                if (!CheckForCollision(DIR_DOWN))
+                if (!CheckForCollision(StaticData.DIR_DOWN))
                 {
                     isMoving = true;
                     moveVector = Vector3.zero;
@@ -104,8 +99,8 @@ public class CharController_RPG_Framework : MonoBehaviour {
             else if (currentVertical > 0.2f)
             {
                 //Move down
-                animationDirection = DIR_UP;
-                if (!CheckForCollision(DIR_UP))
+                moveDirection = StaticData.DIR_UP;
+                if (!CheckForCollision(StaticData.DIR_UP))
                 {
                     isMoving = true;
                     moveVector = Vector3.zero;
@@ -116,8 +111,8 @@ public class CharController_RPG_Framework : MonoBehaviour {
             else if (currentHorizontal > 0.2f)
             {
                 //Move right
-                animationDirection = DIR_RIGHT;
-                if (!CheckForCollision(DIR_RIGHT))
+                moveDirection = StaticData.DIR_RIGHT;
+                if (!CheckForCollision(StaticData.DIR_RIGHT))
                 {
                     isMoving = true;
                     moveVector = Vector3.zero;
@@ -128,8 +123,8 @@ public class CharController_RPG_Framework : MonoBehaviour {
             else if (currentHorizontal < -0.2f)
             {
                 //Move left
-                animationDirection = DIR_LEFT;
-                if (!CheckForCollision(DIR_LEFT))
+                moveDirection = StaticData.DIR_LEFT;
+                if (!CheckForCollision(StaticData.DIR_LEFT))
                 {
                     isMoving = true;
                     moveVector = Vector3.zero;
@@ -162,19 +157,19 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
         switch(direction)
         {
-            case DIR_UP:
+            case StaticData.DIR_UP:
                 offset.y = 1;
                 break;
 
-            case DIR_DOWN:
+            case StaticData.DIR_DOWN:
                 offset.y = -1;
                 break;
 
-            case DIR_RIGHT:
+            case StaticData.DIR_RIGHT:
                 offset.x = 1;
                 break;
 
-            case DIR_LEFT:
+            case StaticData.DIR_LEFT:
                 offset.x = -1;
                 break;
         }
@@ -202,19 +197,19 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
         switch (direction)
         {
-            case DIR_UP:
+            case StaticData.DIR_UP:
                 checkDir.y = 1;
                 break;
 
-            case DIR_DOWN:
+            case StaticData.DIR_DOWN:
                 checkDir.y = -1;
                 break;
 
-            case DIR_RIGHT:
+            case StaticData.DIR_RIGHT:
                 checkDir.x = 1;
                 break;
 
-            case DIR_LEFT:
+            case StaticData.DIR_LEFT:
                 checkDir.x = -1;
                 break;
         }
