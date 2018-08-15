@@ -57,7 +57,8 @@ public class CharController_RPG_Framework : MonoBehaviour {
             }
         }
 
-                
+        CheckForGridAlignment();
+
     }
 
     //Keeping the player on the grid with smooth movement requires a fixed framerate.
@@ -67,24 +68,25 @@ public class CharController_RPG_Framework : MonoBehaviour {
         //only animation allowed if canAct is off
         if (!canAct) return;  
 
-        isOnGrid = false;
+        //isOnGrid = false;
 
         if(isMoving)
         {
             transform.position = transform.position + moveVector * moveSpeed;
         }
 
-        float deltaX = Mathf.Abs(Mathf.RoundToInt(transform.position.x / grid) - (transform.position.x / grid));
-        float deltaY = Mathf.Abs(Mathf.RoundToInt(transform.position.y / grid) - (transform.position.y / grid));
+        //float deltaX = Mathf.Abs(Mathf.RoundToInt(transform.position.x / grid) - (transform.position.x / grid));
+        //float deltaY = Mathf.Abs(Mathf.RoundToInt(transform.position.y / grid) - (transform.position.y / grid));
 
-        if (deltaX <= delta && deltaY <= delta) isOnGrid = true;
+        //if (deltaX <= delta && deltaY <= delta) isOnGrid = true;
 
+        CheckForGridAlignment();
 
         //movement
         if (isOnGrid)
         {
             isMoving = false;            
-            if (currentVertical < -0.2f)
+            if (currentVertical < -0.2f && currentVertical < currentHorizontal)
             {
                 //Move Down
                 moveDirection = StaticData.DIR_DOWN;
@@ -96,7 +98,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
                     moveVector.y = -1;                    
                 }
             }
-            else if (currentVertical > 0.2f)
+            else if (currentVertical > 0.2f && currentVertical > currentHorizontal)
             {
                 //Move down
                 moveDirection = StaticData.DIR_UP;
@@ -136,6 +138,14 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
         
 
+    }
+
+    public void CheckForGridAlignment()
+    {
+        isOnGrid = false;
+        float deltaX = Mathf.Abs(Mathf.RoundToInt(transform.position.x / grid) - (transform.position.x / grid));
+        float deltaY = Mathf.Abs(Mathf.RoundToInt(transform.position.y / grid) - (transform.position.y / grid));
+        if (deltaX <= delta && deltaY <= delta) isOnGrid = true;
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -220,11 +230,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
         {
             Fungus.Flowchart fc = hitList[i].collider.gameObject.GetComponent<Fungus.Flowchart>();
             if (fc != null)
-            {
-                Fungus.GameObjectVariable fGO = null;
-                fGO = fc.GetVariable("Self") as Fungus.GameObjectVariable;
-                fGO.Value = hitList[i].collider.gameObject;
-
+            {                
                 fc.ExecuteBlock("InteractStart");
                 break;
             }//end if

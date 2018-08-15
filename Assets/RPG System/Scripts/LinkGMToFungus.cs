@@ -12,10 +12,10 @@ public class LinkGMToFungus : MonoBehaviour {
 	void Start () {
 
         if (GM == null) GM = GameObject.Find("GameMaster").GetComponent<GameMaster>();
-        //Fungus.Flowchart fc = GetComponent<Fungus.Flowchart>();
-        //Fungus.ObjectVariable ov = null;
-        //ov = fc.GetVariable("GameMaster") as Fungus.ObjectVariable;
-        //ov.Value = GameObject.Find("GameMaster");
+        Fungus.Flowchart fc = GetComponent<Fungus.Flowchart>();
+        Fungus.GameObjectVariable fGO = null;
+        fGO = fc.GetVariable("Self") as Fungus.GameObjectVariable;
+        fGO.Value = this.gameObject;
     }
 
     public void GivePartyGold(int amount)

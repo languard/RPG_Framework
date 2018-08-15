@@ -47339,9 +47339,11 @@ GameObject:
   - component: {fileID: 1845259283}
   - component: {fileID: 1845259285}
   - component: {fileID: 1845259286}
-  - component: {fileID: 1845259281}
   - component: {fileID: 1845259282}
   - component: {fileID: 1845259290}
+  - component: {fileID: 1845259292}
+  - component: {fileID: 1845259291}
+  - component: {fileID: 1845259281}
   m_Layer: 0
   m_Name: TreasureChest
   m_TagString: Untagged
@@ -47362,7 +47364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 1
-  indentLevel: 0
+  indentLevel: 1
   _targetGameObject:
     gameObjectRef: {fileID: 1845259283}
     gameObjectVal: {fileID: 0}
@@ -47386,7 +47388,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1799.3757
     y: -2033.7463
-    width: 127.64706
+    width: 120.588234
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -47398,7 +47400,9 @@ MonoBehaviour:
   - {fileID: 1845259290}
   - {fileID: 1845259286}
   - {fileID: 1845259282}
+  - {fileID: 1845259292}
   - {fileID: 1845259277}
+  - {fileID: 1845259291}
 --- !u!114 &1845259279
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -47413,7 +47417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scope: 0
   key: DestroyOnUse
-  value: 0
+  value: 1
 --- !u!114 &1845259280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47438,10 +47442,8 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  selectedBlocks:
-  - {fileID: 1845259278}
-  selectedCommands:
-  - {fileID: 1845259290}
+  selectedBlocks: []
+  selectedCommands: []
   variables:
   - {fileID: 1845259279}
   - {fileID: 1845259285}
@@ -47466,12 +47468,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1845259276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1941e052c0ed4280b25507cd2e6ad8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d02d9822eec54c98afe95bb497211b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scope: 0
-  key: GameMaster
-  value: {fileID: 0}
+  key: opened
+  value: 0
 --- !u!114 &1845259282
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -47671,7 +47673,7 @@ MonoBehaviour:
   GM: {fileID: 0}
 --- !u!114 &1845259290
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1845259276}
@@ -47683,6 +47685,82 @@ MonoBehaviour:
   itemId: 4
   indentLevel: 0
   sayDialog: {fileID: 451957259}
+--- !u!114 &1845259291
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1845259276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cb9773f2ca04e2bbf7a68ccfc23267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 6
+  indentLevel: 0
+--- !u!114 &1845259292
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1845259276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c5622b8a80845c980954170295f292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 5
+  indentLevel: 0
+  compareOperator: 0
+  variable: {fileID: 1845259279}
+  booleanData:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  integerData:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  floatData:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  stringData:
+    stringRef: {fileID: 0}
+    stringVal: 
+  animatorData:
+    animatorRef: {fileID: 0}
+    animatorVal: {fileID: 0}
+  audioSourceData:
+    audioSourceRef: {fileID: 0}
+    audioSourceVal: {fileID: 0}
+  colorData:
+    colorRef: {fileID: 0}
+    colorVal: {r: 0, g: 0, b: 0, a: 0}
+  gameObjectData:
+    gameObjectRef: {fileID: 0}
+    gameObjectVal: {fileID: 0}
+  materialData:
+    materialRef: {fileID: 0}
+    materialVal: {fileID: 0}
+  objectData:
+    objectRef: {fileID: 0}
+    objectVal: {fileID: 0}
+  rigidbody2DData:
+    rigidbody2DRef: {fileID: 0}
+    rigidbody2DVal: {fileID: 0}
+  spriteData:
+    spriteRef: {fileID: 0}
+    spriteVal: {fileID: 0}
+  textureData:
+    textureRef: {fileID: 0}
+    textureVal: {fileID: 0}
+  transformData:
+    transformRef: {fileID: 0}
+    transformVal: {fileID: 0}
+  vector2Data:
+    vector2Ref: {fileID: 0}
+    vector2Val: {x: 0, y: 0}
+  vector3Data:
+    vector3Ref: {fileID: 0}
+    vector3Val: {x: 0, y: 0, z: 0}
 --- !u!1 &1983448265
 GameObject:
   m_ObjectHideFlags: 0
