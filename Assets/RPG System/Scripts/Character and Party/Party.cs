@@ -1,12 +1,24 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using UnityEngine;
 
-namespace Assets.RPG_System.Scripts.Character_and_Party
-{
-    class Party
-    {
-        List<Entity> characterList;
-    }
+[RequireComponent(typeof(Fungus.Flowchart))]
+public class Party : MonoBehaviour {
+
+    public Fungus.Flowchart partyInvetory;
+    public Fungus.Flowchart questFlags;
+
+    public List<Entity> partyList;
+
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+
 }

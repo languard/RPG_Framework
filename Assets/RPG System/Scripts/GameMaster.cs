@@ -18,6 +18,8 @@ public class GameMaster : MonoBehaviour {
 
     WaitForSeconds loadDelay;
 
+    Party party;
+
     // Use this for initialization
     void Start () {
 #if UNITY_EDITOR
@@ -25,6 +27,7 @@ public class GameMaster : MonoBehaviour {
 #endif
 
         loadDelay = new WaitForSeconds(0.1f);
+        party = GetComponentInChildren<Party>();
     }
 	
 	// Update is called once per frame
