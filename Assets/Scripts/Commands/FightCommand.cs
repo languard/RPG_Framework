@@ -9,10 +9,23 @@ using UnityEngine;
 /// </summary>
 public class FightCommand : CommandBase {
 
-    public FightCommand(ActorCombatController owner)
-        : base(owner, 1.0f, 0.0f, 0.0f, new int[] { CommandBase.SELECTED_ENEMY, CommandBase.SELECTED_ALLY }, 0)
+    public FightCommand()
+        : base(CommandBase.currentActor.commandNames[Command.Fight], CommandBase.currentActor, 1.0f, 0.0f, 0.0f, new int[] { CommandBase.SELECTED_ENEMY, CommandBase.SELECTED_ALLY }, 0, true)
     {
 
+    }
+
+    protected override List<CombatEffectBase> OnExecute()
+    {
+        ActorCombatController attacker = this.owner;
+        ActorCombatController defender = this.targetActors[0];
+
+        // TODO: Incorporate a calculation for damage.
+
+        List<CombatEffectBase> effects = new List<CombatEffectBase>();
+        effects.Add(new WeaponDamage(defender, 15));
+
+        return effects;
     }
 
 }

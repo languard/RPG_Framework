@@ -4,21 +4,15 @@ using UnityEngine;
 
 public abstract class CombatEffectBase {
 
-    public enum Target
-    {
-        Self,
-        SelectedAlly,
-        AllAllies,
-        SelectedOpponent,
-        AllOpponents,
-        RandomOpponent
-    }
+    public ActorCombatController target { get; private set; }
 
-    public Target target { get; private set; }
+    public string displayText { get; private set; }
 
-    public CombatEffectBase(Target target)
+    public CombatEffectBase(ActorCombatController target, string displayText)
     {
         this.target = target;
+        this.displayText = displayText;
     }
 
+    public abstract void Process();
 }

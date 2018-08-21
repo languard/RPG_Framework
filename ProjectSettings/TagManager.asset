@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - BattleController
+  - PlayerBattleUIController
+  - PlayerCharacter
+  - EnemyCharacter
+  - BattleSilhouette
   layers:
   - Default
   - TransparentFX
