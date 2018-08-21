@@ -6,12 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/RPG System/Scenes/Core.unity
+    guid: 4490f822186074b4580563b6a9cd022b
   - enabled: 1
-    path: Assets/Scenes/WalkTest_A.unity
+    path: Assets/RPG System/Scenes/MainMenu.unity
+    guid: 0ddb79b6735137e47b2b3af43c50cdd7
+  - enabled: 1
+    path: Assets/RPG System/Scenes/Development/WalkTest_A.unity
     guid: 34fa0adbb9b4ad143a40383ca97bc9c3
   - enabled: 1
-    path: Assets/Scenes/WalkTest_B.unity
+    path: Assets/RPG System/Scenes/Development/WalkTest_B.unity
     guid: 0e3eff6499522994dbe6283ed88ea2dc
+  - enabled: 1
+    path: Assets/RPG System/Scenes/Development/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

@@ -102,6 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7fb2f8431e4c8469500bb36a5905a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  partyInvetory: {fileID: 114371801599755876}
+  questFlags: {fileID: 114793369524748142}
+  partyList: []
 --- !u!114 &114371801599755876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,7 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f81e07cfc1e4b54abbfa91dbfadb2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstScene: NOT SET
+  startingMap: NOT SET
+  startX: 0
+  startY: 0
   editorOverride: WalkTest_A
 --- !u!114 &114793369524748142
 MonoBehaviour:

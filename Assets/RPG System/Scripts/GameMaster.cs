@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour {
 
-    [SerializeField] string firstScene = "NOT SET";
+    [SerializeField] string startingMap = "NOT SET";
+    [SerializeField] int startX = 0;
+    [SerializeField] int startY = 0;
     [SerializeField, Tooltip("Leave blank if no override needed")] string editorOverride;
 
     Scene currentMap;
@@ -45,6 +47,27 @@ public class GameMaster : MonoBehaviour {
         }
 		
 	}
+
+    public void LoadStartMap()
+    {
+        //this is different than the normal ChangeMap because there is no map to unload
+        oldMapUnloaded = true;
+        newMapLoaded = false;
+
+        StartCoroutine(HandleLoadStartingMap());
+    }
+
+    IEnumerator HandleLoadStartingMap()
+    {
+        SceneManager.LoadScene(startingMap, LoadSceneMode.Additive);
+        currentMap = SceneManager.GetSceneByName(startingMap);
+        yield return loadDelay; //giving scene time to load
+        SceneManager.SetActiveScene(currentMap);
+        
+        //print("Setting player location");
+        playerController.SetLocation(startX, startY);
+        newMapLoaded = true;
+    }
 
     public void GivePartyMoney(int amount)
     {
@@ -98,5 +121,10 @@ public class GameMaster : MonoBehaviour {
     private void MapUnloaded(AsyncOperation obj)
     {
         oldMapUnloaded = true;
+    }
+
+    public void StartNewGame()
+    {
+        
     }
 }
