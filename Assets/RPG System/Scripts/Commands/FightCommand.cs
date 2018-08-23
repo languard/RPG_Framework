@@ -10,7 +10,7 @@ using UnityEngine;
 public class FightCommand : CommandBase {
 
     public FightCommand()
-        : base(CommandBase.currentActor.commandNames[Command.Fight], CommandBase.currentActor, 1.0f, 0.0f, 0.0f, new int[] { CommandBase.SELECTED_ENEMY, CommandBase.SELECTED_ALLY }, 0, true)
+        : base(CommandBase.currentActor.commandNames[Command.Fight], CommandBase.currentActor, 1.0f, 0.0f, 0.0f, new Target[] { Target.SELECTED_ENEMY, Target.SELECTED_ALLY }, 0, true)
     {
 
     }

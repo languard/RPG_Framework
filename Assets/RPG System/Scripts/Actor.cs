@@ -94,6 +94,21 @@ public class Actor : MonoBehaviour {
         }
     }
 
+    private int _mana;
+    public int mana
+    {
+        get
+        {
+            return _mana;
+        }
+        set
+        {
+            _mana = value;
+            if (_mana <= 0) _mana = 0;
+            if (_mana >= maxMana) _mana = maxMana;
+        }
+    }
+
     public bool isDead
     {
         get

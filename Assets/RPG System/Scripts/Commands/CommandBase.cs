@@ -53,14 +53,19 @@ public abstract class CommandBase {
     public float manaCost { get; private set; }
     public string displayName { get; private set; }
 
-    public const int ALL_ALLIES = 3;
-    public const int SELECTED_ALLY = 2;
-    public const int SELF = 1;
-    public const int SELECTED_ENEMY = 0;
-    public const int ALL_ENEMIES = -1;
-    public const int RANDOM_ENEMY = -2;
+    [System.Flags]
+    public enum Target
+    {
+        NONE = 0,
+        ALL_ALLIES = 1,
+        SELECTED_ALLY = 2,
+        SELF = 4,
+        SELECTED_ENEMY = 8,
+        ALL_ENEMIES = 16,
+        RANDOM_ENEMY = 32
+    }
 
-    public int[] targetOptions;
+    public Target[] targetOptions;
 
     public ActorCombatController owner;
     public List<ActorCombatController> targetActors = new List<ActorCombatController>();
@@ -70,7 +75,7 @@ public abstract class CommandBase {
 
     public bool isRetargetable { get; private set; }
 
-    public int currentTargetSelection
+    public Target currentTargetSelection
     {
         get
         {
@@ -100,7 +105,7 @@ public abstract class CommandBase {
         Fight
     }
 
-    public CommandBase(string displayName, ActorCombatController owner, float delayTime, float staminaCost, float manaCost, int[] targetOptions, int defaultTargetIndex, bool isRetargetable)
+    public CommandBase(string displayName, ActorCombatController owner, float delayTime, float staminaCost, float manaCost, Target[] targetOptions, int defaultTargetIndex, bool isRetargetable)
     {
         this.displayName = displayName;
         this.owner = owner;
@@ -109,7 +114,7 @@ public abstract class CommandBase {
         this.staminaCost = staminaCost;
         this.manaCost = manaCost;
 
-        this.targetOptions = new int[targetOptions.Length];
+        this.targetOptions = new Target[targetOptions.Length];
         for (int i = 0; i < targetOptions.Length; i++) this.targetOptions[i] = targetOptions[i];
         this.currentTargetIndex = defaultTargetIndex;
 

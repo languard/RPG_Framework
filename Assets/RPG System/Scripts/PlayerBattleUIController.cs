@@ -80,12 +80,12 @@ public class PlayerBattleUIController : MonoBehaviour {
             {
                 switch (selectedCommand.currentTargetSelection)
                 {
-                    case CommandBase.ALL_ALLIES:
+                    case CommandBase.Target.ALL_ALLIES:
                         //  Left: previous target option
                         //  Right/Up/Down: Nothing
                         if (Input.GetKeyDown(KeyCode.LeftArrow)) selectedCommand.currentTargetIndex--;
                         break;
-                    case CommandBase.SELECTED_ALLY:
+                    case CommandBase.Target.SELECTED_ALLY:
                         //  Left: previous target option
                         //  Right: next target option
                         //  Up/Down: Toggle targets
@@ -97,12 +97,12 @@ public class PlayerBattleUIController : MonoBehaviour {
                         if (Input.GetKeyDown(KeyCode.UpArrow)) lastSinglePlayerCombatTarget = NextPlayer(TargetChangeDirection.Up);
                         if (Input.GetKeyDown(KeyCode.DownArrow)) lastSinglePlayerCombatTarget = NextPlayer(TargetChangeDirection.Down);
                         break;
-                    case CommandBase.SELF:
+                    case CommandBase.Target.SELF:
                         //  As SELECTED_ALLY but Up/Down does nothing
                         if (Input.GetKeyDown(KeyCode.LeftArrow)) selectedCommand.currentTargetIndex--;
                         if (Input.GetKeyDown(KeyCode.RightArrow)) selectedCommand.currentTargetIndex++;
                         break;
-                    case CommandBase.SELECTED_ENEMY:
+                    case CommandBase.Target.SELECTED_ENEMY:
                         //  Left: Previous single enemy target if one available, or previous target option otherwise
                         //  Right: Next single enemy target if one availalbe, or next target option otherwise
                         //  Up/Down: Vertical toggle on targets (wraparound possible)
@@ -133,12 +133,12 @@ public class PlayerBattleUIController : MonoBehaviour {
                         if (Input.GetKeyDown(KeyCode.UpArrow)) lastSingleEnemyCombatTarget = NextEnemy(TargetChangeDirection.Up);
                         if (Input.GetKeyDown(KeyCode.DownArrow)) lastSingleEnemyCombatTarget = NextEnemy(TargetChangeDirection.Down);
                         break;
-                    case CommandBase.ALL_ENEMIES:
+                    case CommandBase.Target.ALL_ENEMIES:
                         //  Right: Next target option
                         //  Left/Up/Down: Nothing
                         if (Input.GetKeyDown(KeyCode.RightArrow)) selectedCommand.currentTargetIndex++;
                         break;
-                    case CommandBase.RANDOM_ENEMY:
+                    case CommandBase.Target.RANDOM_ENEMY:
                         // No input to handle
                         //  This should never apply here; if RANDOM_ENEMY is in the list,
                         //  it should be alone, and a random enemy should be selected instead
@@ -149,19 +149,19 @@ public class PlayerBattleUIController : MonoBehaviour {
                 currentTargets.Clear();
                 switch (selectedCommand.currentTargetSelection)
                 {
-                    case CommandBase.ALL_ALLIES:
+                    case CommandBase.Target.ALL_ALLIES:
                         foreach (PlayerCombatController player in battleController.playerActors) currentTargets.Add(player);
                         break;
-                    case CommandBase.SELECTED_ALLY:
+                    case CommandBase.Target.SELECTED_ALLY:
                         currentTargets.Add(lastSinglePlayerCombatTarget);
                         break;
-                    case CommandBase.SELF:
+                    case CommandBase.Target.SELF:
                         currentTargets.Add(lastSinglePlayerCombatTarget);
                         break;
-                    case CommandBase.SELECTED_ENEMY:
+                    case CommandBase.Target.SELECTED_ENEMY:
                         currentTargets.Add(lastSingleEnemyCombatTarget);
                         break;
-                    case CommandBase.ALL_ENEMIES:
+                    case CommandBase.Target.ALL_ENEMIES:
                         foreach (EnemyCombatController enemy in battleController.enemyActors) currentTargets.Add(enemy);
                         break;
                 }

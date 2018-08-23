@@ -15,4 +15,6 @@ public abstract class CombatEffectBase {
     }
 
     public abstract void Process();
+
+    public abstract bool IsValid { get; }
 }
