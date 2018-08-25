@@ -7,7 +7,7 @@ public class WeaponDamage : CombatEffectBase {
     private int damage;
 
     public WeaponDamage(ActorCombatController target, int damage)
-        :base(target, damage.ToString())
+        :base(target, damage.ToString(), Effect.WeaponDamage)
     {
         this.damage = damage;
     }
