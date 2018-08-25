@@ -8,6 +8,13 @@ public class CoreGameStart : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //begin loading any and all files needed before switching to main menu
+
+        //setup audio sources
+        GameMaster gm = animator.gameObject.GetComponent<GameMaster>();
+        
+        gm.music = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>();
+        gm.music = GameObject.Find("SFX").GetComponent<AudioSource>();
+        gm.music = GameObject.Find("VoiceActing").GetComponent<AudioSource>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

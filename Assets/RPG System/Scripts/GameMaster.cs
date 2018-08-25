@@ -22,6 +22,10 @@ public class GameMaster : MonoBehaviour {
 
     Party party;
 
+    public AudioSource music;
+    public AudioSource sfx;
+    public AudioSource voice;
+
     // Use this for initialization
     void Start () {
 #if UNITY_EDITOR
@@ -126,5 +130,12 @@ public class GameMaster : MonoBehaviour {
     public void StartNewGame()
     {
         
+    }
+
+    public void PlayMusic(AudioClip clip)
+    {
+        music.clip = clip;
+        music.Play();
+
     }
 }
