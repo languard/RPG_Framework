@@ -195,6 +195,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4749119755146454, guid: f7571f6ca39609b43846fde237c18c96, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -226,6 +231,251 @@ Prefab:
     - target: {fileID: 4749119755146454, guid: f7571f6ca39609b43846fde237c18c96, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].strength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].strengthBase
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].constitution
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].constitutionBase
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].willpower
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].willpowerBase
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].intelligence
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].intelligenceBase
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].hitPointsBase
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].manaBase
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].enduranceBase
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].reaction
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].reactionBase
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[2].strength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[2].strengthBase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[2].constitution
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[2].constitutionBase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[2].willpower
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[2].willpowerBase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[2].intelligence
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[2].intelligenceBase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[2].hitPointsBase
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[2].manaBase
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[2].enduranceBase
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[2].reaction
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[2].reactionBase
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[3].strength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[3].strengthBase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[3].constitution
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[3].constitutionBase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[3].willpower
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[3].willpowerBase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[3].intelligence
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[3].intelligenceBase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[3].hitPointsBase
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[3].manaBase
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[3].enduranceBase
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[3].reaction
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[3].reactionBase
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[0].name
+      value: Fighter
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[0].strength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[0].strengthBase
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[0].constitutionBase
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[0].constitution
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[0].willpower
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[0].willpowerBase
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[0].intelligenceBase
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[0].intelligence
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 2}
+      propertyPath: partyList.Array.data[1].name
+      value: Paladin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7571f6ca39609b43846fde237c18c96, type: 2}

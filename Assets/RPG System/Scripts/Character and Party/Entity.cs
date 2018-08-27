@@ -68,25 +68,40 @@ public class Entity
     public void CalculateHP()
     {
         hitPointsBase = (int)(StaticData.HP_BASE + (StaticData.HP_CON_SCALE * constitution + StaticData.HP_STR_SCALE * strength) * StaticData.HP_STAT_SCALE);
-        if (hitPoints > hitPointsBase) hitPoints = hitPointsBase;
+        if (hitPoints > hitPointsBase || hitPoints <= 0) hitPoints = hitPointsBase;
     }
 
     public void CalculateMana()
     {
         manaBase = (int)(StaticData.M_BASE + (StaticData.M_INT_SCALE * intelligence + StaticData.M_WIL_SCALE * willpower) * StaticData.M_STAT_SCALE);
-        if (mana > manaBase) mana = manaBase;
+        if (mana > manaBase || mana <= 0) mana = manaBase;
     }
 
     public void CalculateEndurance()
     {
         enduranceBase = (int)(StaticData.END_BASE + (StaticData.END_CON_SCALE * constitution + StaticData.END_WIL_SCALE * willpower) * StaticData.END_STAT_SCALE);
-        if (endurance > enduranceBase) endurance = enduranceBase;
+        if (endurance > enduranceBase || endurance <= 0) endurance = enduranceBase;
     }
 
     public void CalculateReaction()
     {
         reactionBase = (int)(StaticData.R_BASE + (StaticData.R_INT_SCALE * intelligence + StaticData.R_STR_SCALE * strength) * StaticData.R_STAT_SCALE);
         reaction = reactionBase;
+    }
+
+    public void ResetStatsToBase()
+    {
+        strength = strengthBase;
+        constitution = constitutionBase;
+        willpower = willpowerBase;
+        intelligence = intelligenceBase;
+    }
+
+    public void FullHeal()
+    {
+        hitPoints = hitPointsBase;
+        endurance = enduranceBase;
+        mana = manaBase;
     }
 }
 

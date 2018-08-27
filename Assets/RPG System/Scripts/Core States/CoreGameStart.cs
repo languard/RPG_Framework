@@ -15,6 +15,9 @@ public class CoreGameStart : StateMachineBehaviour {
         gm.music = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>();
         gm.music = GameObject.Find("SFX").GetComponent<AudioSource>();
         gm.music = GameObject.Find("VoiceActing").GetComponent<AudioSource>();
+
+        //Allow the GameMaster to run needed new game setup
+        gm.StartNewGame();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

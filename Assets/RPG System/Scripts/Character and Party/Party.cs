@@ -20,5 +20,14 @@ public class Party : MonoBehaviour {
 		
 	}
 
+    public void ResetPartyStats()
+    {
+        for(int i=0; i<partyList.Count; i++)
+        {
+            partyList[i].ResetStatsToBase();
+            partyList[i].CalculateAllStats();
+        }
+    }
+
 
 }

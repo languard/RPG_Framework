@@ -129,7 +129,7 @@ public class GameMaster : MonoBehaviour {
 
     public void StartNewGame()
     {
-        
+        party.ResetPartyStats();
     }
 
     public void PlayMusic(AudioClip clip)
