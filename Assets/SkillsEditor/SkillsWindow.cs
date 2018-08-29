@@ -16,6 +16,7 @@ public class SkillDescriptor
     public string name = "New Skill";
     public string displayText = "Enter Display Text";
     public float delay = 2.0f;
+    public int manaCost = 0;
     public CommandBase.Target targets = CommandBase.Target.SELECTED_ENEMY | CommandBase.Target.SELECTED_ALLY;
     public CommandBase.Target startTarget = CommandBase.Target.SELECTED_ENEMY;
     public bool isRetargetable = true;

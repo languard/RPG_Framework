@@ -121,6 +121,15 @@ public abstract class CommandBase {
         this.isRetargetable = isRetargetable;
     }
 
+    public bool IsValid()
+    {
+        if (owner.actor.mana < manaCost) return false;
+        // Add other conditions of validity here;
+        // do not short-circuit this call
+
+        return true;
+    }
+
     public void AddTarget(ActorCombatController target)
     {
         targetActors.Add(target);

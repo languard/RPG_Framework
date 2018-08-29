@@ -24,6 +24,7 @@ public abstract class ActorCombatController : MonoBehaviour
 
     public Dictionary<CommandBase.Command, string> commandNames = new Dictionary<CommandBase.Command, string>();
 
+    [HideInInspector]
     public Actor actor;
 
     // Use this for initialization
@@ -98,6 +99,24 @@ public abstract class ActorCombatController : MonoBehaviour
         }
 
         return foes;
+    }
+
+    public List<ActorCombatController> Allies()
+    {
+        List<ActorCombatController> allies = new List<ActorCombatController>();
+        if (this as PlayerCombatController != null)
+        {
+            // I'm a player, get all players
+            foreach (ActorCombatController ally in battleController.playerActors) if (!ally.actor.isDead) allies.Add(ally);
+        }
+
+        if (this as EnemyCombatController != null)
+        {
+            // I'm an enemy, get all enemies
+            foreach (ActorCombatController ally in battleController.enemyActors) if (!ally.actor.isDead) allies.Add(ally);
+        }
+
+        return allies;
     }
 
 }
