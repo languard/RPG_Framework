@@ -26,7 +26,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
     
     public int moveDirection = 0;
 
-    
+    public Vector2Int gridPosition { get { return new Vector2Int(Mathf.RoundToInt(transform.position.x / grid), Mathf.RoundToInt(transform.position.y / grid)); } }
 
     float currentHorizontal = 0;
     float currentVertical = 0;

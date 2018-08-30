@@ -25,7 +25,7 @@ public class EnemyCombatController : ActorCombatController
 
         if (skill == null)
         {
-            print("Actor " + transform.name + " has no available skills among the " + skills.weightedSkills.Length + " to choose from");
+            print("Actor " + transform.name + " has no available skills among the " + skills.skills.Length + " to choose from");
             ResetActor();
             return;
         }

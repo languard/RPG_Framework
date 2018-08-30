@@ -10,17 +10,19 @@ public class PlayerCombatController : ActorCombatController
     private Animator anim; //The parent animator.
     
     private PlayerBattleUIController playerBattleUIController;
+
+    public PlayerSkills playerSkills;
    
     // Use this for initialization
     protected override void OnStart() {
         anim = GetComponent<Animator>();
         playerBattleUIController = GameObject.FindGameObjectWithTag("PlayerBattleUIController").GetComponent<PlayerBattleUIController>();
+        playerSkills = GetComponent<PlayerSkills>();
 
         anim.SetFloat("moveX", -1f);
         anim.SetBool("isMoving", false);
         anim.SetBool("isRunning", false);
-
-        commandNames.Add(CommandBase.Command.Fight, "Fight");
+        
     }
 
     protected override void OnReadyForCommand()
@@ -30,14 +32,6 @@ public class PlayerCombatController : ActorCombatController
         // is active. Is that really the battle controller though?
         // In the interest of keeping it clean, let's do a UI controller.
         playerBattleUIController.PlayerUnitReadyToSelectCommand(this);
-    }
-    
-    public Dictionary<string, CommandBase.Command> AvailableCommands()
-    {
-        // For now, only Fight is available.
-        Dictionary<string, CommandBase.Command> playerCommands = new Dictionary<string, CommandBase.Command>();
-        playerCommands.Add("Fight", CommandBase.Command.Fight );
-        return playerCommands;
     }
 
     public override void ProcessCommand(CommandBase command)

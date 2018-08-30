@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 212504687209112882}
   - component: {fileID: 114327085776972280}
   - component: {fileID: 114598769967723258}
-  - component: {fileID: 114181361882344304}
+  - component: {fileID: 114298607451433564}
   m_Layer: 0
   m_Name: grimblade
   m_TagString: EnemyCharacter
@@ -145,7 +145,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1502727740648550}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114181361882344304
+--- !u!114 &114298607451433564
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,6 +156,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3423d0da031a0db4d93cb0280ba9d2e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skills:
+  - name: Monster_Attack
+    displayText: Attack
+    delay: 2
+    manaCost: 0
+    targets: 10
+    startTarget: 8
+    isRetargetable: 1
+    effects:
+    - effectType: 0
+      effectValue: 15
+  weights: 01000000
 --- !u!114 &114327085776972280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,7 +181,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionDelay: 5
   actor: {fileID: 0}
-  fightDisplayName: Attack
 --- !u!114 &114598769967723258
 MonoBehaviour:
   m_ObjectHideFlags: 1

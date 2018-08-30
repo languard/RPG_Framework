@@ -108,6 +108,8 @@ GameObject:
   - component: {fileID: 61228236331814268}
   - component: {fileID: 50537909096516228}
   - component: {fileID: 114481209278609766}
+  - component: {fileID: 114722194942806820}
+  - component: {fileID: 114007490974659302}
   m_Layer: 0
   m_Name: Paladin Kyra
   m_TagString: PlayerCharacter
@@ -453,6 +455,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114007490974659302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1844847173349452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3dd831d20891ed4aa798b85db0f253c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills:
+  - name: Player_Fight
+    displayText: Fight
+    delay: 2
+    manaCost: 0
+    targets: 10
+    startTarget: 8
+    isRetargetable: 1
+    effects:
+    - effectType: 0
+      effectValue: 15
+  - name: Kyra_Healing_Prayer
+    displayText: Healing Prayer
+    delay: 4
+    manaCost: 0
+    targets: 1
+    startTarget: 8
+    isRetargetable: 0
+    effects:
+    - effectType: 3
+      effectValue: 20
 --- !u!114 &114032464209503930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -505,6 +539,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionDelay: 3
+  actor: {fileID: 0}
+  playerSkills: {fileID: 0}
 --- !u!114 &114487956669191910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -519,6 +555,45 @@ MonoBehaviour:
   newSprite: {fileID: 2800000, guid: 48180fae01a17144a9e585ef5e2146ab, type: 3}
   folderPath: Retro Pixel Characters/Spritesheets/Female/4 - Weapons/
   isChildSprite: 1
+--- !u!114 &114722194942806820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1844847173349452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73fdf33618c1a64b9138aabd479a677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 12
+  constitution: 15
+  willpower: 14
+  intelligence: 10
+  vBase: 100
+  vStrScale: 1
+  vConScale: 1
+  vStatScale: 1
+  vLevelScale: 1
+  mBase: 100
+  mIntScale: 1
+  mWillScale: 1
+  mStatScale: 1
+  mLevelScale: 1
+  rBase: 100
+  rStrScale: 1
+  rIntScale: 1
+  rStatScale: 1
+  rLevelScale: 1
+  endBase: 100
+  endConScale: 1
+  endWillScale: 1
+  endStatScale: 1
+  endLevelScale: 1
+  classStrScale: 1
+  classConScale: 1
+  classIntScale: 1
+  classWillScale: 1
 --- !u!114 &114794540558962506
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(EnemySkills))]
-public class EnemySkillsEditor : Editor
+[CustomEditor(typeof(PlayerSkills))]
+public class PlayerSkillsEditor : Editor
 {
     private List<string> skillNames = new List<string>();
     private int selectedSkillIndex = 0;
@@ -15,11 +15,10 @@ public class EnemySkillsEditor : Editor
         SkillDatabase.LoadSkills();
         skillNames = SkillDatabase.FindSkills(string.Empty);
 
-        EnemySkills enemySkills = target as EnemySkills;
+        PlayerSkills playerSkills = target as PlayerSkills;
         List<SkillDescriptor> invalidSkills = new List<SkillDescriptor>();
-        if (enemySkills.skills == null) enemySkills.skills = new SkillDescriptor[0];
-        if (enemySkills.weights == null) enemySkills.weights = new int[0];
-        foreach (SkillDescriptor descriptor in enemySkills.skills)
+        if (playerSkills.skills == null) playerSkills.skills = new SkillDescriptor[0];
+        foreach (SkillDescriptor descriptor in playerSkills.skills)
         {
             if (skillNames.Contains(descriptor.name))
             {
@@ -31,12 +30,12 @@ public class EnemySkillsEditor : Editor
             }
         }
         List<SkillDescriptor> newSkills = new List<SkillDescriptor>();
-        newSkills.AddRange(enemySkills.skills);
+        newSkills.AddRange(playerSkills.skills);
         foreach (SkillDescriptor invalidSkill in invalidSkills)
         {
             newSkills.Remove(invalidSkill);
         }
-        enemySkills.skills = newSkills.ToArray();
+        playerSkills.skills = newSkills.ToArray();
 
     }
 
@@ -44,8 +43,8 @@ public class EnemySkillsEditor : Editor
     {
         serializedObject.Update();
 
-        EnemySkills enemySkills = target as EnemySkills;
-        if (enemySkills.skills == null) enemySkills.skills = new SkillDescriptor[0];
+        PlayerSkills playerSkills = target as PlayerSkills;
+        if (playerSkills.skills == null) playerSkills.skills = new SkillDescriptor[0];
 
         int y = 0, killIndex = -1;
         //EditorGUI.LabelField(new Rect(5, y, 50, 15), "Skill");
@@ -55,23 +54,15 @@ public class EnemySkillsEditor : Editor
 
         EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(false));
         EditorGUILayout.LabelField("Skill", GUILayout.ExpandWidth(false));
-        for (int i = 0; i < enemySkills.skills.Length; i++)
+        for (int i = 0; i < playerSkills.skills.Length; i++)
         {
-            EditorGUILayout.LabelField(enemySkills.skills[i].name, GUILayout.ExpandWidth(false));
-        }
-        EditorGUILayout.EndVertical();
-
-        EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(false), GUILayout.MaxWidth(50));
-        EditorGUILayout.LabelField("Weight", GUILayout.ExpandWidth(false), GUILayout.MaxWidth(50));
-        for (int i = 0; i < enemySkills.skills.Length; i++)
-        {
-            enemySkills.weights[i] = EditorGUILayout.IntField(enemySkills.weights[i], GUILayout.ExpandWidth(false), GUILayout.MaxWidth(40));
+            EditorGUILayout.LabelField(playerSkills.skills[i].name, GUILayout.ExpandWidth(false));
         }
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(false));
         EditorGUILayout.LabelField("Remove", GUILayout.ExpandWidth(false));
-        for (int i = 0; i < enemySkills.skills.Length; i++)
+        for (int i = 0; i < playerSkills.skills.Length; i++)
         {
             if (GUILayout.Button("X", GUILayout.ExpandWidth(false)))
             {
@@ -82,17 +73,11 @@ public class EnemySkillsEditor : Editor
         {
             // Rebuild array without this one
             List<SkillDescriptor> newSkills = new List<SkillDescriptor>();
-            List<int> newWeights = new List<int>();
-            for (int i = 0; i < enemySkills.skills.Length; i++)
+            for (int i = 0; i < playerSkills.skills.Length; i++)
             {
-                if (i != killIndex)
-                {
-                    newSkills.Add(enemySkills.skills[i]);
-                    newWeights.Add(enemySkills.weights[i]);
-                }
+                if (i != killIndex) newSkills.Add(playerSkills.skills[i]);
             }
-            enemySkills.skills = newSkills.ToArray();
-            enemySkills.weights = newWeights.ToArray();
+            playerSkills.skills = newSkills.ToArray();
         }
         EditorGUILayout.EndVertical();
 
@@ -108,15 +93,10 @@ public class EnemySkillsEditor : Editor
             SkillDescriptor addedSkill = SkillDatabase.GetSkill(selectedSkillName);
 
             List<SkillDescriptor> newSkills = new List<SkillDescriptor>();
-            newSkills.AddRange(enemySkills.skills);
+            newSkills.AddRange(playerSkills.skills);
             newSkills.Add(addedSkill);
-            enemySkills.skills = newSkills.ToArray();
 
-            List<int> newWeights = new List<int>();
-            newWeights.AddRange(enemySkills.weights);
-            newWeights.Add(1);
-            enemySkills.weights = newWeights.ToArray();
-
+            playerSkills.skills = newSkills.ToArray();
         }
         EditorGUILayout.EndHorizontal();
 

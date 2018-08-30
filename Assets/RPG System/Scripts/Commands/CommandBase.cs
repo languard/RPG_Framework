@@ -2,47 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CommandFactory
-{
-    private static CommandFactory instance = null;
-    public static CommandFactory Instance
-    {
-        get
-        {
-            if (instance == null) instance = new CommandFactory();
-            return instance;
-        }
-    }
-    private CommandFactory()
-    {
-    }
-
-    public CommandBase GetCommand(CommandBase.Command commandType, ActorCombatController actor)
-    {
-        // Something about this feels dirty.
-        CommandBase.currentActor = actor;
-
-        // Switch statements are the WORST.
-        // But the performance hit here will be minor.
-        // You'd need to work very hard to have more than 2,000 commands,
-        // which would still be practically instantaneous.
-        // It's just not really clean.
-        //
-        // Maybe we can have a startup controller that tries to get a command
-        // using every possible command type programmatically, bubbling exceptions
-        // up loudly, forcing them to visibility?
-        //
-        // Meanwhile - the switch statement antipattern.
-        switch (commandType)
-        {
-            case CommandBase.Command.Fight:
-                return new FightCommand();
-            default:
-                throw new System.ArgumentException("Invalid type [" + commandType.ToString() + " specified.");
-        }
-    }
-    
-}
 
 public abstract class CommandBase {
 

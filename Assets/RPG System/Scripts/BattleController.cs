@@ -22,6 +22,9 @@ public class BattleController : MonoBehaviour {
     public GUIStyle marqueeStyle;
     public GUIStyle effectsStyle;
 
+    public float sceneOutroTime = 2.0f;
+    private float sceneOutroCountdown = 0.0f;
+
     private enum CommandState
     {
         Idle,
@@ -101,10 +104,25 @@ public class BattleController : MonoBehaviour {
                 if (!anyEnemyAlive) battleState = BattleState.Victory;
                 if (!anyPlayerAlive) battleState = BattleState.Defeat;
 
+                if (battleState != BattleState.Normal)
+                {
+                    sceneOutroCountdown = sceneOutroTime;
+                }
+
                 break;
             case BattleState.Defeat:
+                sceneOutroCountdown -= Time.deltaTime;
+                if (sceneOutroCountdown <= 0.0f)
+                {
+                    // TODO: Transition to start screen?
+                }
                 break;
             case BattleState.Victory:
+                sceneOutroCountdown -= Time.deltaTime;
+                if (sceneOutroCountdown <= 0.0f)
+                {
+                    // TODO: Transition back to world scene
+                }
                 break;
         }
 

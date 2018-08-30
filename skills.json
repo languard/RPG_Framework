@@ -1,6 +1,6 @@
-{"name":"Spell_Fireball","displayText":"Fireball","delay":4.0,"targets":27,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":2,"effectValue":12},{"effectType":1,"effectValue":40}]}
-{"name":"Monster_Attack","displayText":"Attack","delay":2.0,"targets":10,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectValue":15}]}
-{"name":"Jaia_Hyper_Kick","displayText":"Hyper Kick","delay":2.0,"targets":16,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectValue":10}]}
-{"name":"Kyra_Healing_Prayer","displayText":"Healing Prayer","delay":4.0,"targets":1,"startTarget":8,"isRetargetable":false,"effects":[{"effectType":3,"effectValue":20}]}
-{"name":"Player_Fight","displayText":"Fight","delay":2.0,"targets":10,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectValue":15}]}
-{"name":"Guel_Hunter_Shot","displayText":"Hunter Shot","delay":5.0,"targets":8,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectValue":40}]}
+{"name":"Spell_Fireball","displayText":"Fireball","delay":4.0,"manaCost":0,"targets":27,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":2,"effectValue":12},{"effectType":1,"effectValue":40}]}
+{"name":"Monster_Attack","displayText":"Attack","delay":2.0,"manaCost":0,"targets":10,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectValue":15}]}
+{"name":"Jaia_Hyper_Kick","displayText":"Hyper Kick","delay":2.0,"manaCost":0,"targets":16,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectValue":10}]}
+{"name":"Kyra_Healing_Prayer","displayText":"Healing Prayer","delay":4.0,"manaCost":0,"targets":1,"startTarget":8,"isRetargetable":false,"effects":[{"effectType":3,"effectValue":20}]}
+{"name":"Player_Fight","displayText":"Fight","delay":2.0,"manaCost":0,"targets":10,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectValue":15}]}
+{"name":"Guel_Hunter_Shot","displayText":"Hunter Shot","delay":5.0,"manaCost":0,"targets":8,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectValue":40}]}

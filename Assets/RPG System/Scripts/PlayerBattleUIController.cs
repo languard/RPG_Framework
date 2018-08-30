@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.RPG_System.Scripts.Commands;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,6 +27,8 @@ public class PlayerBattleUIController : MonoBehaviour {
 
     private Dictionary<ActorCombatController, GameObject> fingerPointers = new Dictionary<ActorCombatController, GameObject>();
 
+    private PlayerSkills playerSkills;
+
     private enum TargetChangeDirection
     {
         Left,
@@ -37,6 +40,7 @@ public class PlayerBattleUIController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         battleController = GameObject.FindGameObjectWithTag("BattleController").GetComponent<BattleController>();
+        playerSkills = GetComponent<PlayerSkills>();
 
         foreach (ActorCombatController actor in battleController.playerActors)
         {
@@ -59,14 +63,9 @@ public class PlayerBattleUIController : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-
-        if (battleController.isBattleFinished)
-        {
-            playerUnitsReadyToSelectCommand.Clear();
-            selectedCommand = null;
-            currentTargets.Clear();
-        }
+	void Update ()
+    {
+        CheckFinished();
 
         activePlayer = null;
         if (playerUnitsReadyToSelectCommand.Count > 0)
@@ -78,121 +77,24 @@ public class PlayerBattleUIController : MonoBehaviour {
         {
             if (selectedCommand != null)
             {
-                switch (selectedCommand.currentTargetSelection)
-                {
-                    case CommandBase.Target.ALL_ALLIES:
-                        //  Left: previous target option
-                        //  Right/Up/Down: Nothing
-                        if (Input.GetKeyDown(KeyCode.LeftArrow)) selectedCommand.currentTargetIndex--;
-                        break;
-                    case CommandBase.Target.SELECTED_ALLY:
-                        //  Left: previous target option
-                        //  Right: next target option
-                        //  Up/Down: Toggle targets
-                        if (Input.GetKeyDown(KeyCode.LeftArrow))
-                        {
-                            selectedCommand.currentTargetIndex--;
-                        }
-                        if (Input.GetKeyDown(KeyCode.RightArrow)) selectedCommand.currentTargetIndex++;
-                        if (Input.GetKeyDown(KeyCode.UpArrow)) lastSinglePlayerCombatTarget = NextPlayer(TargetChangeDirection.Up);
-                        if (Input.GetKeyDown(KeyCode.DownArrow)) lastSinglePlayerCombatTarget = NextPlayer(TargetChangeDirection.Down);
-                        break;
-                    case CommandBase.Target.SELF:
-                        //  As SELECTED_ALLY but Up/Down does nothing
-                        if (Input.GetKeyDown(KeyCode.LeftArrow)) selectedCommand.currentTargetIndex--;
-                        if (Input.GetKeyDown(KeyCode.RightArrow)) selectedCommand.currentTargetIndex++;
-                        break;
-                    case CommandBase.Target.SELECTED_ENEMY:
-                        //  Left: Previous single enemy target if one available, or previous target option otherwise
-                        //  Right: Next single enemy target if one availalbe, or next target option otherwise
-                        //  Up/Down: Vertical toggle on targets (wraparound possible)
-                        if (Input.GetKeyDown(KeyCode.LeftArrow))
-                        {
-                            EnemyCombatController nextEnemy = NextEnemy(TargetChangeDirection.Left);
-                            if (nextEnemy == null)
-                            {
-                                selectedCommand.currentTargetIndex--;
-                            }
-                            else
-                            {
-                                lastSingleEnemyCombatTarget = nextEnemy;
-                            }
-                        }
-                        if (Input.GetKeyDown(KeyCode.RightArrow))
-                        {
-                            EnemyCombatController nextEnemy = NextEnemy(TargetChangeDirection.Right);
-                            if (nextEnemy == null)
-                            {
-                                selectedCommand.currentTargetIndex++;
-                            }
-                            else
-                            {
-                                lastSingleEnemyCombatTarget = nextEnemy;
-                            }
-                        }
-                        if (Input.GetKeyDown(KeyCode.UpArrow)) lastSingleEnemyCombatTarget = NextEnemy(TargetChangeDirection.Up);
-                        if (Input.GetKeyDown(KeyCode.DownArrow)) lastSingleEnemyCombatTarget = NextEnemy(TargetChangeDirection.Down);
-                        break;
-                    case CommandBase.Target.ALL_ENEMIES:
-                        //  Right: Next target option
-                        //  Left/Up/Down: Nothing
-                        if (Input.GetKeyDown(KeyCode.RightArrow)) selectedCommand.currentTargetIndex++;
-                        break;
-                    case CommandBase.Target.RANDOM_ENEMY:
-                        // No input to handle
-                        //  This should never apply here; if RANDOM_ENEMY is in the list,
-                        //  it should be alone, and a random enemy should be selected instead
-                        break;
-                }
+                ManageTargetSelectionInput();
 
                 // Update targets based on current command targets identified
-                currentTargets.Clear();
-                switch (selectedCommand.currentTargetSelection)
-                {
-                    case CommandBase.Target.ALL_ALLIES:
-                        foreach (PlayerCombatController player in battleController.playerActors) currentTargets.Add(player);
-                        break;
-                    case CommandBase.Target.SELECTED_ALLY:
-                        currentTargets.Add(lastSinglePlayerCombatTarget);
-                        break;
-                    case CommandBase.Target.SELF:
-                        currentTargets.Add(lastSinglePlayerCombatTarget);
-                        break;
-                    case CommandBase.Target.SELECTED_ENEMY:
-                        currentTargets.Add(lastSingleEnemyCombatTarget);
-                        break;
-                    case CommandBase.Target.ALL_ENEMIES:
-                        foreach (EnemyCombatController enemy in battleController.enemyActors) currentTargets.Add(enemy);
-                        break;
-                }
+                UpdateTargetSelection();
 
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     // Command is selected; player is done with prep and can be dequeued.
-                    activePlayer = playerUnitsReadyToSelectCommand.Dequeue();
-
-                    // Fill out the command with the current targets,
-                    // and send it back through the actor so that actor can update state.
-                    foreach (ActorCombatController target in currentTargets)
-                    {
-                        selectedCommand.AddTarget(target);
-                    }
-                    activePlayer.RegisterCommand(selectedCommand);
-
-                    // Mark selection and active player as null so we can move to next player.
-                    selectedCommand = null;
-                    activePlayer = null;
-                    currentTargets.Clear();
-
+                    ActivateSelectedCommand();
                 }
-            } else
+            }
+            else
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     // Dequeue the top ready player and put them at the back of the line.
                     playerUnitsReadyToSelectCommand.Enqueue(playerUnitsReadyToSelectCommand.Dequeue());
                 }
-
             }
         }
 
@@ -200,6 +102,127 @@ public class PlayerBattleUIController : MonoBehaviour {
         foreach (ActorCombatController actor in currentTargets)
         {
             fingerPointers[actor].SetActive(true);
+        }
+    }
+
+    private void CheckFinished()
+    {
+        if (battleController.isBattleFinished)
+        {
+            playerUnitsReadyToSelectCommand.Clear();
+            selectedCommand = null;
+            currentTargets.Clear();
+        }
+    }
+
+    private void ManageTargetSelectionInput()
+    {
+        switch (selectedCommand.currentTargetSelection)
+        {
+            case CommandBase.Target.ALL_ALLIES:
+                //  Left: previous target option
+                //  Right/Up/Down: Nothing
+                if (Input.GetKeyDown(KeyCode.LeftArrow)) selectedCommand.currentTargetIndex--;
+                break;
+            case CommandBase.Target.SELECTED_ALLY:
+                //  Left: previous target option
+                //  Right: next target option
+                //  Up/Down: Toggle targets
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    selectedCommand.currentTargetIndex--;
+                }
+                if (Input.GetKeyDown(KeyCode.RightArrow)) selectedCommand.currentTargetIndex++;
+                if (Input.GetKeyDown(KeyCode.UpArrow)) lastSinglePlayerCombatTarget = NextPlayer(TargetChangeDirection.Up);
+                if (Input.GetKeyDown(KeyCode.DownArrow)) lastSinglePlayerCombatTarget = NextPlayer(TargetChangeDirection.Down);
+                break;
+            case CommandBase.Target.SELF:
+                //  As SELECTED_ALLY but Up/Down does nothing
+                if (Input.GetKeyDown(KeyCode.LeftArrow)) selectedCommand.currentTargetIndex--;
+                if (Input.GetKeyDown(KeyCode.RightArrow)) selectedCommand.currentTargetIndex++;
+                break;
+            case CommandBase.Target.SELECTED_ENEMY:
+                //  Left: Previous single enemy target if one available, or previous target option otherwise
+                //  Right: Next single enemy target if one availalbe, or next target option otherwise
+                //  Up/Down: Vertical toggle on targets (wraparound possible)
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    EnemyCombatController nextEnemy = NextEnemy(TargetChangeDirection.Left);
+                    if (nextEnemy == null)
+                    {
+                        selectedCommand.currentTargetIndex--;
+                    }
+                    else
+                    {
+                        lastSingleEnemyCombatTarget = nextEnemy;
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    EnemyCombatController nextEnemy = NextEnemy(TargetChangeDirection.Right);
+                    if (nextEnemy == null)
+                    {
+                        selectedCommand.currentTargetIndex++;
+                    }
+                    else
+                    {
+                        lastSingleEnemyCombatTarget = nextEnemy;
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.UpArrow)) lastSingleEnemyCombatTarget = NextEnemy(TargetChangeDirection.Up);
+                if (Input.GetKeyDown(KeyCode.DownArrow)) lastSingleEnemyCombatTarget = NextEnemy(TargetChangeDirection.Down);
+                break;
+            case CommandBase.Target.ALL_ENEMIES:
+                //  Right: Next target option
+                //  Left/Up/Down: Nothing
+                if (Input.GetKeyDown(KeyCode.RightArrow)) selectedCommand.currentTargetIndex++;
+                break;
+            case CommandBase.Target.RANDOM_ENEMY:
+                // No input to handle
+                //  This should never apply here; if RANDOM_ENEMY is in the list,
+                //  it should be alone, and a random enemy should be selected instead
+                break;
+        }
+    }
+
+    private void ActivateSelectedCommand()
+    {
+        activePlayer = playerUnitsReadyToSelectCommand.Dequeue();
+
+        // Fill out the command with the current targets,
+        // and send it back through the actor so that actor can update state.
+        foreach (ActorCombatController target in currentTargets)
+        {
+            selectedCommand.AddTarget(target);
+        }
+        activePlayer.RegisterCommand(selectedCommand);
+
+        // Mark selection and active player as null so we can move to next player.
+        selectedCommand = null;
+        activePlayer = null;
+        currentTargets.Clear();
+    }
+
+    private void UpdateTargetSelection()
+    {
+        currentTargets.Clear();
+        switch (selectedCommand.currentTargetSelection)
+        {
+            case CommandBase.Target.ALL_ALLIES:
+                foreach (PlayerCombatController player in battleController.playerActors) currentTargets.Add(player);
+                break;
+            case CommandBase.Target.SELECTED_ALLY:
+                currentTargets.Add(lastSinglePlayerCombatTarget);
+                break;
+            case CommandBase.Target.SELF:
+                currentTargets.Add(lastSinglePlayerCombatTarget);
+                break;
+            case CommandBase.Target.SELECTED_ENEMY:
+                currentTargets.Add(lastSingleEnemyCombatTarget);
+                break;
+            case CommandBase.Target.ALL_ENEMIES:
+                foreach (EnemyCombatController enemy in battleController.enemyActors) currentTargets.Add(enemy);
+                break;
         }
     }
 
@@ -215,17 +238,18 @@ public class PlayerBattleUIController : MonoBehaviour {
             if (selectedCommand == null)
             {
                 // Show a list of their commands next to them
-                Dictionary<string, CommandBase.Command> availableCommands = activePlayer.AvailableCommands();
+                Dictionary<string, SkillDescriptor> availableCommands = activePlayer.playerSkills.GetPlayerSkills();
                 int commandCount = availableCommands.Count;
                 Vector3 playerScreenLocation = Camera.main.WorldToScreenPoint(activePlayer.transform.position);
                 float x = playerScreenLocation.x + menuXAdjust;
                 float y = Screen.height - playerScreenLocation.y + menuYAdjust;
                 foreach (string commandName in availableCommands.Keys)
                 {
-                    if (GUI.Button(new Rect(x, y, 60, 20), commandName))
+                    if (GUI.Button(new Rect(x, y, 100, 20), commandName))
                     {
                         OnPlayerActivatedCommand(availableCommands[commandName]);
                     }
+                    y -= 20;
                 }
             }
             else
@@ -249,9 +273,18 @@ public class PlayerBattleUIController : MonoBehaviour {
         }
     }
 
-    void OnPlayerActivatedCommand(CommandBase.Command command)
+    void OnPlayerActivatedCommand(SkillDescriptor skillDescriptor)
     {
-        selectedCommand = CommandFactory.Instance.GetCommand(command, activePlayer);
+        CommandBase.Target skillTargets = skillDescriptor.targets;
+        List<CommandBase.Target> targets = new List<CommandBase.Target>();
+        foreach (CommandBase.Target target in (CommandBase.Target[])System.Enum.GetValues(typeof(CommandBase.Target)))
+        {
+            if ((skillTargets & target) > 0) targets.Add(target);
+        }
+        int defaultTargetIndex = targets.IndexOf(skillDescriptor.startTarget);
+        if (defaultTargetIndex < 0) defaultTargetIndex = 0;
+        selectedCommand = new LoadedCommand(skillDescriptor.displayText, activePlayer, skillDescriptor.delay, 0, skillDescriptor.manaCost, targets.ToArray(), defaultTargetIndex, skillDescriptor.isRetargetable, skillDescriptor.effects);
+
         lastSingleEnemyCombatTarget = null;
         lastSinglePlayerCombatTarget = null;
 

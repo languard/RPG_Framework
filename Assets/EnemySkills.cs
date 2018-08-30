@@ -6,7 +6,8 @@ using UnityEngine;
 [System.Serializable]
 public class EnemySkills : MonoBehaviour {
 
-    public WeightedSkill[] weightedSkills;
+    public SkillDescriptor[] skills;
+    public int[] weights;
 
 	// Use this for initialization
 	void Start () {
@@ -24,13 +25,13 @@ public class EnemySkills : MonoBehaviour {
         List<int> thresholds = new List<int>();
         List<SkillDescriptor> candidateSkills = new List<SkillDescriptor>();
 
-        for (int i = 0; i < weightedSkills.Length; i++)
+        for (int i = 0; i < skills.Length; i++)
         {
-            if (weightedSkills[i].skill.manaCost <= GetComponent<Actor>().mana)
+            if (skills[i].manaCost <= GetComponent<Actor>().mana)
             {
-                thresholds.Add(weightedSkills[i].weight);
-                candidateSkills.Add(weightedSkills[i].skill);
-                runningTotal += weightedSkills[i].weight;
+                thresholds.Add(weights[i]);
+                candidateSkills.Add(skills[i]);
+                runningTotal += weights[i];
             }
 
         }

@@ -74,6 +74,9 @@ GameObject:
   - component: {fileID: 61893931498687946}
   - component: {fileID: 50168761530483446}
   - component: {fileID: 114177394518224738}
+  - component: {fileID: 114567959077021986}
+  - component: {fileID: 114772272222576836}
+  - component: {fileID: 114992821366229694}
   m_Layer: 0
   m_Name: Ranger Guel
   m_TagString: PlayerCharacter
@@ -434,6 +437,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionDelay: 2.5
+  actor: {fileID: 0}
+  playerSkills: {fileID: 0}
 --- !u!114 &114228531665376592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -475,6 +480,45 @@ MonoBehaviour:
   newSprite: {fileID: 2800000, guid: 5daf0b0c10ea26a4aa7e16846f3cc540, type: 3}
   folderPath: Retro Pixel Characters/Spritesheets/Male/5 - Hairstyles/
   isChildSprite: 1
+--- !u!114 &114567959077021986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678673775211254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73fdf33618c1a64b9138aabd479a677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 14
+  constitution: 13
+  willpower: 10
+  intelligence: 10
+  vBase: 100
+  vStrScale: 1
+  vConScale: 1
+  vStatScale: 1
+  vLevelScale: 1
+  mBase: 100
+  mIntScale: 1
+  mWillScale: 1
+  mStatScale: 1
+  mLevelScale: 1
+  rBase: 100
+  rStrScale: 1
+  rIntScale: 1
+  rStatScale: 1
+  rLevelScale: 1
+  endBase: 100
+  endConScale: 1
+  endWillScale: 1
+  endStatScale: 1
+  endLevelScale: 1
+  classStrScale: 1
+  classConScale: 1
+  classIntScale: 1
+  classWillScale: 1
 --- !u!114 &114606309242439504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -489,6 +533,38 @@ MonoBehaviour:
   newSprite: {fileID: 2800000, guid: 9dcb8933309bd364aa8d1db08ea7563c, type: 3}
   folderPath: Retro Pixel Characters/Spritesheets/Male/3 - Outfits/
   isChildSprite: 1
+--- !u!114 &114772272222576836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678673775211254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3dd831d20891ed4aa798b85db0f253c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills:
+  - name: Guel_Hunter_Shot
+    displayText: Hunter Shot
+    delay: 5
+    manaCost: 0
+    targets: 8
+    startTarget: 8
+    isRetargetable: 1
+    effects:
+    - effectType: 0
+      effectValue: 40
+  - name: Player_Fight
+    displayText: Fight
+    delay: 2
+    manaCost: 0
+    targets: 10
+    startTarget: 8
+    isRetargetable: 1
+    effects:
+    - effectType: 0
+      effectValue: 15
 --- !u!114 &114796033692347914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -515,6 +591,86 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+--- !u!114 &114992821366229694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678673775211254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a52c1800fea97f43aeac1e7e0cb5a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 
+  displayStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  lifetime: 1
 --- !u!212 &212218246342135634
 SpriteRenderer:
   m_ObjectHideFlags: 1

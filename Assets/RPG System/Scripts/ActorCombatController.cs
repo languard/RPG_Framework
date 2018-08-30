@@ -21,9 +21,7 @@ public abstract class ActorCombatController : MonoBehaviour
     private float actionTimer = 0.0f;
 
     public float Readiness { get { return actionTimer / actionDelay; } }
-
-    public Dictionary<CommandBase.Command, string> commandNames = new Dictionary<CommandBase.Command, string>();
-
+    
     [HideInInspector]
     public Actor actor;
 
