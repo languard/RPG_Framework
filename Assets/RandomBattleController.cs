@@ -22,6 +22,8 @@ public class RandomBattleController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        RefreshStepsToNextBattle();
+
         if (battleScenes.Length == 0)
         {
             Debug.LogWarning("This scene contains no battle scenes. If it is not supposed to have battles, the RandomBattleController component should be disabled or removed. If it should have random battles, you must add at least one battle scene.");
