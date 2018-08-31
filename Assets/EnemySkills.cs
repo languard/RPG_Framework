@@ -6,12 +6,21 @@ using UnityEngine;
 [System.Serializable]
 public class EnemySkills : MonoBehaviour {
 
-    public SkillDescriptor[] skills;
+
+
+    private SkillDescriptor[] skills;
+    public string[] skillNames;
     public int[] weights;
 
 	// Use this for initialization
 	void Start () {
-		
+        if (!SkillDatabase.isLoaded) SkillDatabase.LoadSkills();
+        skills = new SkillDescriptor[skillNames.Length];
+        for (int i = 0; i < skillNames.Length; i++)
+        {
+            skills[i] = SkillDatabase.GetSkill(skillNames[i]);
+        }
+
 	}
 	
 	// Update is called once per frame

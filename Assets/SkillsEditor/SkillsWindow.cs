@@ -94,6 +94,14 @@ public class SkillDatabase
         skillsByName.Remove(oldName);
     }
 
+    public static bool isLoaded
+    {
+        get
+        {
+            return skillsByName.Count > 0;
+        }
+    }
+
     public static void LoadSkills()
     {
         string[] jsonLines = System.IO.File.ReadAllLines(jsonFilePath);

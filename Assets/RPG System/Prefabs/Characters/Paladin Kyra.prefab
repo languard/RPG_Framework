@@ -466,27 +466,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3dd831d20891ed4aa798b85db0f253c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skills:
-  - name: Player_Fight
-    displayText: Fight
-    delay: 2
-    manaCost: 0
-    targets: 10
-    startTarget: 8
-    isRetargetable: 1
-    effects:
-    - effectType: 0
-      effectValue: 15
-  - name: Kyra_Healing_Prayer
-    displayText: Healing Prayer
-    delay: 4
-    manaCost: 0
-    targets: 1
-    startTarget: 8
-    isRetargetable: 0
-    effects:
-    - effectType: 3
-      effectValue: 20
+  skillNames:
+  - Player_Fight
+  - Kyra_Healing_Prayer
 --- !u!114 &114032464209503930
 MonoBehaviour:
   m_ObjectHideFlags: 1

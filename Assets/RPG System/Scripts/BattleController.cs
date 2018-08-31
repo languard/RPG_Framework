@@ -135,8 +135,16 @@ public class BattleController : MonoBehaviour {
             case CommandState.Idle:
                 if (activeCommands.Count > 0)
                 {
-                    stateTimer = activationPauseTime;
-                    commandState = CommandState.HighlightActor;
+                    // Is the acting character alive?
+                    if (activeCommands.Peek().owner.actor.isDisabled)
+                    {
+                        activeCommands.Dequeue();
+                    }
+                    else
+                    {
+                        stateTimer = activationPauseTime;
+                        commandState = CommandState.HighlightActor;
+                    }
                 }
                 break;
             case CommandState.HighlightActor:

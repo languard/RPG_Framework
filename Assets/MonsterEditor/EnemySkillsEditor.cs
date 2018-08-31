@@ -16,27 +16,27 @@ public class EnemySkillsEditor : Editor
         skillNames = SkillDatabase.FindSkills(string.Empty);
 
         EnemySkills enemySkills = target as EnemySkills;
-        List<SkillDescriptor> invalidSkills = new List<SkillDescriptor>();
-        if (enemySkills.skills == null) enemySkills.skills = new SkillDescriptor[0];
+        List<string> invalidSkillNames = new List<string>();
+        if (enemySkills.skillNames == null) enemySkills.skillNames = new string[0];
         if (enemySkills.weights == null) enemySkills.weights = new int[0];
-        foreach (SkillDescriptor descriptor in enemySkills.skills)
+        foreach (string skillName in enemySkills.skillNames)
         {
-            if (skillNames.Contains(descriptor.name))
+            if (skillNames.Contains(skillName))
             {
-                skillNames.Remove(descriptor.name);
+                skillNames.Remove(skillName);
             }
             else
             {
-                invalidSkills.Add(descriptor);
+                invalidSkillNames.Add(skillName);
             }
         }
-        List<SkillDescriptor> newSkills = new List<SkillDescriptor>();
-        newSkills.AddRange(enemySkills.skills);
-        foreach (SkillDescriptor invalidSkill in invalidSkills)
+        List<string> newSkillNames = new List<string>();
+        newSkillNames.AddRange(enemySkills.skillNames);
+        foreach (string invalidSkill in invalidSkillNames)
         {
-            newSkills.Remove(invalidSkill);
+            newSkillNames.Remove(invalidSkill);
         }
-        enemySkills.skills = newSkills.ToArray();
+        enemySkills.skillNames = newSkillNames.ToArray();
 
     }
 
@@ -45,7 +45,7 @@ public class EnemySkillsEditor : Editor
         serializedObject.Update();
 
         EnemySkills enemySkills = target as EnemySkills;
-        if (enemySkills.skills == null) enemySkills.skills = new SkillDescriptor[0];
+        if (enemySkills.skillNames == null) enemySkills.skillNames = new string[0];
 
         int y = 0, killIndex = -1;
         //EditorGUI.LabelField(new Rect(5, y, 50, 15), "Skill");
@@ -55,15 +55,15 @@ public class EnemySkillsEditor : Editor
 
         EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(false));
         EditorGUILayout.LabelField("Skill", GUILayout.ExpandWidth(false));
-        for (int i = 0; i < enemySkills.skills.Length; i++)
+        for (int i = 0; i < enemySkills.skillNames.Length; i++)
         {
-            EditorGUILayout.LabelField(enemySkills.skills[i].name, GUILayout.ExpandWidth(false));
+            EditorGUILayout.LabelField(enemySkills.skillNames[i], GUILayout.ExpandWidth(false));
         }
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(false), GUILayout.MaxWidth(50));
         EditorGUILayout.LabelField("Weight", GUILayout.ExpandWidth(false), GUILayout.MaxWidth(50));
-        for (int i = 0; i < enemySkills.skills.Length; i++)
+        for (int i = 0; i < enemySkills.skillNames.Length; i++)
         {
             enemySkills.weights[i] = EditorGUILayout.IntField(enemySkills.weights[i], GUILayout.ExpandWidth(false), GUILayout.MaxWidth(40));
         }
@@ -71,7 +71,7 @@ public class EnemySkillsEditor : Editor
 
         EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(false));
         EditorGUILayout.LabelField("Remove", GUILayout.ExpandWidth(false));
-        for (int i = 0; i < enemySkills.skills.Length; i++)
+        for (int i = 0; i < enemySkills.skillNames.Length; i++)
         {
             if (GUILayout.Button("X", GUILayout.ExpandWidth(false)))
             {
@@ -81,17 +81,17 @@ public class EnemySkillsEditor : Editor
         if (killIndex >= 0)
         {
             // Rebuild array without this one
-            List<SkillDescriptor> newSkills = new List<SkillDescriptor>();
+            List<string> newSkillNames = new List<string>();
             List<int> newWeights = new List<int>();
-            for (int i = 0; i < enemySkills.skills.Length; i++)
+            for (int i = 0; i < enemySkills.skillNames.Length; i++)
             {
                 if (i != killIndex)
                 {
-                    newSkills.Add(enemySkills.skills[i]);
+                    newSkillNames.Add(enemySkills.skillNames[i]);
                     newWeights.Add(enemySkills.weights[i]);
                 }
             }
-            enemySkills.skills = newSkills.ToArray();
+            enemySkills.skillNames = newSkillNames.ToArray();
             enemySkills.weights = newWeights.ToArray();
         }
         EditorGUILayout.EndVertical();
@@ -105,18 +105,16 @@ public class EnemySkillsEditor : Editor
         {
             string selectedSkillName = skillNames[selectedSkillIndex];
             selectedSkillIndex = -1;
-            SkillDescriptor addedSkill = SkillDatabase.GetSkill(selectedSkillName);
 
-            List<SkillDescriptor> newSkills = new List<SkillDescriptor>();
-            newSkills.AddRange(enemySkills.skills);
-            newSkills.Add(addedSkill);
-            enemySkills.skills = newSkills.ToArray();
+            List<string> newSkills = new List<string>();
+            newSkills.AddRange(enemySkills.skillNames);
+            newSkills.Add(selectedSkillName);
+            enemySkills.skillNames = newSkills.ToArray();
 
             List<int> newWeights = new List<int>();
             newWeights.AddRange(enemySkills.weights);
             newWeights.Add(1);
             enemySkills.weights = newWeights.ToArray();
-
         }
         EditorGUILayout.EndHorizontal();
 

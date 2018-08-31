@@ -16,26 +16,26 @@ public class PlayerSkillsEditor : Editor
         skillNames = SkillDatabase.FindSkills(string.Empty);
 
         PlayerSkills playerSkills = target as PlayerSkills;
-        List<SkillDescriptor> invalidSkills = new List<SkillDescriptor>();
-        if (playerSkills.skills == null) playerSkills.skills = new SkillDescriptor[0];
-        foreach (SkillDescriptor descriptor in playerSkills.skills)
+        List<string> invalidSkillNames = new List<string>();
+        if (playerSkills.skillNames == null) playerSkills.skillNames = new string[0];
+        foreach (string skillName in playerSkills.skillNames)
         {
-            if (skillNames.Contains(descriptor.name))
+            if (skillNames.Contains(skillName))
             {
-                skillNames.Remove(descriptor.name);
+                skillNames.Remove(skillName);
             }
             else
             {
-                invalidSkills.Add(descriptor);
+                invalidSkillNames.Add(skillName);
             }
         }
-        List<SkillDescriptor> newSkills = new List<SkillDescriptor>();
-        newSkills.AddRange(playerSkills.skills);
-        foreach (SkillDescriptor invalidSkill in invalidSkills)
+        List<string> newSkillNames = new List<string>();
+        newSkillNames.AddRange(playerSkills.skillNames);
+        foreach (string invalidSkillName in invalidSkillNames)
         {
-            newSkills.Remove(invalidSkill);
+            newSkillNames.Remove(invalidSkillName);
         }
-        playerSkills.skills = newSkills.ToArray();
+        playerSkills.skillNames = newSkillNames.ToArray();
 
     }
 
@@ -44,7 +44,7 @@ public class PlayerSkillsEditor : Editor
         serializedObject.Update();
 
         PlayerSkills playerSkills = target as PlayerSkills;
-        if (playerSkills.skills == null) playerSkills.skills = new SkillDescriptor[0];
+        if (playerSkills.skillNames == null) playerSkills.skillNames = new string[0];
 
         int y = 0, killIndex = -1;
         //EditorGUI.LabelField(new Rect(5, y, 50, 15), "Skill");
@@ -54,15 +54,15 @@ public class PlayerSkillsEditor : Editor
 
         EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(false));
         EditorGUILayout.LabelField("Skill", GUILayout.ExpandWidth(false));
-        for (int i = 0; i < playerSkills.skills.Length; i++)
+        for (int i = 0; i < playerSkills.skillNames.Length; i++)
         {
-            EditorGUILayout.LabelField(playerSkills.skills[i].name, GUILayout.ExpandWidth(false));
+            EditorGUILayout.LabelField(playerSkills.skillNames[i], GUILayout.ExpandWidth(false));
         }
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(false));
         EditorGUILayout.LabelField("Remove", GUILayout.ExpandWidth(false));
-        for (int i = 0; i < playerSkills.skills.Length; i++)
+        for (int i = 0; i < playerSkills.skillNames.Length; i++)
         {
             if (GUILayout.Button("X", GUILayout.ExpandWidth(false)))
             {
@@ -72,12 +72,12 @@ public class PlayerSkillsEditor : Editor
         if (killIndex >= 0)
         {
             // Rebuild array without this one
-            List<SkillDescriptor> newSkills = new List<SkillDescriptor>();
-            for (int i = 0; i < playerSkills.skills.Length; i++)
+            List<string> newSkills = new List<string>();
+            for (int i = 0; i < playerSkills.skillNames.Length; i++)
             {
-                if (i != killIndex) newSkills.Add(playerSkills.skills[i]);
+                if (i != killIndex) newSkills.Add(playerSkills.skillNames[i]);
             }
-            playerSkills.skills = newSkills.ToArray();
+            playerSkills.skillNames = newSkills.ToArray();
         }
         EditorGUILayout.EndVertical();
 
@@ -90,13 +90,12 @@ public class PlayerSkillsEditor : Editor
         {
             string selectedSkillName = skillNames[selectedSkillIndex];
             selectedSkillIndex = -1;
-            SkillDescriptor addedSkill = SkillDatabase.GetSkill(selectedSkillName);
 
-            List<SkillDescriptor> newSkills = new List<SkillDescriptor>();
-            newSkills.AddRange(playerSkills.skills);
-            newSkills.Add(addedSkill);
+            List<string> newSkills = new List<string>();
+            newSkills.AddRange(playerSkills.skillNames);
+            newSkills.Add(selectedSkillName);
 
-            playerSkills.skills = newSkills.ToArray();
+            playerSkills.skillNames = newSkills.ToArray();
         }
         EditorGUILayout.EndHorizontal();
 

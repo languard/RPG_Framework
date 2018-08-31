@@ -544,27 +544,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3dd831d20891ed4aa798b85db0f253c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skills:
-  - name: Guel_Hunter_Shot
-    displayText: Hunter Shot
-    delay: 5
-    manaCost: 0
-    targets: 8
-    startTarget: 8
-    isRetargetable: 1
-    effects:
-    - effectType: 0
-      effectValue: 40
-  - name: Player_Fight
-    displayText: Fight
-    delay: 2
-    manaCost: 0
-    targets: 10
-    startTarget: 8
-    isRetargetable: 1
-    effects:
-    - effectType: 0
-      effectValue: 15
+  skillNames:
+  - Player_Fight
+  - Guel_Hunter_Shot
 --- !u!114 &114796033692347914
 MonoBehaviour:
   m_ObjectHideFlags: 1
