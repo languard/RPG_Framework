@@ -73,6 +73,12 @@ public class CharController_RPG_Framework : MonoBehaviour {
         if(isMoving)
         {
             transform.position = transform.position + moveVector * moveSpeed;
+            CheckForGridAlignment();
+            if(isOnGrid)
+            {
+                GameObject.Find("LevelData").GetComponent<MapLogic>().FinishStep();
+                isMoving = false;
+            }
         }
 
         //float deltaX = Mathf.Abs(Mathf.RoundToInt(transform.position.x / grid) - (transform.position.x / grid));
@@ -83,7 +89,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
         CheckForGridAlignment();
 
         //movement
-        if (isOnGrid)
+        if (isOnGrid && canAct)
         {
             isMoving = false;            
             if (currentVertical < -0.2f && currentVertical < currentHorizontal)

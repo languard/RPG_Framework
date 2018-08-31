@@ -12,6 +12,8 @@ public class GameMaster : MonoBehaviour {
     [SerializeField, Tooltip("Leave blank if no override needed")] string editorOverride;
 
     Scene currentMap;
+    Scene returnScene;
+
     CharController_RPG_Framework playerController;
 
     bool switchingMaps = false;
@@ -75,7 +77,7 @@ public class GameMaster : MonoBehaviour {
 
     public void GivePartyMoney(int amount)
     {
-        print("Not working yet!");
+        print("Give money not implemented!");
     }
 
     public void RegisterPlayerController(CharController_RPG_Framework curController)
@@ -87,6 +89,20 @@ public class GameMaster : MonoBehaviour {
     public void ChangeMap(string targetScene, int targetX, int targetY)
     {
         StartCoroutine(HandleChangeMap(targetScene, targetX, targetY));
+    }
+
+    public void LoadBattleScene(string sceneName)
+    {
+        playerController.canAct = false;
+        returnScene = currentMap;
+        StartCoroutine(HandleBattleMapLoad(sceneName));
+    }
+
+    IEnumerator HandleBattleMapLoad(string targetScene)
+    {
+        SceneManager.LoadScene(targetScene, LoadSceneMode.Additive);
+        yield return loadDelay;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(targetScene));
     }
 
     IEnumerator HandleChangeMap(string targetScene, int targetX, int targetY)

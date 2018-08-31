@@ -46799,51 +46799,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f868c55028c1441a36631c8047ed05, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1013694962
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1013694963}
-  - component: {fileID: 1013694964}
-  m_Layer: 0
-  m_Name: BattleManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1013694963
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1013694962}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 117.71946, y: 214.9362, z: -19.677868}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1013694964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1013694962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 633b8d900b36ea24bb7dcadc76c50636, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseStepsToNextBattle: 10
-  randomBattleStepError: 5
-  stepsToNextBattle: 0
-  battleScenes:
-  - WalkTest_A_3grimblades
 --- !u!1 &1171242611
 GameObject:
   m_ObjectHideFlags: 0
@@ -47068,6 +47023,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundMusic:
   - {fileID: 8300000, guid: 89289318f568f224eb457e8b2a0e283f, type: 3}
+  battleScenes:
+  - WalkTest_A_3grimblades
+  stepsMinBetweenFight: 1
+  stepsToIncreaseOdds: 1
+  oddsIncrease: 1
+  oddsStarting: 999
 --- !u!1 &1563931822
 GameObject:
   m_ObjectHideFlags: 0
