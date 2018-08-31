@@ -93,16 +93,33 @@ public class GameMaster : MonoBehaviour {
 
     public void LoadBattleScene(string sceneName)
     {
-        playerController.canAct = false;
+        playerController.DisableForBattle();
         returnScene = currentMap;
         StartCoroutine(HandleBattleMapLoad(sceneName));
+    }
+
+    public void BattleDone()
+    {
+        StartCoroutine(HandleBattleDone());
+    }
+
+    IEnumerator HandleBattleDone()
+    {
+        oldMapUnloaded = false;
+        AsyncOperation mapUnload = SceneManager.UnloadSceneAsync(currentMap);
+        mapUnload.completed += MapUnloaded;
+        while (!oldMapUnloaded) yield return loadDelay;
+        SceneManager.SetActiveScene(returnScene);
+        currentMap = returnScene;
+        playerController.ActivateController();
     }
 
     IEnumerator HandleBattleMapLoad(string targetScene)
     {
         SceneManager.LoadScene(targetScene, LoadSceneMode.Additive);
-        yield return loadDelay;
+        yield return loadDelay;        
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(targetScene));
+        currentMap = SceneManager.GetActiveScene();
     }
 
     IEnumerator HandleChangeMap(string targetScene, int targetX, int targetY)
@@ -148,9 +165,10 @@ public class GameMaster : MonoBehaviour {
         party.ResetPartyStats();
     }
 
-    public void PlayMusic(AudioClip clip)
+    public void PlayMusic(AudioClip clip, bool repeat = true)
     {
         music.clip = clip;
+        music.loop = repeat;
         music.Play();
 
     }

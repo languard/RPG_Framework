@@ -13,6 +13,9 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
     [SerializeField] float delta = 0.001f;
 
+    [SerializeField]
+    Camera mainCamera;
+
 
     public bool isMoving = false;
     public bool isOnGrid = false;
@@ -59,6 +62,19 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
         CheckForGridAlignment();
 
+    }
+
+    public void DisableForBattle()
+    {
+        canAct = false;
+        mainCamera.enabled = false;
+
+    }
+
+    public void ActivateController()
+    {
+        canAct = true;
+        mainCamera.enabled = true;
     }
 
     //Keeping the player on the grid with smooth movement requires a fixed framerate.
