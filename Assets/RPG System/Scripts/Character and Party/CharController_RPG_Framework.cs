@@ -13,6 +13,9 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
     [SerializeField] float delta = 0.001f;
 
+    [SerializeField]
+    Camera mainCamera;
+
 
     public bool isMoving = false;
     public bool isOnGrid = false;
@@ -61,6 +64,19 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
     }
 
+    public void DisableForBattle()
+    {
+        canAct = false;
+        mainCamera.enabled = false;
+
+    }
+
+    public void ActivateController()
+    {
+        canAct = true;
+        mainCamera.enabled = true;
+    }
+
     //Keeping the player on the grid with smooth movement requires a fixed framerate.
     void FixedUpdate() {
 
@@ -73,6 +89,12 @@ public class CharController_RPG_Framework : MonoBehaviour {
         if(isMoving)
         {
             transform.position = transform.position + moveVector * moveSpeed;
+            CheckForGridAlignment();
+            if(isOnGrid)
+            {
+                GameObject.Find("LevelData").GetComponent<MapLogic>().FinishStep();
+                isMoving = false;
+            }
         }
 
         //float deltaX = Mathf.Abs(Mathf.RoundToInt(transform.position.x / grid) - (transform.position.x / grid));
@@ -83,7 +105,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
         CheckForGridAlignment();
 
         //movement
-        if (isOnGrid)
+        if (isOnGrid && canAct)
         {
             isMoving = false;            
             if (currentVertical < -0.2f && currentVertical < currentHorizontal)

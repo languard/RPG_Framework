@@ -205,6 +205,7 @@ MonoBehaviour:
   moveSpeed: 2
   grid: 32
   delta: 0.001
+  mainCamera: {fileID: 20606933098504656}
   isMoving: 0
   isOnGrid: 0
   canAct: 1

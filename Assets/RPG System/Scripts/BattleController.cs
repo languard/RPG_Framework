@@ -121,7 +121,7 @@ public class BattleController : MonoBehaviour {
                 sceneOutroCountdown -= Time.deltaTime;
                 if (sceneOutroCountdown <= 0.0f)
                 {
-                    // TODO: Transition back to world scene
+                    GameObject.Find("GameMaster").GetComponent<GameMaster>().BattleDone();
                 }
                 break;
         }
