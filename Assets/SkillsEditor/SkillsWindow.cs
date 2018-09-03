@@ -124,6 +124,7 @@ public class SkillDatabase
     }
 }
 
+#if UNITY_EDITOR
 public class SkillsWindow : EditorWindow
 {
     public static SkillsWindow instance;
@@ -360,3 +361,4 @@ public class SkillsWindow : EditorWindow
         return result;
     }
 }
+#endif

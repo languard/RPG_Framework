@@ -37,7 +37,8 @@ public class Entity
     public int reactionBase;
 
     public int entityLevel;     //can be used as a scale value.  For example, level 5 monster vs level 10 monster, or a spell that adds 3 levels to a player.
-    
+
+    public string[] testSkillNames;
 
     public Entity()
     {

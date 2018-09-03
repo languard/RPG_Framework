@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(PlayerSkills))]
 public class PlayerSkillsEditor : Editor
 {
@@ -102,8 +103,6 @@ public class PlayerSkillsEditor : Editor
         serializedObject.ApplyModifiedProperties();
 
         return;
-
-
-
     }
 }
+#endif

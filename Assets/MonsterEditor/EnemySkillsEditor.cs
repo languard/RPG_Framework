@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(EnemySkills))]
 public class EnemySkillsEditor : Editor
 {
@@ -121,8 +122,6 @@ public class EnemySkillsEditor : Editor
         serializedObject.ApplyModifiedProperties();
 
         return;
-
-
-
     }
 }
+#endif

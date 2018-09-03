@@ -29,5 +29,20 @@ public class Party : MonoBehaviour {
         }
     }
 
+    public Entity GetPartMember(int index)
+    {
+        return partyList[index];
+    }
+
+    public Entity GetPartyMember(string name)
+    {
+        for(int i=0; i<partyList.Count; i++)
+        {
+            if (partyList[i].name == name) return partyList[i];            
+        }
+
+        return new Entity();
+    }
+
 
 }
