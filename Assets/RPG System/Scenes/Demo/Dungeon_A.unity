@@ -590,6 +590,7 @@ Transform:
   - {fileID: 1733105627}
   - {fileID: 1486001733}
   - {fileID: 691414387}
+  - {fileID: 1182399726}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47019,6 +47020,64 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1171242611}
   m_CullTransparentMesh: 0
+--- !u!1001 &1182399725
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 452094313}
+    m_Modifications:
+    - target: {fileID: 4995637194600128, guid: b1be3c0d4badb2f4e8d39c5bab27997f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 37.81696
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995637194600128, guid: b1be3c0d4badb2f4e8d39c5bab27997f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 48.778107
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995637194600128, guid: b1be3c0d4badb2f4e8d39c5bab27997f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.031222582
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995637194600128, guid: b1be3c0d4badb2f4e8d39c5bab27997f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995637194600128, guid: b1be3c0d4badb2f4e8d39c5bab27997f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995637194600128, guid: b1be3c0d4badb2f4e8d39c5bab27997f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995637194600128, guid: b1be3c0d4badb2f4e8d39c5bab27997f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995637194600128, guid: b1be3c0d4badb2f4e8d39c5bab27997f, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 212117304835030204, guid: b1be3c0d4badb2f4e8d39c5bab27997f,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 44d069b9763c25040a5ec1812cba71cf,
+        type: 3}
+    - target: {fileID: 114016091898860112, guid: b1be3c0d4badb2f4e8d39c5bab27997f,
+        type: 2}
+      propertyPath: targetScene
+      value: Town
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1be3c0d4badb2f4e8d39c5bab27997f, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &1182399726 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4995637194600128, guid: b1be3c0d4badb2f4e8d39c5bab27997f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1182399725}
 --- !u!1 &1295758618
 GameObject:
   m_ObjectHideFlags: 1
@@ -47383,8 +47442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScene: Dungeon_B
-  targetX: -180
-  targetY: 7
+  targetX: 128
+  targetY: 448
 --- !u!1 &1806370347
 GameObject:
   m_ObjectHideFlags: 0

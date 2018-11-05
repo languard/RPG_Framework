@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4995637194600128}
   - component: {fileID: 212117304835030204}
   - component: {fileID: 61288029126774914}
+  - component: {fileID: 114016091898860112}
   m_Layer: 0
   m_Name: MapTransition
   m_TagString: Untagged
@@ -66,6 +67,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 32, y: 32}
   m_EdgeRadius: 0
+--- !u!114 &114016091898860112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385219564931904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d805d48d71af9ff4681d7b08fe829b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetScene: 
+  targetX: 0
+  targetY: 0
 --- !u!212 &212117304835030204
 SpriteRenderer:
   m_ObjectHideFlags: 1
