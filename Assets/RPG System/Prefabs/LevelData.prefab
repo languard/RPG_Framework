@@ -860,6 +860,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac786ba72689fb4db1cf24e1c7fe664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundMusic: []
+  battleScenes: []
+  stepsMinBetweenFight: 10
+  stepsToIncreaseOdds: 10
+  oddsIncrease: 1
+  oddsStarting: 1
+  fightEveryStep: 0
+  fightNever: 0
 --- !u!19719996 &2113883504465653084
 TilemapCollider2D:
   m_ObjectHideFlags: 1

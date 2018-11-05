@@ -14,14 +14,14 @@ public class ManaDrain : CombatEffectBase {
 
     public override void Process()
     {
-        target.actor.mana -= drain;
+        target.entity.mana -= drain;
     }
 
     public override bool IsValid
     {
         get
         {
-            return target.actor.mana >= drain;
+            return target.entity.mana >= drain;
         }
     }
 }

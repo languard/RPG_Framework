@@ -23,7 +23,15 @@ public class LinkGMToFungus : MonoBehaviour {
         GM.GivePartyMoney(amount);
     }
 
-
+    public bool PartyHasGold(int amount)
+    {
+        if (GM.GetPartyMoney() >= amount) return true;
+        else return false;
+    }
 	
+    public void StartFight(string fightName)
+    {
+        GM.LoadBattleScene(fightName);
+    }
 	
 }

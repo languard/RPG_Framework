@@ -14,7 +14,7 @@ public class MagicDamage : CombatEffectBase {
 
     public override void Process()
     {
-        target.actor.hitPoints -= damage;
+        target.entity.hitPoints -= damage;
     }
 
     public override bool IsValid

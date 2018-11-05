@@ -82,7 +82,7 @@ public abstract class CommandBase {
 
     public bool IsValid()
     {
-        if (owner.actor.mana < manaCost) return false;
+        if (owner.entity.mana < manaCost) return false;
         // Add other conditions of validity here;
         // do not short-circuit this call
 
@@ -110,7 +110,7 @@ public abstract class CommandBase {
     // Execute right now, with the chosen target and actors in their current state.
     public List<CombatEffectBase> Execute()
     {
-        if (owner.actor.isDisabled) return new List<CombatEffectBase>();
+        if (owner.entity.isDisabled) return new List<CombatEffectBase>();
 
         return OnExecute();
 

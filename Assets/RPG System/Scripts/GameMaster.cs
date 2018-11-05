@@ -28,6 +28,9 @@ public class GameMaster : MonoBehaviour {
     public AudioSource sfx;
     public AudioSource voice;
 
+    Fungus.Flowchart questFlags;
+    Fungus.Flowchart inventory;
+
     // Use this for initialization
     void Start () {
 #if UNITY_EDITOR
@@ -36,6 +39,9 @@ public class GameMaster : MonoBehaviour {
 
         loadDelay = new WaitForSeconds(0.1f);
         party = GetComponentInChildren<Party>();
+
+        questFlags = GameObject.Find("QuestFlags").GetComponent<Fungus.Flowchart>();
+        inventory = GameObject.Find("Inventory").GetComponent<Fungus.Flowchart>();
     }
 	
 	// Update is called once per frame
@@ -77,7 +83,18 @@ public class GameMaster : MonoBehaviour {
 
     public void GivePartyMoney(int amount)
     {
-        print("Give money not implemented!");
+        party.partyGold += amount;
+    }
+
+    public void TakePartyMoney(int amount)
+    {
+        party.partyGold -= amount;
+        if (party.partyGold < 0) party.partyGold = 0;
+    }
+
+    public int GetPartyMoney()
+    {
+        return party.partyGold;
     }
 
     public void RegisterPlayerController(CharController_RPG_Framework curController)
@@ -172,4 +189,25 @@ public class GameMaster : MonoBehaviour {
         music.Play();
 
     }
+
+    public Entity GetPartyMember(string name)
+    {
+        return party.GetPartyMember(name);
+    }
+
+    public Entity GetPartyMemberByID(string id)
+    {
+        return party.GetPartyMemberByID(name);
+    }
+
+    public Fungus.Flowchart GetQuestFlowchart()
+    {
+        return questFlags;
+    }
+
+    public Fungus.Flowchart GetInventory()
+    {
+        return inventory;
+    }
+    
 }

@@ -313,7 +313,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114177394518224738, guid: c9701da330c329040b78a5de7a867736,
+        type: 2}
+      propertyPath: playerCombatID
+      value: fighter
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114567959077021986, guid: c9701da330c329040b78a5de7a867736, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: c9701da330c329040b78a5de7a867736, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1160351054
@@ -355,7 +361,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114481209278609766, guid: 76ab7d3952a4c3c489b51ead7e170f5a,
+        type: 2}
+      propertyPath: playerCombatID
+      value: paladin
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114722194942806820, guid: 76ab7d3952a4c3c489b51ead7e170f5a, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 76ab7d3952a4c3c489b51ead7e170f5a, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1439824704

@@ -269,7 +269,7 @@ public class PlayerBattleUIController : MonoBehaviour {
             Vector3 playerScreenLocation = Camera.main.WorldToScreenPoint(player.transform.position);
             float x = playerScreenLocation.x + healthXAdjust;
             float y = Screen.height - playerScreenLocation.y + menuYAdjust;
-            GUI.Label(new Rect(x, y, 100, 20), string.Format("{0}/{1}", player.actor.hitPoints, player.actor.maxVitality));
+            GUI.Label(new Rect(x, y, 100, 20), string.Format("{0}/{1}", player.entity.hitPoints, player.entity.hitPointsBase));
         }
     }
 

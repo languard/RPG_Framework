@@ -5,16 +5,21 @@ using UnityEngine;
 public class PlayerCombatController : ActorCombatController
 {
 
-
-
     private Animator anim; //The parent animator.
     
     private PlayerBattleUIController playerBattleUIController;
 
     public PlayerSkills playerSkills;
+    public string playerCombatID;
+
+    private GameMaster gm;
    
     // Use this for initialization
     protected override void OnStart() {
+        //need to pull Entity from GameMaster
+        gm = GameObject.Find("GameMaster").GetComponent<GameMaster>();
+        entity = gm.GetPartyMember(playerCombatID);
+
         anim = GetComponent<Animator>();
         playerBattleUIController = GameObject.FindGameObjectWithTag("PlayerBattleUIController").GetComponent<PlayerBattleUIController>();
         playerSkills = GetComponent<PlayerSkills>();
@@ -43,7 +48,7 @@ public class PlayerCombatController : ActorCombatController
 
     protected override void OnUpdate()
     {
-        if (actor.isDisabled)
+        if (entity.isDisabled)
         {
             anim.SetTrigger("onKilled");
         }

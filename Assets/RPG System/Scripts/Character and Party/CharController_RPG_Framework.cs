@@ -92,8 +92,8 @@ public class CharController_RPG_Framework : MonoBehaviour {
             CheckForGridAlignment();
             if(isOnGrid)
             {
-                GameObject.Find("LevelData").GetComponent<MapLogic>().FinishStep();
                 isMoving = false;
+                GameObject.Find("LevelData").GetComponent<MapLogic>().FinishStep();                
             }
         }
 

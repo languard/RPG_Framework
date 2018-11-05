@@ -10,6 +10,8 @@ public class Party : MonoBehaviour {
 
     public List<Entity> partyList;
 
+    public int partyGold = 0;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -29,7 +31,7 @@ public class Party : MonoBehaviour {
         }
     }
 
-    public Entity GetPartMember(int index)
+    public Entity GetPartyMember(int index)
     {
         return partyList[index];
     }
@@ -39,6 +41,16 @@ public class Party : MonoBehaviour {
         for(int i=0; i<partyList.Count; i++)
         {
             if (partyList[i].name == name) return partyList[i];            
+        }
+
+        return new Entity();
+    }
+
+    public Entity GetPartyMemberByID(string id)
+    {
+        for (int i = 0; i < partyList.Count; i++)
+        {
+            if (partyList[i].combatID == id) return partyList[i];
         }
 
         return new Entity();

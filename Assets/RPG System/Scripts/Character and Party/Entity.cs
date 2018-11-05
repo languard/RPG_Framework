@@ -14,6 +14,7 @@ public class Entity
 
 
     public string name;
+    public string combatID;
 
     public int strength;
     public int strengthBase;
@@ -38,7 +39,25 @@ public class Entity
 
     public int entityLevel;     //can be used as a scale value.  For example, level 5 monster vs level 10 monster, or a spell that adds 3 levels to a player.
 
-    public string[] testSkillNames;
+    //property used by combat system
+    public bool isDead
+    {
+        get
+        {
+            if (hitPoints > 0) return false;
+            else return true;
+        }
+    }
+    public bool isDisabled
+    {
+        get
+        {
+            if (hitPoints > 0) return false;
+            else return true;
+        }
+    }
+      
+
 
     public Entity()
     {

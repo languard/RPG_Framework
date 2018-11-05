@@ -19,8 +19,8 @@ public class MapLogic : MonoBehaviour {
     [SerializeField]
     int oddsStarting = 1;
 
-    bool fightEveryStep = false;
-    bool fightNever = false;
+    public bool fightEveryStep = false;
+    public bool fightNever = false;
 
     int stepsCurrent = 0;
     int oddsCurrent = 0;
@@ -28,6 +28,9 @@ public class MapLogic : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         StartMusic();
+
+        //init encounter rate
+        oddsCurrent = oddsStarting;
 	}
 
     //Called by the character controller after a step has been finished
@@ -45,11 +48,11 @@ public class MapLogic : MonoBehaviour {
         }
 
         //using a range of 1 - 1000, making each 'odds point' worth 1/10th of a percent
-        if(Random.Range(1,1001) >= oddsCurrent)
+        if(Random.Range(1,1001) <= oddsCurrent)
         {
             //Fight!
             stepsCurrent = 0;
-            oddsCurrent = 0;
+            oddsCurrent = oddsStarting;
             SelectMapAndStartFight();
         }
     }
@@ -75,7 +78,10 @@ public class MapLogic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        print("Chatter!");
+        //dev code: left ctrl+shift+f sets odds to 101
+        if (Input.GetKey(KeyCode.S) &&
+            Input.GetKey(KeyCode.D) &&
+            Input.GetKey(KeyCode.F)) oddsCurrent = 101;
 
 	}
 

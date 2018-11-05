@@ -14,7 +14,7 @@ public class HealHitPoints : CombatEffectBase {
 
     public override void Process()
     {
-        target.actor.hitPoints += healing;
+        target.entity.hitPoints += healing;
     }
 
     public override bool IsValid

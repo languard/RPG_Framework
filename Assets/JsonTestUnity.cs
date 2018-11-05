@@ -20,7 +20,7 @@ public class JsonTestUnity : MonoBehaviour {
     public void CreateEntity()
     {
         testchar = new Entity();
-        testchar.testSkillNames = new string[] { "test 1", "test 2", "test 3" };
+        //testchar.testSkillNames = new string[] { "test 1", "test 2", "test 3" };
     }
 
     public void SaveToJSON()

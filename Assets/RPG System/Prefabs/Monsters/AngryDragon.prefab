@@ -9,16 +9,16 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1351156987403504}
+  m_RootGameObject: {fileID: 1835008254239976}
   m_IsPrefabAsset: 1
---- !u!1 &1080516097906546
+--- !u!1 &1098271587120984
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4623141237959768}
+  - component: {fileID: 4981331710579332}
   m_Layer: 0
   m_Name: pointerLocation
   m_TagString: Untagged
@@ -26,34 +26,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1351156987403504
+--- !u!1 &1217433224045410
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4860149754628604}
-  - component: {fileID: 212504687209112882}
-  - component: {fileID: 114327085776972280}
-  - component: {fileID: 114298607451433564}
-  m_Layer: 0
-  m_Name: grimblade
-  m_TagString: EnemyCharacter
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1502727740648550
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4750582209757992}
-  - component: {fileID: 33606938601279376}
-  - component: {fileID: 23958198173276652}
+  - component: {fileID: 4755521876777206}
+  - component: {fileID: 33300074555399976}
+  - component: {fileID: 23662509336159238}
   m_Layer: 0
   m_Name: Silhouette
   m_TagString: BattleSilhouette
@@ -61,53 +43,71 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4623141237959768
+--- !u!1 &1835008254239976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4299844332663488}
+  - component: {fileID: 212297788504273414}
+  - component: {fileID: 114478894988447690}
+  - component: {fileID: 114286785101955356}
+  m_Layer: 0
+  m_Name: AngryDragon
+  m_TagString: EnemyCharacter
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4299844332663488
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1080516097906546}
+  m_GameObject: {fileID: 1835008254239976}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.49, y: -0.02, z: 0}
+  m_LocalScale: {x: 5.5035, y: 5.5035, z: 5.5035}
+  m_Children:
+  - {fileID: 4981331710579332}
+  - {fileID: 4755521876777206}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4755521876777206
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1217433224045410}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0349, y: -0.0334, z: 0}
+  m_LocalScale: {x: 1.1701742, y: 0.9384296, z: 0.18170257}
+  m_Children: []
+  m_Father: {fileID: 4299844332663488}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4981331710579332
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098271587120984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.135, y: 0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4860149754628604}
+  m_Father: {fileID: 4299844332663488}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4750582209757992
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1502727740648550}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0.0021, z: 0}
-  m_LocalScale: {x: 0.36304682, y: 0.35173935, z: 0.18170257}
-  m_Children: []
-  m_Father: {fileID: 4860149754628604}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4860149754628604
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1351156987403504}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1076233, y: -1.45, z: 0}
-  m_LocalScale: {x: 5.5035, y: 5.5035, z: 5.5035}
-  m_Children:
-  - {fileID: 4623141237959768}
-  - {fileID: 4750582209757992}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23958198173276652
+--- !u!23 &23662509336159238
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1502727740648550}
+  m_GameObject: {fileID: 1217433224045410}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -137,19 +137,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33606938601279376
+--- !u!33 &33300074555399976
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1502727740648550}
+  m_GameObject: {fileID: 1217433224045410}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114298607451433564
+--- !u!114 &114286785101955356
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1351156987403504}
+  m_GameObject: {fileID: 1835008254239976}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3423d0da031a0db4d93cb0280ba9d2e1, type: 3}
@@ -158,12 +158,12 @@ MonoBehaviour:
   skillNames:
   - Monster_Attack
   weights: 0100000001000000
---- !u!114 &114327085776972280
+--- !u!114 &114478894988447690
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1351156987403504}
+  m_GameObject: {fileID: 1835008254239976}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d3661d9df46b6a49ad20103f8d89d55, type: 3}
@@ -173,14 +173,14 @@ MonoBehaviour:
   entity:
     name: DEFAULT
     combatID: 
-    strength: 1
-    strengthBase: 1
-    constitution: 1
-    constitutionBase: 1
-    willpower: 1
-    willpowerBase: 1
-    intelligence: 1
-    intelligenceBase: 1
+    strength: 15
+    strengthBase: 15
+    constitution: 35
+    constitutionBase: 35
+    willpower: 10
+    willpowerBase: 10
+    intelligence: 15
+    intelligenceBase: 15
     hitPoints: 3
     hitPointsBase: 3
     mana: 3
@@ -189,13 +189,13 @@ MonoBehaviour:
     enduranceBase: 3
     reaction: 3
     reactionBase: 3
-    entityLevel: 1
---- !u!212 &212504687209112882
+    entityLevel: 25
+--- !u!212 &212297788504273414
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1351156987403504}
+  m_GameObject: {fileID: 1835008254239976}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -225,7 +225,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300008, guid: 44adebbb42ede8348b78ae81c693c6b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 798c7019869e9a54487f47ea136781e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

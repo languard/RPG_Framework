@@ -10,9 +10,11 @@ public class CoreMainMenu : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //Ensure all other scenese are unloaded, and load the MainMenu        
-        for(int i=SceneManager.sceneCount - 1; i>0; i++)
+        //for(int i=SceneManager.sceneCount - 1; i>0; i++)
+        while(SceneManager.sceneCount > 1)
         {
-            SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i));
+            if (SceneManager.GetSceneAt(0).name == "Core") continue;
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(0));
         }
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
         

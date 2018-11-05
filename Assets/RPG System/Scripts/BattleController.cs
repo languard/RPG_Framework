@@ -98,8 +98,8 @@ public class BattleController : MonoBehaviour {
                 UpdateCommandState();
 
                 bool anyPlayerAlive = false, anyEnemyAlive = false;
-                foreach (PlayerCombatController player in playerActors) anyPlayerAlive |= !player.actor.isDead;
-                foreach (EnemyCombatController enemy in enemyActors) anyEnemyAlive |= !enemy.actor.isDead;
+                foreach (PlayerCombatController player in playerActors) anyPlayerAlive |= !player.entity.isDead;
+                foreach (EnemyCombatController enemy in enemyActors) anyEnemyAlive |= !enemy.entity.isDead;
 
                 if (!anyEnemyAlive) battleState = BattleState.Victory;
                 if (!anyPlayerAlive) battleState = BattleState.Defeat;
@@ -136,7 +136,7 @@ public class BattleController : MonoBehaviour {
                 if (activeCommands.Count > 0)
                 {
                     // Is the acting character alive?
-                    if (activeCommands.Peek().owner.actor.isDisabled)
+                    if (activeCommands.Peek().owner.entity.isDisabled)
                     {
                         activeCommands.Dequeue();
                     }
@@ -176,7 +176,7 @@ public class BattleController : MonoBehaviour {
                     // Single-target retargeting - if the target actor 
                     // is already dead, retarget a different actor on 
                     // the target actor's team
-                    if (activeCommand.targetActors.Count == 1 && activeCommand.targetActors[0].actor.isDead && activeCommand.isRetargetable)
+                    if (activeCommand.targetActors.Count == 1 && activeCommand.targetActors[0].entity.isDead && activeCommand.isRetargetable)
                     {
                         bool targetIsEnemy = (activeCommand.targetActors[0] as EnemyCombatController != null);
                         if (targetIsEnemy)
@@ -199,7 +199,7 @@ public class BattleController : MonoBehaviour {
 
                             if (enemyActors.Contains(effect.target as EnemyCombatController))
                             {
-                                if (effect.target.actor.isDead)
+                                if (effect.target.entity.isDead)
                                 {
                                     enemyActors.Remove(effect.target as EnemyCombatController);
                                 }

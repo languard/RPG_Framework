@@ -21,14 +21,15 @@ public abstract class ActorCombatController : MonoBehaviour
     private float actionTimer = 0.0f;
 
     public float Readiness { get { return actionTimer / actionDelay; } }
+
     
-    [HideInInspector]
-    public Actor actor;
+    //public Actor actor;
+    public Entity entity;
 
     // Use this for initialization
     void Start()
     {
-        actor = GetComponent<Actor>();
+        //entity = GetComponent<Entity>();
         combatState = CombatState.FillingActionMeter;
         battleController = GameObject.FindGameObjectWithTag("BattleController").GetComponent<BattleController>();
         OnStart();
@@ -45,7 +46,7 @@ public abstract class ActorCombatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!actor.isDisabled)
+        if (!entity.isDisabled)
         {
             switch (combatState)
             {
@@ -60,7 +61,7 @@ public abstract class ActorCombatController : MonoBehaviour
             }
         }
 
-        if (actor.isDisabled)
+        if (entity.isDisabled)
         {
             combatState = CombatState.FillingActionMeter;
             actionTimer = 0;
@@ -87,13 +88,13 @@ public abstract class ActorCombatController : MonoBehaviour
         if (this as PlayerCombatController != null)
         {
             // I'm a player, get all enemies
-            foreach (ActorCombatController foe in battleController.enemyActors) if (!foe.actor.isDead) foes.Add(foe);
+            foreach (ActorCombatController foe in battleController.enemyActors) if (!foe.entity.isDead) foes.Add(foe);
         }
 
         if (this as EnemyCombatController != null)
         {
             // I'm an enemy, get all players
-            foreach (ActorCombatController foe in battleController.playerActors) if (!foe.actor.isDead) foes.Add(foe);
+            foreach (ActorCombatController foe in battleController.playerActors) if (!foe.entity.isDead) foes.Add(foe);
         }
 
         return foes;
@@ -105,13 +106,13 @@ public abstract class ActorCombatController : MonoBehaviour
         if (this as PlayerCombatController != null)
         {
             // I'm a player, get all players
-            foreach (ActorCombatController ally in battleController.playerActors) if (!ally.actor.isDead) allies.Add(ally);
+            foreach (ActorCombatController ally in battleController.playerActors) if (!ally.entity.isDead) allies.Add(ally);
         }
 
         if (this as EnemyCombatController != null)
         {
             // I'm an enemy, get all enemies
-            foreach (ActorCombatController ally in battleController.enemyActors) if (!ally.actor.isDead) allies.Add(ally);
+            foreach (ActorCombatController ally in battleController.enemyActors) if (!ally.entity.isDead) allies.Add(ally);
         }
 
         return allies;

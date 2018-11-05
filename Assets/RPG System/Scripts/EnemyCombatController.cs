@@ -10,11 +10,13 @@ public class EnemyCombatController : ActorCombatController
     protected override void OnStart()
     {
         skills = GetComponent<EnemySkills>();
+        entity.CalculateAllStats();
+        entity.FullHeal();
     }
 
     protected override void OnUpdate()
     {
-        GetComponent<SpriteRenderer>().enabled = !actor.isDisabled;
+        GetComponent<SpriteRenderer>().enabled = !entity.isDisabled;
     }
 
     protected override void OnReadyForCommand()
