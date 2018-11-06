@@ -6,8 +6,8 @@ public class MagicDamage : CombatEffectBase {
 
     private int damage;
 
-    public MagicDamage(ActorCombatController target, int damage)
-        :base(target, damage.ToString(), Effect.MagicDamage)
+    public MagicDamage(ActorCombatController source, ActorCombatController target, int damage)
+        :base(source, target, damage.ToString(), Effect.MagicDamage)
     {
         this.damage = damage;
     }

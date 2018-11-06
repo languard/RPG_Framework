@@ -34,6 +34,8 @@ public class CharController_RPG_Framework : MonoBehaviour {
     float currentHorizontal = 0;
     float currentVertical = 0;
 
+    bool skipNextFrame = true;
+
     GameMaster GM;
 
     Rigidbody2D rb;
@@ -75,10 +77,19 @@ public class CharController_RPG_Framework : MonoBehaviour {
     {
         canAct = true;
         mainCamera.enabled = true;
+        //attempting to fix rare map bug
+        skipNextFrame = true;
     }
 
     //Keeping the player on the grid with smooth movement requires a fixed framerate.
     void FixedUpdate() {
+
+        //seeing if skipping a frame fixes a rare map bug
+        if (skipNextFrame)
+        {
+            skipNextFrame = false;
+            return;
+        }
 
         AnimationEvent(this);
         //only animation allowed if canAct is off

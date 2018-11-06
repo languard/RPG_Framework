@@ -6,10 +6,11 @@ public class WeaponDamage : CombatEffectBase {
 
     private int damage;
 
-    public WeaponDamage(ActorCombatController target, int damage)
-        :base(target, damage.ToString(), Effect.WeaponDamage)
+    public WeaponDamage(ActorCombatController source, ActorCombatController target, int damage)
+        :base(source, target, damage.ToString(), Effect.WeaponDamage)
     {
-        this.damage = damage;
+        this.damage = damage + source.entity.strength;
+        UnityEngine.Debug.Log("Entity name is " + source.name);
     }
 
     public override void Process()

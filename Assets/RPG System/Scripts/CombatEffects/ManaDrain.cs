@@ -6,8 +6,8 @@ public class ManaDrain : CombatEffectBase {
 
     private int drain;
 
-    public ManaDrain(ActorCombatController target, int drain)
-        :base(target, string.Empty, Effect.ManaDrain)
+    public ManaDrain(ActorCombatController source, ActorCombatController target, int drain)
+        :base(source, target, string.Empty, Effect.ManaDrain)
     {
         this.drain = drain;
     }

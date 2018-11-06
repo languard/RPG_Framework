@@ -15,11 +15,13 @@ public abstract class CombatEffectBase {
     public Effect effectType { get; private set; }
 
     public ActorCombatController target { get; private set; }
+    public ActorCombatController source { get; private set; }
 
     public string displayText { get; private set; }
 
-    public CombatEffectBase(ActorCombatController target, string displayText, Effect effectType)
+    public CombatEffectBase(ActorCombatController source, ActorCombatController target, string displayText, Effect effectType)
     {
+        this.source = source;
         this.target = target;
         this.displayText = displayText;
         this.effectType = effectType;

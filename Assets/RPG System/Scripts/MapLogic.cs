@@ -55,6 +55,11 @@ public class MapLogic : MonoBehaviour {
             oddsCurrent = oddsStarting;
             SelectMapAndStartFight();
         }
+
+        if(fightEveryStep)
+        {
+            SelectMapAndStartFight();
+        }
     }
 
     public void SelectMapAndStartFight()

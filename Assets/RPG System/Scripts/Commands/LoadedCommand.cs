@@ -24,13 +24,13 @@ namespace Assets.RPG_System.Scripts.Commands
                 switch (effect.effectType)
                 {
                     case CombatEffectBase.Effect.HealHitPoints:
-                        foreach (ActorCombatController target in targetActors) combatEffects.Add(new HealHitPoints(target, effect.effectValue));
+                        foreach (ActorCombatController target in targetActors) combatEffects.Add(new HealHitPoints(owner, target, effect.effectValue));
                         break;
                     case CombatEffectBase.Effect.MagicDamage:
-                        foreach (ActorCombatController target in targetActors) combatEffects.Add(new MagicDamage(target, effect.effectValue));
+                        foreach (ActorCombatController target in targetActors) combatEffects.Add(new MagicDamage(owner, target, effect.effectValue));
                         break;
                     case CombatEffectBase.Effect.WeaponDamage:
-                        foreach (ActorCombatController target in targetActors) combatEffects.Add(new WeaponDamage(target, effect.effectValue));
+                        foreach (ActorCombatController target in targetActors) combatEffects.Add(new WeaponDamage(owner, target, effect.effectValue));
                         break;
                 }
             }

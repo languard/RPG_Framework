@@ -75,6 +75,9 @@ public class GameMaster : MonoBehaviour {
         currentMap = SceneManager.GetSceneByName(startingMap);
         yield return loadDelay; //giving scene time to load
         SceneManager.SetActiveScene(currentMap);
+
+        //starting game, so make sure player stats are calculated correctly
+        party.ResetPartyStats();
         
         //print("Setting player location");
         playerController.SetLocation(startX, startY);
