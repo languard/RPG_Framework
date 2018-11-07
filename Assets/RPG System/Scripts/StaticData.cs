@@ -41,10 +41,10 @@ public class StaticData
     public const float END_CL_SCALE = 1;
 
     //removing this, allowing it to be fixed, not calculated
-    public const float CL_STR_SCALE = 1;
-    public const float CL_CON_SCALE = 1;
-    public const float CL_INT_SCALE = 1;
-    public const float CL_WIL_SCALE = 1;
+    //public const float CL_STR_SCALE = 1;
+    //public const float CL_CON_SCALE = 1;
+    //public const float CL_INT_SCALE = 1;
+    //public const float CL_WIL_SCALE = 1;
 
 }
 

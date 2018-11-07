@@ -27,6 +27,12 @@ public abstract class CombatEffectBase {
         this.effectType = effectType;
     }
 
+    public void SetDisplayText(string text)
+    {
+        //need this to allow for calculations in children effects
+        displayText = text;
+    }
+
     public abstract void Process();
 
     public abstract bool IsValid { get; }

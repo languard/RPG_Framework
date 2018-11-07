@@ -20,6 +20,9 @@ public class GameMaster : MonoBehaviour {
     bool oldMapUnloaded = false;
     bool newMapLoaded = false;
 
+    public bool showSystemChat = false;
+    bool systemChatUp = false;
+
     WaitForSeconds loadDelay;
 
     Party party;
@@ -30,6 +33,7 @@ public class GameMaster : MonoBehaviour {
 
     Fungus.Flowchart questFlags;
     Fungus.Flowchart inventory;
+    Fungus.Flowchart systemChat;
 
     // Use this for initialization
     void Start () {
@@ -42,12 +46,22 @@ public class GameMaster : MonoBehaviour {
 
         questFlags = GameObject.Find("QuestFlags").GetComponent<Fungus.Flowchart>();
         inventory = GameObject.Find("Inventory").GetComponent<Fungus.Flowchart>();
+        systemChat = GameObject.Find("SystemChat").GetComponent<Fungus.Flowchart>();
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        if(switchingMaps)
+        if (showSystemChat && !switchingMaps)
+        {
+            print("meep");
+            showSystemChat = false;
+            systemChatUp = true;
+            systemChat.ExecuteBlock("SystemChat");
+            playerController.canAct = false;
+        }
+
+        if (switchingMaps)
         {
             if(oldMapUnloaded && newMapLoaded)
             {
@@ -56,8 +70,16 @@ public class GameMaster : MonoBehaviour {
                 playerController.canAct = true;
                 switchingMaps = false;
             }
-        }
+        }        
 		
+        if(systemChatUp)
+        {
+            if(!systemChat.FindBlock("SystemChat").IsExecuting())
+            {
+                systemChatUp = false;
+                playerController.canAct = true;
+            }
+        }
 	}
 
     public void LoadStartMap()
@@ -118,8 +140,13 @@ public class GameMaster : MonoBehaviour {
         StartCoroutine(HandleBattleMapLoad(sceneName));
     }
 
-    public void BattleDone()
+    public void BattleDone(int gold)
     {
+        party.partyGold += gold;
+        Fungus.IntegerVariable iv = systemChat.GetVariable<Fungus.IntegerVariable>("gold");
+        iv.Value = gold;
+        showSystemChat = true;
+
         StartCoroutine(HandleBattleDone());
     }
 
@@ -200,7 +227,7 @@ public class GameMaster : MonoBehaviour {
 
     public Entity GetPartyMemberByID(string id)
     {
-        return party.GetPartyMemberByID(name);
+        return party.GetPartyMemberByID(id);
     }
 
     public Fungus.Flowchart GetQuestFlowchart()

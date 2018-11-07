@@ -25,6 +25,9 @@ public class BattleController : MonoBehaviour {
     public float sceneOutroTime = 2.0f;
     private float sceneOutroCountdown = 0.0f;
 
+    //add any addition variables needed for battle rewards here
+    public int victoryGold = 1;
+
     private enum CommandState
     {
         Idle,
@@ -114,14 +117,15 @@ public class BattleController : MonoBehaviour {
                 sceneOutroCountdown -= Time.deltaTime;
                 if (sceneOutroCountdown <= 0.0f)
                 {
-                    // TODO: Transition to start screen?
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
                 }
                 break;
             case BattleState.Victory:
                 sceneOutroCountdown -= Time.deltaTime;
                 if (sceneOutroCountdown <= 0.0f)
                 {
-                    GameObject.Find("GameMaster").GetComponent<GameMaster>().BattleDone();
+                    //either create new methods to call, or modify BattleDone to pass on rewards
+                    GameObject.Find("GameMaster").GetComponent<GameMaster>().BattleDone(victoryGold);
                 }
                 break;
         }

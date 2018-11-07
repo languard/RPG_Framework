@@ -47176,10 +47176,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 89289318f568f224eb457e8b2a0e283f, type: 3}
   battleScenes:
   - Demo_3GrimBlades
-  stepsMinBetweenFight: 50
+  stepsMinBetweenFight: 1
   stepsToIncreaseOdds: 5
   oddsIncrease: 1
-  oddsStarting: 15
+  oddsStarting: 99
   fightEveryStep: 0
   fightNever: 0
 --- !u!1001 &1486001732

@@ -9,8 +9,9 @@ public class WeaponDamage : CombatEffectBase {
     public WeaponDamage(ActorCombatController source, ActorCombatController target, int damage)
         :base(source, target, damage.ToString(), Effect.WeaponDamage)
     {
+        //Use the stats from source.entity and target.entity to do more complex calcuations using stats.
         this.damage = damage + source.entity.strength;
-        UnityEngine.Debug.Log("Entity name is " + source.name);
+        SetDisplayText(damage.ToString());        
     }
 
     public override void Process()

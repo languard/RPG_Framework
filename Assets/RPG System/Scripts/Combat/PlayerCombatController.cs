@@ -18,7 +18,7 @@ public class PlayerCombatController : ActorCombatController
     protected override void OnStart() {
         //need to pull Entity from GameMaster
         gm = GameObject.Find("GameMaster").GetComponent<GameMaster>();
-        entity = gm.GetPartyMember(playerCombatID);
+        entity = gm.GetPartyMemberByID(playerCombatID);
 
         anim = GetComponent<Animator>();
         playerBattleUIController = GameObject.FindGameObjectWithTag("PlayerBattleUIController").GetComponent<PlayerBattleUIController>();
