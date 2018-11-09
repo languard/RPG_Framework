@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HealHitPoints : CombatEffectBase {
-
-    private int healing;
-
-    public HealHitPoints(ActorCombatController source, ActorCombatController target, int healing)
-        :base(source, target, healing.ToString(), Effect.HealHitPoints)
+    
+    public HealHitPoints(ActorCombatController source, ActorCombatController target, string healingExpression)
+        :base(source, target, healingExpression, Effect.HealHitPoints)
     {
-        this.healing = healing;
     }
 
-    public override void Process()
+    public override void ApplyEffect(float healing)
     {
-        target.entity.hitPoints += healing;
+        // TODO: Evaluate healingExpression
+        target.entity.hitPoints += (int)healing;
     }
 
     public override bool IsValid

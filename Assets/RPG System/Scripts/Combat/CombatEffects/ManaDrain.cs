@@ -12,9 +12,9 @@ public class ManaDrain : CombatEffectBase {
         this.drain = drain;
     }
 
-    public override void Process()
+    public override void ApplyEffect(float drain)
     {
-        target.entity.mana -= drain;
+        target.entity.mana -= (int)drain;
     }
 
     public override bool IsValid

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.RPG_System.Scripts.Combat.CalcSpeak;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,13 +19,14 @@ public abstract class CombatEffectBase {
     public ActorCombatController source { get; private set; }
 
     public string displayText { get; private set; }
+    public string effectExpression { get; private set; }
 
-    public CombatEffectBase(ActorCombatController source, ActorCombatController target, string displayText, Effect effectType)
+    public CombatEffectBase(ActorCombatController source, ActorCombatController target, string effectExpression, Effect effectType)
     {
         this.source = source;
         this.target = target;
-        this.displayText = displayText;
         this.effectType = effectType;
+        this.effectExpression = effectExpression;
     }
 
     public void SetDisplayText(string text)
@@ -33,7 +35,15 @@ public abstract class CombatEffectBase {
         displayText = text;
     }
 
-    public abstract void Process();
+    public void Process()
+    {
+        ConstLoader currentConstants = new ConstLoader(source, target);
+        Expression calcExpression = new Expression(effectExpression, currentConstants.values);
+        calcExpression.Parse();
+        ApplyEffect(calcExpression.Evaluate());
+    }
+
+    public abstract void ApplyEffect(float effectValue);
 
     public abstract bool IsValid { get; }
 }
