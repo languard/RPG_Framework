@@ -9,10 +9,10 @@ public class WeaponDamage : CombatEffectBase {
     {
     }
 
-    public override void ApplyEffect(float damage)
+    public override void ApplyEffect(int damage)
     {
         // TODO: Evaluate effectExpression to calculate damage
-        target.entity.hitPoints -= (int)damage;
+        target.entity.hitPoints -= damage;
     }
 
     public override bool IsValid

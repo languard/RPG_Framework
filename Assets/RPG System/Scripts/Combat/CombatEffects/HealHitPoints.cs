@@ -9,10 +9,10 @@ public class HealHitPoints : CombatEffectBase {
     {
     }
 
-    public override void ApplyEffect(float healing)
+    public override void ApplyEffect(int healing)
     {
         // TODO: Evaluate healingExpression
-        target.entity.hitPoints += (int)healing;
+        target.entity.hitPoints += healing;
     }
 
     public override bool IsValid

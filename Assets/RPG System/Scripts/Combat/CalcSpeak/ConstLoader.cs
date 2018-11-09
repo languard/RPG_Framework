@@ -5,9 +5,13 @@ using System.Text;
 
 namespace Assets.RPG_System.Scripts.Combat.CalcSpeak
 {
+    /// <summary>
+    /// Used by expression evaluation for combat effects.
+    /// Creates a dictionary of variable values based on the given
+    /// source and target. Will be passed to the Expression constructor.
+    /// </summary>
     public class ConstLoader
     {
-
         public Dictionary<string, float> values { get; private set; }
 
         public ConstLoader(ActorCombatController source, ActorCombatController target)

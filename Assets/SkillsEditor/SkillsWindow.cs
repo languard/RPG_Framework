@@ -137,6 +137,13 @@ public class SkillsWindow : EditorWindow
 
     private void OnEnable()
     {
+        // "What's this?"
+        // This supports the effect expression interpreter.
+        // We have to provide a list of valid variable names.
+        // The values aren't important, since we're only looking for parse validity,
+        // so we use 0 for everything.
+        // This is the list of variables the user can enter into expression formulas
+        // for effect magnitudes.
         validVariables.Add("SOURCE_STR", 0);
         validVariables.Add("SOURCE_CON", 0);
         validVariables.Add("SOURCE_WIL", 0);

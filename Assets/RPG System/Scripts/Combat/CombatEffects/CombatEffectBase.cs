@@ -40,10 +40,14 @@ public abstract class CombatEffectBase {
         ConstLoader currentConstants = new ConstLoader(source, target);
         Expression calcExpression = new Expression(effectExpression, currentConstants.values);
         calcExpression.Parse();
-        ApplyEffect(calcExpression.Evaluate());
+
+        int expressionValue = (int)calcExpression.Evaluate();
+        SetDisplayText(expressionValue.ToString());
+        
+        ApplyEffect(expressionValue);
     }
 
-    public abstract void ApplyEffect(float effectValue);
+    public abstract void ApplyEffect(int effectValue);
 
     public abstract bool IsValid { get; }
 }
