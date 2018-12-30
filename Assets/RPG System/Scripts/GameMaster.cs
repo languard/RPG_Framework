@@ -10,6 +10,7 @@ public class GameMaster : MonoBehaviour {
     [SerializeField] int startX = 0;
     [SerializeField] int startY = 0;
     [SerializeField, Tooltip("Leave blank if no override needed")] string editorOverride;
+    [SerializeField, Tooltip("Automatically load the Map you were working on.")] bool loadPriorScene = true;
 
     Scene currentMap;
     Scene returnScene;
@@ -47,6 +48,8 @@ public class GameMaster : MonoBehaviour {
         questFlags = GameObject.Find("QuestFlags").GetComponent<Fungus.Flowchart>();
         inventory = GameObject.Find("Inventory").GetComponent<Fungus.Flowchart>();
         systemChat = GameObject.Find("SystemChat").GetComponent<Fungus.Flowchart>();
+
+        if (SceneManager.sceneCount > 1) SceneManager.LoadScene("Core");
     }
 	
 	// Update is called once per frame
@@ -93,6 +96,17 @@ public class GameMaster : MonoBehaviour {
 
     IEnumerator HandleLoadStartingMap()
     {
+        if (editorOverride != "") startingMap = editorOverride;
+
+#if UNITY_EDITOR
+        if (loadPriorScene)
+        {
+            string priorScene = PlayerPrefs.GetString("editorMap", "");
+            if (priorScene != "") startingMap = priorScene;
+            print(priorScene);
+        }
+#endif
+
         SceneManager.LoadScene(startingMap, LoadSceneMode.Additive);
         currentMap = SceneManager.GetSceneByName(startingMap);
         yield return loadDelay; //giving scene time to load
@@ -175,7 +189,7 @@ public class GameMaster : MonoBehaviour {
         newMapLoaded = false;
         oldMapUnloaded = false;
 
-        print("Current scene is:" + currentMap.name);
+        //print("Current scene is:" + currentMap.name);
 
         //disable player's ability to act
         playerController.canAct = false;
@@ -185,7 +199,7 @@ public class GameMaster : MonoBehaviour {
         unloadOp.completed += MapUnloaded;
 
         while (!oldMapUnloaded) yield return loadDelay;
-        print("old map unloaded");
+        //print("old map unloaded");
 
         SceneManager.LoadScene(targetScene, LoadSceneMode.Additive);
         currentMap = SceneManager.GetSceneByName(targetScene);        
@@ -193,7 +207,7 @@ public class GameMaster : MonoBehaviour {
         SceneManager.SetActiveScene(currentMap);
         newMapLoaded = true;
 
-        print("Setting player location");
+        //print("Setting player location");
         playerController.SetLocation(targetX, targetY);
     }
 

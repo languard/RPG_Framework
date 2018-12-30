@@ -27,11 +27,18 @@ public class MapLogic : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //reload Core if GameMaster is not found.  Can't do anything without it anyways.
+        GameObject gm = GameObject.Find("GameMaster");
+#if UNITY_EDITOR
+        PlayerPrefs.SetString("editorMap", this.gameObject.scene.name);
+#endif
+        if (gm == null) UnityEngine.SceneManagement.SceneManager.LoadScene("Core");
+
         StartMusic();
 
         //init encounter rate
-        oddsCurrent = oddsStarting;
-	}
+        oddsCurrent = oddsStarting;       
+    }
 
     //Called by the character controller after a step has been finished
     //should be used to handle any step logic, by default this is only battles
