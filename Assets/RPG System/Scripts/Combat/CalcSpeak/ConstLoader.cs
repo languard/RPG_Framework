@@ -9,6 +9,8 @@ namespace Assets.RPG_System.Scripts.Combat.CalcSpeak
     /// Used by expression evaluation for combat effects.
     /// Creates a dictionary of variable values based on the given
     /// source and target. Will be passed to the Expression constructor.
+    /// **IMPORTANT**
+    /// Make sure you add any new values to SkillsWindow as well for the validation.
     /// </summary>
     public class ConstLoader
     {
@@ -27,6 +29,8 @@ namespace Assets.RPG_System.Scripts.Combat.CalcSpeak
             values.Add("SOURCE_END", source.entity.endurance);
             values.Add("SOURCE_RCT", source.entity.reaction);
             values.Add("SOURCE_LVL", source.entity.entityLevel);
+            values.Add("SOURCE_PARMOR", source.entity.physicalArmor);
+            values.Add("SOURCE_MARMOR", source.entity.magicArmor);
 
             values.Add("TARGET_STR", target.entity.strength);
             values.Add("TARGET_CON", target.entity.constitution);
@@ -37,6 +41,8 @@ namespace Assets.RPG_System.Scripts.Combat.CalcSpeak
             values.Add("TARGET_END", target.entity.endurance);
             values.Add("TARGET_RCT", target.entity.reaction);
             values.Add("TARGET_LVL", target.entity.entityLevel);
+            values.Add("TARGET_PARMOR", target.entity.physicalArmor);
+            values.Add("TARGET_MARMOR", target.entity.magicArmor);
         }
     }
 }

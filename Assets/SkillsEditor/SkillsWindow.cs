@@ -153,6 +153,8 @@ public class SkillsWindow : EditorWindow
         validVariables.Add("SOURCE_END", 0);
         validVariables.Add("SOURCE_RCT", 0);
         validVariables.Add("SOURCE_LVL", 0);
+        validVariables.Add("SOURCE_PARMOR", 0);
+        validVariables.Add("SOURCE_MARMOR", 0);
 
         validVariables.Add("TARGET_STR", 0);
         validVariables.Add("TARGET_CON", 0);
@@ -163,6 +165,8 @@ public class SkillsWindow : EditorWindow
         validVariables.Add("TARGET_END", 0);
         validVariables.Add("TARGET_RCT", 0);
         validVariables.Add("TARGET_LVL", 0);
+        validVariables.Add("TARGET_PARMOR", 0);
+        validVariables.Add("TARGET_MARMOR", 0);
 
 
         effectDisplayNames.Clear();

@@ -9,10 +9,6 @@ using System.Text;
 public class Entity
 {
 
-    public static int CUR = 0;
-    public static int BASE = 1;
-
-
     public string name;
     public string combatID;
 
@@ -38,6 +34,12 @@ public class Entity
     public int reactionBase;
 
     public int entityLevel;     //can be used as a scale value.  For example, level 5 monster vs level 10 monster, or a spell that adds 3 levels to a player.
+
+    public int physicalArmor;
+    public int physicalArmorBase;
+    public int magicArmor;
+    public int magicArmorBase;
+
 
     //property used by combat system
     public bool isDead
@@ -123,5 +125,11 @@ public class Entity
         endurance = enduranceBase;
         mana = manaBase;
     }
+
+    public int GetHitPointsBase()
+    {
+        return hitPointsBase;
+    }
+
 }
 
