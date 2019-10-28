@@ -70,7 +70,6 @@ public class CharController_RPG_Framework : MonoBehaviour {
     {
         canAct = false;
         mainCamera.enabled = false;
-
     }
 
     public void ActivateController()

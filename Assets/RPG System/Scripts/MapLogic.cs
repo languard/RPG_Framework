@@ -90,7 +90,7 @@ public class MapLogic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //dev code: left ctrl+shift+f sets odds to 101
+        //dev code: SDF sets odds to 101
         if (Input.GetKey(KeyCode.S) &&
             Input.GetKey(KeyCode.D) &&
             Input.GetKey(KeyCode.F)) oddsCurrent = 101;
