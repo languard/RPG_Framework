@@ -40,11 +40,9 @@ public class StaticData
     public const float END_STAT_SCALE = 1;
     public const float END_CL_SCALE = 1;
 
-    //removing this, allowing it to be fixed, not calculated
-    //public const float CL_STR_SCALE = 1;
-    //public const float CL_CON_SCALE = 1;
-    //public const float CL_INT_SCALE = 1;
-    //public const float CL_WIL_SCALE = 1;
+    //combat variables
+    public const float DEFAULT_BATTLE_TIME = 5;     //seconds
+    public const float REACTION_WEIGHT = 0.1f;      //how much does reaction contribute to speed in battle.     
 
 }
 

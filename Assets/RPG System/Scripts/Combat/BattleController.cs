@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleController : MonoBehaviour {
 
+    #region DO_NOT_MODIFY
     public List<EnemyCombatController> enemyActors = new List<EnemyCombatController>();
     public List<PlayerCombatController> playerActors = new List<PlayerCombatController>();
 
@@ -24,6 +26,13 @@ public class BattleController : MonoBehaviour {
 
     public float sceneOutroTime = 2.0f;
     private float sceneOutroCountdown = 0.0f;
+
+    public List<GameObject> playerCommandButtons;
+
+    private SkillDescriptor[] currentSkills;
+
+    PlayerBattleUIController activePlayer;
+    #endregion
 
     //add any addition variables needed for battle rewards here
     public int victoryGold = 1;
@@ -89,6 +98,8 @@ public class BattleController : MonoBehaviour {
             silhouettes[actor].enabled = false;
         }
 
+        currentSkills = new SkillDescriptor[playerCommandButtons.Count];
+
     }
 
     // Update is called once per frame
@@ -130,6 +141,35 @@ public class BattleController : MonoBehaviour {
                 break;
         }
 
+    }
+
+    public void SetupPlayerCommands(Dictionary<string, SkillDescriptor> availableCommands, PlayerBattleUIController currentPlayer)
+    {
+        int commandIndex = 0;
+        int commandCount = availableCommands.Count;
+        activePlayer = currentPlayer;
+
+        foreach (string commandName in availableCommands.Keys)
+        {
+            playerCommandButtons[commandIndex].SetActive(true);
+            playerCommandButtons[commandIndex].GetComponentInChildren<Text>().text = commandName;
+            currentSkills[commandIndex] = availableCommands[commandName];
+            if(commandIndex == 0) playerCommandButtons[commandCount].GetComponent<Button>().Select();
+            commandIndex += 1;
+        }
+    }
+
+    public void HideAllButtons()
+    {
+        for (int i = 0; i < playerCommandButtons.Count; i++)
+        {
+            playerCommandButtons[i].SetActive(false);
+        }
+    }
+
+    public void CommandButtonClick(int index)
+    {
+        activePlayer.OnPlayerActivatedCommand(currentSkills[index]);
     }
 
     private void UpdateCommandState()

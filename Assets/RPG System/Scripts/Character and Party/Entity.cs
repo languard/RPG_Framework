@@ -126,6 +126,12 @@ public class Entity
         mana = manaBase;
     }
 
+    public void HealHP(int amount)
+    {
+        hitPoints += amount;
+        if (hitPoints > hitPointsBase) hitPoints = hitPointsBase;
+    }
+
     public int GetHitPointsBase()
     {
         return hitPointsBase;
