@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class WeaponDamage : CombatEffectBase {
 
-    private int damage;
-
-    public WeaponDamage(ActorCombatController source, ActorCombatController target, int damage)
-        :base(source, target, damage.ToString(), Effect.WeaponDamage)
+    public WeaponDamage(ActorCombatController source, ActorCombatController target, string damageExpression)
+        :base(source, target, damageExpression, Effect.WeaponDamage)
     {
-        //Use the stats from source.entity and target.entity to do more complex calcuations using stats.
-        this.damage = damage + source.entity.strength;
-        SetDisplayText(damage.ToString());        
     }
 
-    public override void Process()
+    public override void ApplyEffect(int damage)
     {
+        // TODO: Evaluate effectExpression to calculate damage
         target.entity.hitPoints -= damage;
     }
 

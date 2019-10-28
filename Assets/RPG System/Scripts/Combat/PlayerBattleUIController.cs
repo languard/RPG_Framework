@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBattleUIController : MonoBehaviour {
 
@@ -29,6 +30,8 @@ public class PlayerBattleUIController : MonoBehaviour {
 
     private PlayerSkills playerSkills;
 
+    private SkillDescriptor[] currentSkills;
+
     private enum TargetChangeDirection
     {
         Left,
@@ -41,6 +44,7 @@ public class PlayerBattleUIController : MonoBehaviour {
     void Start () {
         battleController = GameObject.FindGameObjectWithTag("BattleController").GetComponent<BattleController>();
         playerSkills = GetComponent<PlayerSkills>();
+        currentSkills = new SkillDescriptor[battleController.playerCommandButtons.Count];
 
         foreach (ActorCombatController actor in battleController.playerActors)
         {
@@ -82,7 +86,7 @@ public class PlayerBattleUIController : MonoBehaviour {
                 // Update targets based on current command targets identified
                 UpdateTargetSelection();
 
-                if (Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetButtonDown("UseAction"))
                 {
                     // Command is selected; player is done with prep and can be dequeued.
                     ActivateSelectedCommand();
@@ -90,7 +94,7 @@ public class PlayerBattleUIController : MonoBehaviour {
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetButtonDown("Cancel"))
                 {
                     // Dequeue the top ready player and put them at the back of the line.
                     playerUnitsReadyToSelectCommand.Enqueue(playerUnitsReadyToSelectCommand.Dequeue());
@@ -122,30 +126,30 @@ public class PlayerBattleUIController : MonoBehaviour {
             case CommandBase.Target.ALL_ALLIES:
                 //  Left: previous target option
                 //  Right/Up/Down: Nothing
-                if (Input.GetKeyDown(KeyCode.LeftArrow)) selectedCommand.currentTargetIndex--;
+                if (Input.GetButtonDown("MoveLeft")) selectedCommand.currentTargetIndex--;
                 break;
             case CommandBase.Target.SELECTED_ALLY:
                 //  Left: previous target option
                 //  Right: next target option
                 //  Up/Down: Toggle targets
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                if (Input.GetButtonDown("MoveLeft"))
                 {
                     selectedCommand.currentTargetIndex--;
                 }
-                if (Input.GetKeyDown(KeyCode.RightArrow)) selectedCommand.currentTargetIndex++;
-                if (Input.GetKeyDown(KeyCode.UpArrow)) lastSinglePlayerCombatTarget = NextPlayer(TargetChangeDirection.Up);
-                if (Input.GetKeyDown(KeyCode.DownArrow)) lastSinglePlayerCombatTarget = NextPlayer(TargetChangeDirection.Down);
+                if (Input.GetButtonDown("MoveRight")) selectedCommand.currentTargetIndex++;
+                if (Input.GetButtonDown("MoveUp")) lastSinglePlayerCombatTarget = NextPlayer(TargetChangeDirection.Up);
+                if (Input.GetButtonDown("MoveDown")) lastSinglePlayerCombatTarget = NextPlayer(TargetChangeDirection.Down);
                 break;
             case CommandBase.Target.SELF:
                 //  As SELECTED_ALLY but Up/Down does nothing
-                if (Input.GetKeyDown(KeyCode.LeftArrow)) selectedCommand.currentTargetIndex--;
-                if (Input.GetKeyDown(KeyCode.RightArrow)) selectedCommand.currentTargetIndex++;
+                if (Input.GetButtonDown("MoveLeft")) selectedCommand.currentTargetIndex--;
+                if (Input.GetButtonDown("MoveRight")) selectedCommand.currentTargetIndex++;
                 break;
             case CommandBase.Target.SELECTED_ENEMY:
                 //  Left: Previous single enemy target if one available, or previous target option otherwise
                 //  Right: Next single enemy target if one availalbe, or next target option otherwise
                 //  Up/Down: Vertical toggle on targets (wraparound possible)
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                if (Input.GetButtonDown("MoveLeft"))
                 {
                     EnemyCombatController nextEnemy = NextEnemy(TargetChangeDirection.Left);
                     if (nextEnemy == null)
@@ -157,7 +161,7 @@ public class PlayerBattleUIController : MonoBehaviour {
                         lastSingleEnemyCombatTarget = nextEnemy;
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.RightArrow))
+                if (Input.GetButtonDown("MoveRight"))
                 {
                     EnemyCombatController nextEnemy = NextEnemy(TargetChangeDirection.Right);
                     if (nextEnemy == null)
@@ -169,13 +173,13 @@ public class PlayerBattleUIController : MonoBehaviour {
                         lastSingleEnemyCombatTarget = nextEnemy;
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.UpArrow)) lastSingleEnemyCombatTarget = NextEnemy(TargetChangeDirection.Up);
-                if (Input.GetKeyDown(KeyCode.DownArrow)) lastSingleEnemyCombatTarget = NextEnemy(TargetChangeDirection.Down);
+                if (Input.GetButtonDown("MoveUp")) lastSingleEnemyCombatTarget = NextEnemy(TargetChangeDirection.Up);
+                if (Input.GetButtonDown("MoveDown")) lastSingleEnemyCombatTarget = NextEnemy(TargetChangeDirection.Down);
                 break;
             case CommandBase.Target.ALL_ENEMIES:
                 //  Right: Next target option
                 //  Left/Up/Down: Nothing
-                if (Input.GetKeyDown(KeyCode.RightArrow)) selectedCommand.currentTargetIndex++;
+                if (Input.GetButtonDown("MoveRight")) selectedCommand.currentTargetIndex++;
                 break;
             case CommandBase.Target.RANDOM_ENEMY:
                 // No input to handle
@@ -238,19 +242,36 @@ public class PlayerBattleUIController : MonoBehaviour {
             if (selectedCommand == null)
             {
                 // Show a list of their commands next to them
+
+                //Vector3 playerScreenLocation = Camera.main.WorldToScreenPoint(activePlayer.transform.position);
+                //float x = playerScreenLocation.x + menuXAdjust;
+                //float y = Screen.height - playerScreenLocation.y + menuYAdjust;
+
                 Dictionary<string, SkillDescriptor> availableCommands = activePlayer.playerSkills.GetPlayerSkills();
-                int commandCount = availableCommands.Count;
-                Vector3 playerScreenLocation = Camera.main.WorldToScreenPoint(activePlayer.transform.position);
-                float x = playerScreenLocation.x + menuXAdjust;
-                float y = Screen.height - playerScreenLocation.y + menuYAdjust;
-                foreach (string commandName in availableCommands.Keys)
-                {
-                    if (GUI.Button(new Rect(x, y, 100, 20), commandName))
-                    {
-                        OnPlayerActivatedCommand(availableCommands[commandName]);
-                    }
-                    y -= 20;
-                }
+                //int commandCount = availableCommands.Count;
+                //int commandIndex = 0;
+
+                battleController.SetupPlayerCommands(availableCommands, this);
+
+                //foreach (string commandName in availableCommands.Keys)
+                //{
+                //    /*
+                //    if (GUI.Button(new Rect(x, y, 100, 20), commandName))
+                //    {
+                //        OnPlayerActivatedCommand(availableCommands[commandName]);
+                //    }
+                //    y -= 20;
+                //    */
+                //    battleController.playerCommandButtons[commandIndex].SetActive(true);
+                //    battleController.playerCommandButtons[commandIndex].GetComponentInChildren<Text>().text = commandName;
+                //    currentSkills[commandIndex] = availableCommands[commandName];
+                //    commandIndex += 1;
+                //}
+
+                //for(int i = commandIndex; i< battleController.playerCommandButtons.Count; i++)
+                //{
+                //    battleController.playerCommandButtons[i].SetActive(false);
+                //}
             }
             else
             {
@@ -262,6 +283,10 @@ public class PlayerBattleUIController : MonoBehaviour {
                 }
             }
         }
+        else
+        {
+            HideAllButtons();
+        }
 
         // Show all player HP
         foreach (PlayerCombatController player in battleController.playerActors)
@@ -269,12 +294,27 @@ public class PlayerBattleUIController : MonoBehaviour {
             Vector3 playerScreenLocation = Camera.main.WorldToScreenPoint(player.transform.position);
             float x = playerScreenLocation.x + healthXAdjust;
             float y = Screen.height - playerScreenLocation.y + menuYAdjust;
-            GUI.Label(new Rect(x, y, 100, 20), string.Format("{0}/{1}", player.entity.hitPoints, player.entity.hitPointsBase));
+            GUI.Label(new Rect(x, y, 100, 20), string.Format("{0}/{1}", player.entity.hitPoints, player.entity.GetHitPointsBase()));
         }
     }
 
-    void OnPlayerActivatedCommand(SkillDescriptor skillDescriptor)
+    private void HideAllButtons()
     {
+        for (int i = 0; i < battleController.playerCommandButtons.Count; i++)
+        {
+            battleController.playerCommandButtons[i].SetActive(false);
+        }
+    }
+
+    public void CommandButtonClick(int index)
+    {
+        OnPlayerActivatedCommand(currentSkills[index]);
+    }
+
+    public void OnPlayerActivatedCommand(SkillDescriptor skillDescriptor)
+    {
+        HideAllButtons();
+
         CommandBase.Target skillTargets = skillDescriptor.targets;
         List<CommandBase.Target> targets = new List<CommandBase.Target>();
         foreach (CommandBase.Target target in (CommandBase.Target[])System.Enum.GetValues(typeof(CommandBase.Target)))
@@ -290,28 +330,6 @@ public class PlayerBattleUIController : MonoBehaviour {
 
         lastSingleEnemyCombatTarget = RightEnemy();
         lastSinglePlayerCombatTarget = activePlayer;
-
-        //switch (selectedCommand.currentTargetSelection)
-        //{
-        //    case CommandBase.SELECTED_ALLY:
-        //        lastSinglePlayerCombatTarget = activePlayer;
-        //        break;
-        //    case CommandBase.SELF:
-        //        lastSinglePlayerCombatTarget = activePlayer;
-        //        break;
-        //    case CommandBase.SELECTED_ENEMY:
-        //        // Find rightmost enemy
-        //        float xPos = -1000;
-        //        foreach (EnemyCombatController enemy in battleController.enemyActors)
-        //        {
-        //            if (enemy.transform.position.x > xPos)
-        //            {
-        //                xPos = enemy.transform.position.x;
-        //                lastSingleEnemyCombatTarget = enemy;
-        //            }
-        //        }
-        //        break;
-        //}
     }
 
     private PlayerCombatController NextPlayer(TargetChangeDirection change)

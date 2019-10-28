@@ -33,9 +33,6 @@ public class JsonTestUnity : MonoBehaviour {
         testchar = JsonUtility.FromJson<Entity>(jsonString);
     }
 
-    public void LevelUp()
-    {
-        testchar.strengthBase += 1;
-    }
+
 
 }

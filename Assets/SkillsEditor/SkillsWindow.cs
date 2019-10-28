@@ -2,12 +2,13 @@
 using UnityEditor;
 using System.Collections.Generic;
 using System;
+using Assets.RPG_System.Scripts.Combat.CalcSpeak;
 
 [Serializable]
 public class EffectDescriptor
 {
     public CombatEffectBase.Effect effectType;
-    public int effectValue;
+    public string effectExpression;
 }
 
 [Serializable]
@@ -132,9 +133,41 @@ public class SkillsWindow : EditorWindow
     private static GUIStyle listItemStyle = new GUIStyle();
     private static GUIStyle selectedItemStyle = new GUIStyle();
 
+    private static Dictionary<string, float> validVariables = new Dictionary<string, float>();
+
     private void OnEnable()
     {
-        // TODO: Load skills from JSON data file
+        // "What's this?"
+        // This supports the effect expression interpreter.
+        // We have to provide a list of valid variable names.
+        // The values aren't important, since we're only looking for parse validity,
+        // so we use 0 for everything.
+        // This is the list of variables the user can enter into expression formulas
+        // for effect magnitudes.
+        validVariables.Add("SOURCE_STR", 0);
+        validVariables.Add("SOURCE_CON", 0);
+        validVariables.Add("SOURCE_WIL", 0);
+        validVariables.Add("SOURCE_INT", 0);
+        validVariables.Add("SOURCE_HP", 0);
+        validVariables.Add("SOURCE_MP", 0);
+        validVariables.Add("SOURCE_END", 0);
+        validVariables.Add("SOURCE_RCT", 0);
+        validVariables.Add("SOURCE_LVL", 0);
+        validVariables.Add("SOURCE_PARMOR", 0);
+        validVariables.Add("SOURCE_MARMOR", 0);
+
+        validVariables.Add("TARGET_STR", 0);
+        validVariables.Add("TARGET_CON", 0);
+        validVariables.Add("TARGET_WIL", 0);
+        validVariables.Add("TARGET_INT", 0);
+        validVariables.Add("TARGET_HP", 0);
+        validVariables.Add("TARGET_MP", 0);
+        validVariables.Add("TARGET_END", 0);
+        validVariables.Add("TARGET_RCT", 0);
+        validVariables.Add("TARGET_LVL", 0);
+        validVariables.Add("TARGET_PARMOR", 0);
+        validVariables.Add("TARGET_MARMOR", 0);
+
 
         effectDisplayNames.Clear();
         effectsByName.Clear();
@@ -238,6 +271,7 @@ public class SkillsWindow : EditorWindow
 
         if (startSelectionName != selectedSkillName)
         {
+            EditorGUI.FocusTextInControl(null);
             Repaint();
         }
 
@@ -246,7 +280,7 @@ public class SkillsWindow : EditorWindow
         GUI.EndScrollView();
 
 
-        GUI.Box(new Rect(160, 10, 400, 400), string.Empty);
+        GUI.Box(new Rect(160, 10, 700, 400), string.Empty);
 
         if (selectedSkill != null)
         {
@@ -333,7 +367,7 @@ public class SkillsWindow : EditorWindow
             {
                 EffectDescriptor newDescriptor = new EffectDescriptor();
                 newDescriptor.effectType = effectsByName[effectNames[selectedNewEffectType]];
-                newDescriptor.effectValue = 0;
+                newDescriptor.effectExpression = string.Empty;
                 selectedSkill.AddEffect(newDescriptor);
             }
 
@@ -355,8 +389,20 @@ public class SkillsWindow : EditorWindow
 
     private bool RenderEffectFieldWithDelete(EffectDescriptor effect)
     {
-        effect.effectValue = EditorGUI.IntField(new Rect(170, mainControlRectY, 260, 15), effectDisplayNames[effect.effectType], effect.effectValue);
-        bool result = GUI.Button(new Rect(440, mainControlRectY, 20, 15), "X");
+        Expression expression = new Expression(effect.effectExpression, validVariables);
+        expression.Parse();
+        string expressionError = string.Empty;
+        if (!expression.isValid)
+        {
+            expressionError = expression.LastError;
+        }
+        effect.effectExpression = EditorGUI.TextField(new Rect(170, mainControlRectY, 400, 15), effectDisplayNames[effect.effectType], effect.effectExpression);
+        bool result = GUI.Button(new Rect(600, mainControlRectY, 20, 15), "X");
+        if (!expression.isValid)
+        {
+            mainControlRectY += 20;
+            EditorGUI.LabelField(new Rect(170, mainControlRectY, 700, 15), expressionError);
+        }
         mainControlRectY += 20;
         return result;
     }

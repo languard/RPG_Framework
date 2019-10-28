@@ -17,8 +17,9 @@ public abstract class ActorCombatController : MonoBehaviour
 
     private BattleController battleController;
 
-    public float actionDelay = 3.0f;
+    public float actionDelay = StaticData.DEFAULT_BATTLE_TIME;      //Normally set in editor
     private float actionTimer = 0.0f;
+    public bool useReaction = false;
 
     public float Readiness { get { return actionTimer / actionDelay; } }
 
@@ -51,7 +52,9 @@ public abstract class ActorCombatController : MonoBehaviour
             switch (combatState)
             {
                 case CombatState.FillingActionMeter:
-                    actionTimer += Time.deltaTime;
+                    if(useReaction) actionTimer += Time.deltaTime * entity.reaction;
+                    else actionTimer += Time.deltaTime;
+
                     if (actionTimer >= actionDelay)
                     {
                         combatState = CombatState.AwaitingCommand;

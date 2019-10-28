@@ -22,12 +22,7 @@ public class PlayerCombatController : ActorCombatController
 
         anim = GetComponent<Animator>();
         playerBattleUIController = GameObject.FindGameObjectWithTag("PlayerBattleUIController").GetComponent<PlayerBattleUIController>();
-        playerSkills = GetComponent<PlayerSkills>();
-
-        anim.SetFloat("moveX", -1f);
-        anim.SetBool("isMoving", false);
-        anim.SetBool("isRunning", false);
-        
+        playerSkills = GetComponent<PlayerSkills>();     
     }
 
     protected override void OnReadyForCommand()

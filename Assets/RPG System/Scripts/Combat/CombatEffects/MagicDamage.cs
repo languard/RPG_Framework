@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class MagicDamage : CombatEffectBase {
 
-    private int damage;
-
-    public MagicDamage(ActorCombatController source, ActorCombatController target, int damage)
-        :base(source, target, damage.ToString(), Effect.MagicDamage)
+    public MagicDamage(ActorCombatController source, ActorCombatController target, string damageExpression)
+        :base(source, target, damageExpression, Effect.MagicDamage)
     {
-        this.damage = damage;
     }
 
-    public override void Process()
+    public override void ApplyEffect(int damage)
     {
+        // TODO: Calculate damage using effectExpression
         target.entity.hitPoints -= damage;
     }
 
