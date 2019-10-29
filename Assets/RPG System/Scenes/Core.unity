@@ -213,7 +213,6 @@ GameObject:
   - component: {fileID: 1357386448}
   - component: {fileID: 1357386447}
   - component: {fileID: 1357386450}
-  - component: {fileID: 1357386451}
   m_Layer: 0
   m_Name: SystemChat
   m_TagString: Untagged
@@ -276,7 +275,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1357386450}
-  - {fileID: 1357386451}
 --- !u!114 &1357386449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,8 +301,7 @@ MonoBehaviour:
     height: 0
   selectedBlocks:
   - {fileID: 1357386448}
-  selectedCommands:
-  - {fileID: 1357386451}
+  selectedCommands: []
   variables:
   - {fileID: 1357386447}
   description: 
@@ -332,33 +329,6 @@ MonoBehaviour:
   itemId: 1
   indentLevel: 0
   storyText: Your victory in combat earns you {$gold} gold.
-  description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &1357386451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1357386445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 2
-  indentLevel: 0
-  storyText: Meep.
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
