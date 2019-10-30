@@ -14,9 +14,9 @@ public class MapLogic : MonoBehaviour {
     int stepsMinBetweenFight = 10;
     [SerializeField]
     int stepsToIncreaseOdds = 10;
-    [SerializeField]
+    [SerializeField, Tooltip("D1000 used, so each point is 1/10th of a %")]
     int oddsIncrease = 1;
-    [SerializeField]
+    [SerializeField, Tooltip("D1000 used, so each point is 1/10th of a %")]
     int oddsStarting = 1;
 
     public bool fightEveryStep = false;
@@ -24,6 +24,8 @@ public class MapLogic : MonoBehaviour {
 
     int stepsCurrent = 0;
     int oddsCurrent = 0;
+
+    bool startMusic = false;
 
 	// Use this for initialization
 	void Start () {
@@ -44,6 +46,9 @@ public class MapLogic : MonoBehaviour {
     //should be used to handle any step logic, by default this is only battles
     public void FinishStep()
     {
+        //start music if needed.  Normally only needed after a fight.
+        if (startMusic) StartMusic();
+
         if (fightNever) return;
 
         stepsCurrent += 1;
@@ -62,16 +67,16 @@ public class MapLogic : MonoBehaviour {
             oddsCurrent = oddsStarting;
             SelectMapAndStartFight();
         }
-
-        if(fightEveryStep)
+        else if(fightEveryStep)
         {
             SelectMapAndStartFight();
-        }
+        }        
     }
 
     public void SelectMapAndStartFight()
     {
         int index = Random.Range(0, battleScenes.Count);
+        startMusic = true;
         GameObject.Find("GameMaster").GetComponent<GameMaster>().LoadBattleScene(battleScenes[index]);
     }
 
@@ -90,19 +95,19 @@ public class MapLogic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //dev code: SDF sets odds to 101
+        //dev code: SDF forces a fight. Press SD first, then F.
         if (Input.GetKey(KeyCode.S) &&
             Input.GetKey(KeyCode.D) &&
-            Input.GetKey(KeyCode.F)) oddsCurrent = 101;
-
+            Input.GetKeyDown(KeyCode.F)) oddsCurrent = int.MaxValue;        
 	}
 
     public void StartMusic()
     {
         //request the first track be played
-        if (backgroundMusic != null && backgroundMusic.Count > 0)
+        if (backgroundMusic != null && backgroundMusic.Count > 0 && startMusic)
         {
             GameObject.Find("GameMaster").GetComponent<GameMaster>().PlayMusic(backgroundMusic[0]);
+            startMusic = false;
         }
     }
 

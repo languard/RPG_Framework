@@ -40,6 +40,8 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
     Rigidbody2D rb;
 
+    MapLogic ml;
+
     // Use this for initialization
     void Start() {
         
@@ -92,18 +94,23 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
         AnimationEvent(this);
         //only animation allowed if canAct is off
-        if (!canAct) return;  
+        if (!canAct) return;
 
-        //isOnGrid = false;
+        if (ml == null) ml = GameObject.Find("LevelData").GetComponent<MapLogic>();
 
-        if(isMoving)
+        //Not ellegant, but check every frame to see if the map BGM should play
+        ml.StartMusic();
+
+            //isOnGrid = false;
+
+        if (isMoving)
         {
             transform.position = transform.position + moveVector * moveSpeed;
             CheckForGridAlignment();
-            if(isOnGrid)
+            if(isOnGrid && canAct)
             {
                 isMoving = false;
-                GameObject.Find("LevelData").GetComponent<MapLogic>().FinishStep();                
+                ml.FinishStep();                
             }
         }
 

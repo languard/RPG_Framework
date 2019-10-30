@@ -57,7 +57,6 @@ public class GameMaster : MonoBehaviour {
 
         if (showSystemChat && !switchingMaps)
         {
-            print("meep");
             showSystemChat = false;
             systemChatUp = true;
             systemChat.ExecuteBlock("SystemChat");
@@ -230,6 +229,7 @@ public class GameMaster : MonoBehaviour {
     {
         music.clip = clip;
         music.loop = repeat;
+        music.Stop();
         music.Play();
 
     }
