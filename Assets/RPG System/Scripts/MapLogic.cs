@@ -25,7 +25,7 @@ public class MapLogic : MonoBehaviour {
     int stepsCurrent = 0;
     int oddsCurrent = 0;
 
-    bool startMusic = false;
+    bool startMusic = true;
 
 	// Use this for initialization
 	void Start () {

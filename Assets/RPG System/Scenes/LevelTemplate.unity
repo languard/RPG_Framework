@@ -289,7 +289,7 @@ PrefabInstance:
     - target: {fileID: 114406119349410576, guid: 00f868c55028c1441a36631c8047ed05,
         type: 3}
       propertyPath: animationSpeed
-      value: 5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1464763902517492, guid: 00f868c55028c1441a36631c8047ed05, type: 3}
       propertyPath: m_Layer

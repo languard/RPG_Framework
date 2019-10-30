@@ -244,7 +244,7 @@ PrefabInstance:
     - target: {fileID: 7436468736875401731, guid: 439ccbc67f1ba894780f157be8099e08,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7436468736875401731, guid: 439ccbc67f1ba894780f157be8099e08,
         type: 3}
@@ -355,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4185858975741456, guid: c9701da330c329040b78a5de7a867736, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114177394518224738, guid: c9701da330c329040b78a5de7a867736,
         type: 3}
@@ -365,20 +365,24 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 114567959077021986, guid: c9701da330c329040b78a5de7a867736, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c9701da330c329040b78a5de7a867736, type: 3}
---- !u!1001 &1160351054
+--- !u!1001 &1241804247
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1844847173349452, guid: 76ab7d3952a4c3c489b51ead7e170f5a, type: 3}
+      propertyPath: m_Name
+      value: Paladin Kyra
+      objectReference: {fileID: 0}
     - target: {fileID: 4834117122569520, guid: 76ab7d3952a4c3c489b51ead7e170f5a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.47
+      value: 5.959229
       objectReference: {fileID: 0}
     - target: {fileID: 4834117122569520, guid: 76ab7d3952a4c3c489b51ead7e170f5a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.18
+      value: -0.44198978
       objectReference: {fileID: 0}
     - target: {fileID: 4834117122569520, guid: 76ab7d3952a4c3c489b51ead7e170f5a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -404,13 +408,19 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114481209278609766, guid: 76ab7d3952a4c3c489b51ead7e170f5a,
-        type: 3}
-      propertyPath: playerCombatID
-      value: paladin
+    - target: {fileID: 4834117122569520, guid: 76ab7d3952a4c3c489b51ead7e170f5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114722194942806820, guid: 76ab7d3952a4c3c489b51ead7e170f5a, type: 3}
+    - target: {fileID: 4834117122569520, guid: 76ab7d3952a4c3c489b51ead7e170f5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834117122569520, guid: 76ab7d3952a4c3c489b51ead7e170f5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76ab7d3952a4c3c489b51ead7e170f5a, type: 3}
 --- !u!1 &1439824704
 GameObject:
@@ -542,7 +552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4299844332663488, guid: 8919fe1c4ea52ac428808d9ed5279c94, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8919fe1c4ea52ac428808d9ed5279c94, type: 3}
@@ -718,6 +728,7 @@ MonoBehaviour:
     m_StretchHeight: 0
   sceneOutroTime: 2
   playerCommandButtons: []
+  battleMusic: {fileID: 0}
   victoryGold: 1
 --- !u!4 &1640505675
 Transform:

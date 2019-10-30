@@ -89,7 +89,6 @@ GameObject:
   - component: {fileID: 61228236331814268}
   - component: {fileID: 50537909096516228}
   - component: {fileID: 114481209278609766}
-  - component: {fileID: 114722194942806820}
   - component: {fileID: 114007490974659302}
   m_Layer: 0
   m_Name: Paladin Kyra
@@ -224,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionDelay: 3
+  useReaction: 0
   entity:
     name: DEFAULT
     combatID: 
@@ -250,46 +250,6 @@ MonoBehaviour:
     magicArmorBase: 0
   playerSkills: {fileID: 0}
   playerCombatID: paladin
---- !u!114 &114722194942806820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844847173349452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f73fdf33618c1a64b9138aabd479a677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength: 12
-  constitution: 15
-  willpower: 14
-  intelligence: 10
-  vBase: 100
-  vStrScale: 1
-  vConScale: 1
-  vStatScale: 1
-  vLevelScale: 1
-  mBase: 100
-  mIntScale: 1
-  mWillScale: 1
-  mStatScale: 1
-  mLevelScale: 1
-  rBase: 100
-  rStrScale: 1
-  rIntScale: 1
-  rStatScale: 1
-  rLevelScale: 1
-  endBase: 100
-  endConScale: 1
-  endWillScale: 1
-  endStatScale: 1
-  endLevelScale: 1
-  classStrScale: 1
-  classConScale: 1
-  classIntScale: 1
-  classWillScale: 1
 --- !u!114 &114007490974659302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +265,7 @@ MonoBehaviour:
   skillNames:
   - Player_Fight
   - Kyra_Healing_Prayer
+  - Kill
 --- !u!1 &1845740922103368
 GameObject:
   m_ObjectHideFlags: 0
