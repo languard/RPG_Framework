@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 #if UNITY_EDITOR
-//[CustomEditor(typeof(PlayerSkills))]
+[CustomEditor(typeof(PlayerSkills))]
 public class PlayerSkillsEditor : Editor
 {
     private List<string> skillNames = new List<string>();
@@ -79,6 +79,7 @@ public class PlayerSkillsEditor : Editor
                 if (i != killIndex) newSkills.Add(playerSkills.skillNames[i]);
             }
             playerSkills.skillNames = newSkills.ToArray();
+            serializedObject.ApplyModifiedProperties();
         }
         EditorGUILayout.EndVertical();
 
@@ -97,10 +98,11 @@ public class PlayerSkillsEditor : Editor
             newSkills.Add(selectedSkillName);
 
             playerSkills.skillNames = newSkills.ToArray();
+            serializedObject.ApplyModifiedProperties();
         }
         EditorGUILayout.EndHorizontal();
 
-        serializedObject.ApplyModifiedProperties();
+        //serializedObject.ApplyModifiedProperties();
 
         return;
     }
