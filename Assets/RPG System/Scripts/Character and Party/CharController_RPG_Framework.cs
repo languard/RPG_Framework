@@ -16,10 +16,13 @@ public class CharController_RPG_Framework : MonoBehaviour {
     [SerializeField]
     Camera mainCamera;
 
+    [SerializeField]
+    bool keypressForEachTile = false;
 
     public bool isMoving = false;
     public bool isOnGrid = false;
     public bool canAct = true;
+    public bool canMove = true;
 
     Vector3 moveVector = Vector3.zero;
 
@@ -50,6 +53,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
         GM.RegisterPlayerController(this);
         
     }
+    
 
     void Update()
     {
@@ -61,6 +65,10 @@ public class CharController_RPG_Framework : MonoBehaviour {
             if(Input.GetButtonDown("UseAction"))
             {
                 CheckForUsableObject(moveDirection);
+            }
+            if(Input.anyKeyDown)
+            {
+                canMove = true;
             }
         }
 
@@ -122,7 +130,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
         CheckForGridAlignment();
 
         //movement
-        if (isOnGrid && canAct)
+        if (isOnGrid && canAct && canMove)
         {
             isMoving = false;            
             if (currentVertical < -0.2f && currentVertical < currentHorizontal)
@@ -134,7 +142,8 @@ public class CharController_RPG_Framework : MonoBehaviour {
                 {
                     isMoving = true;
                     moveVector = Vector3.zero;
-                    moveVector.y = -1;                    
+                    moveVector.y = -1;
+                    canMove = keypressForEachTile ? false : true;
                 }
             }
             else if (currentVertical > 0.2f && currentVertical > currentHorizontal)
@@ -146,7 +155,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
                     isMoving = true;
                     moveVector = Vector3.zero;
                     moveVector.y = 1;
-                    
+                    canMove = keypressForEachTile ? false : true;
                 }
             }
             else if (currentHorizontal > 0.2f)
@@ -158,7 +167,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
                     isMoving = true;
                     moveVector = Vector3.zero;
                     moveVector.x = 1;
-                    
+                    canMove = keypressForEachTile ? false : true;
                 }
             }
             else if (currentHorizontal < -0.2f)
@@ -170,7 +179,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
                     isMoving = true;
                     moveVector = Vector3.zero;
                     moveVector.x = -1;
-                    
+                    canMove = keypressForEachTile ? false : true;
                 }
             }
         } // end movement
