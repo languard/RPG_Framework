@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(PlayerSkills))]
+//[CustomEditor(typeof(PlayerSkills))]
 public class PlayerSkillsEditor : Editor
 {
     private List<string> skillNames = new List<string>();

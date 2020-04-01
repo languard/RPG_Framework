@@ -299,8 +299,10 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 1357386448}
+  selectedCommands:
+  - {fileID: 1357386450}
   variables:
   - {fileID: 1357386447}
   description: 
@@ -695,6 +697,16 @@ PrefabInstance:
       propertyPath: partyList.Array.data[0].entityLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 3}
+      propertyPath: partyList.Array.data[0].hitPointsBase
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 3}
+      propertyPath: partyList.Array.data[0].hitPoints
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 114793369524748142, guid: f7571f6ca39609b43846fde237c18c96,
         type: 3}
       propertyPath: variables.Array.size
@@ -906,7 +918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1357386449}
+  selectedFlowchart: {fileID: 0}
 --- !u!4 &2077758748
 Transform:
   m_ObjectHideFlags: 1
