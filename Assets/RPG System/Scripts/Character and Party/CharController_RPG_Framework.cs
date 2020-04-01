@@ -13,6 +13,8 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
     [SerializeField] float delta = 0.001f;
 
+    [SerializeField] bool gridJumpMovement = false;
+
     [SerializeField]
     Camera mainCamera;
 

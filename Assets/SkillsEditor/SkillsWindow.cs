@@ -49,7 +49,7 @@ public class SkillDescriptor
 
 public class SkillDatabase
 {
-    public static string jsonFilePath = "skills.json";
+    public static string jsonFilePath = System.IO.Path.Combine(Application.streamingAssetsPath, "skills.json");
     private static Dictionary<string, SkillDescriptor> skillsByName = new Dictionary<string, SkillDescriptor>();
 
     public static SkillDescriptor GetSkill(string name)

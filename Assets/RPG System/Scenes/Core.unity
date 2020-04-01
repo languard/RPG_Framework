@@ -767,6 +767,21 @@ PrefabInstance:
       propertyPath: loadPriorScene
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82358497234020558, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82355456315134704, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82476584015356822, guid: f7571f6ca39609b43846fde237c18c96,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114371801599755876, guid: f7571f6ca39609b43846fde237c18c96, type: 3}
     - {fileID: 114793369524748142, guid: f7571f6ca39609b43846fde237c18c96, type: 3}
