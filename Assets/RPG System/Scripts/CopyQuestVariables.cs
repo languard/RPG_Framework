@@ -11,19 +11,23 @@ public class CopyQuestVariables : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        CopyGameMasterToFlowchart();
+	}
 
+    public void CopyGameMasterToFlowchart()
+    {
         gm = GameObject.Find("GameMaster").GetComponent<GameMaster>();
         Flowchart gmQuest = gm.GetQuestFlowchart();
         Flowchart target = this.GetComponent<Flowchart>();
 
-        Variable sourceVar = null;        
+        Variable sourceVar = null;
 
-        for(int i=0; i<varNames.Length; i++)
+        for (int i = 0; i < varNames.Length; i++)
         {
             sourceVar = gmQuest.GetVariable(varNames[i]);
 
             StringVariable tempstr = sourceVar as StringVariable;
-            if(tempstr != null)
+            if (tempstr != null)
             {
                 target.SetStringVariable(varNames[i], tempstr.Value);
                 continue;
@@ -50,8 +54,7 @@ public class CopyQuestVariables : MonoBehaviour {
                 continue;
             }
         }
-		
-	}
+    }
 
     public void CopyFlowchartToGameMaster()
     {
