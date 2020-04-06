@@ -13,7 +13,7 @@ public class SimpleCharacterAnimator : MonoBehaviour {
     [SerializeField]
     Sprite[] upSprites;
 
-    [SerializeField]
+    [SerializeField, Tooltip("For 32 pixel tiles, set around 0.1")]
     float animationSpeed = 1;
 
     float animationFrame = 0;

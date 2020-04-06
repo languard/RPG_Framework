@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionDelay: 5
+  useReaction: 0
   entity:
     name: DEFAULT
     combatID: 
@@ -138,8 +139,8 @@ MonoBehaviour:
     willpowerBase: 1
     intelligence: 1
     intelligenceBase: 1
-    hitPoints: 3
-    hitPointsBase: 3
+    hitPoints: 500
+    hitPointsBase: 500
     mana: 3
     manaBase: 3
     endurance: 3
@@ -147,10 +148,10 @@ MonoBehaviour:
     reaction: 3
     reactionBase: 3
     entityLevel: 1
-    physicalArmor: 0
-    physicalArmorBase: 0
-    magicArmor: 0
-    magicArmorBase: 0
+    physicalArmor: 500
+    physicalArmorBase: 500
+    magicArmor: 500
+    magicArmorBase: 500
 --- !u!114 &114298607451433564
 MonoBehaviour:
   m_ObjectHideFlags: 0

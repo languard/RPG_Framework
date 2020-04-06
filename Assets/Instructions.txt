@@ -1,0 +1,3 @@
+* Do not edit the skills of combat prefabs in the prefab editor.  Simply put, never open the combat prefabs in the prefab editor.
+* If you are testing a specific scene, make sure you set the editor override to load straight into the desired scene.
+* There is no way to test a battle without first loading into an exploration scene.  Use fight triggers to  test specific fight scenes.

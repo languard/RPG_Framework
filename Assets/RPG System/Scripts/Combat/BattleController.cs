@@ -32,6 +32,8 @@ public class BattleController : MonoBehaviour {
     private SkillDescriptor[] currentSkills;
 
     PlayerBattleUIController activePlayer;
+
+    public AudioClip battleMusic;
     #endregion
 
     //add any addition variables needed for battle rewards here
@@ -67,6 +69,7 @@ public class BattleController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        //Finding all players and the active sillhouettes
         GameObject[] players = GameObject.FindGameObjectsWithTag("PlayerCharacter");
         foreach (GameObject player in players)
         {
@@ -80,6 +83,7 @@ public class BattleController : MonoBehaviour {
             }
         }
 
+        //Finding all enemies and the active sillhouettes
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("EnemyCharacter");
         foreach (GameObject enemy in enemies)
         {
@@ -93,12 +97,20 @@ public class BattleController : MonoBehaviour {
             }
         }
 
+        //Turning all silhouettes off
         foreach (ActorCombatController actor in silhouettes.Keys)
         {
             silhouettes[actor].enabled = false;
         }
 
+        //setup array for skill buttons.  Player skill count cannot exceed button count.
         currentSkills = new SkillDescriptor[playerCommandButtons.Count];
+
+        //start battle music.  If no clip assigned, continue to play level music.
+        if (battleMusic != null)
+        {
+            GameObject.Find("GameMaster").GetComponent<GameMaster>().PlayMusic(battleMusic);
+        }
 
     }
 

@@ -13,13 +13,18 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
     [SerializeField] float delta = 0.001f;
 
+    [SerializeField] bool gridJumpMovement = false;
+
     [SerializeField]
     Camera mainCamera;
 
+    [SerializeField]
+    bool keypressForEachTile = false;
 
     public bool isMoving = false;
     public bool isOnGrid = false;
     public bool canAct = true;
+    public bool canMove = true;
 
     Vector3 moveVector = Vector3.zero;
 
@@ -40,6 +45,8 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
     Rigidbody2D rb;
 
+    MapLogic ml;
+
     // Use this for initialization
     void Start() {
         
@@ -48,6 +55,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
         GM.RegisterPlayerController(this);
         
     }
+    
 
     void Update()
     {
@@ -60,6 +68,10 @@ public class CharController_RPG_Framework : MonoBehaviour {
             {
                 CheckForUsableObject(moveDirection);
             }
+            if(Input.anyKeyDown)
+            {
+                canMove = true;
+            }
         }
 
         CheckForGridAlignment();
@@ -70,7 +82,6 @@ public class CharController_RPG_Framework : MonoBehaviour {
     {
         canAct = false;
         mainCamera.enabled = false;
-
     }
 
     public void ActivateController()
@@ -93,18 +104,23 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
         AnimationEvent(this);
         //only animation allowed if canAct is off
-        if (!canAct) return;  
+        if (!canAct) return;
 
-        //isOnGrid = false;
+        if (ml == null) ml = GameObject.Find("LevelData").GetComponent<MapLogic>();
 
-        if(isMoving)
+        //Not ellegant, but check every frame to see if the map BGM should play
+        ml.StartMusic();
+
+            //isOnGrid = false;
+
+        if (isMoving)
         {
             transform.position = transform.position + moveVector * moveSpeed;
             CheckForGridAlignment();
-            if(isOnGrid)
+            if(isOnGrid && canAct)
             {
                 isMoving = false;
-                GameObject.Find("LevelData").GetComponent<MapLogic>().FinishStep();                
+                ml.FinishStep();                
             }
         }
 
@@ -116,7 +132,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
         CheckForGridAlignment();
 
         //movement
-        if (isOnGrid && canAct)
+        if (isOnGrid && canAct && canMove)
         {
             isMoving = false;            
             if (currentVertical < -0.2f && currentVertical < currentHorizontal)
@@ -128,7 +144,8 @@ public class CharController_RPG_Framework : MonoBehaviour {
                 {
                     isMoving = true;
                     moveVector = Vector3.zero;
-                    moveVector.y = -1;                    
+                    moveVector.y = -1;
+                    canMove = keypressForEachTile ? false : true;
                 }
             }
             else if (currentVertical > 0.2f && currentVertical > currentHorizontal)
@@ -140,7 +157,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
                     isMoving = true;
                     moveVector = Vector3.zero;
                     moveVector.y = 1;
-                    
+                    canMove = keypressForEachTile ? false : true;
                 }
             }
             else if (currentHorizontal > 0.2f)
@@ -152,7 +169,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
                     isMoving = true;
                     moveVector = Vector3.zero;
                     moveVector.x = 1;
-                    
+                    canMove = keypressForEachTile ? false : true;
                 }
             }
             else if (currentHorizontal < -0.2f)
@@ -164,7 +181,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
                     isMoving = true;
                     moveVector = Vector3.zero;
                     moveVector.x = -1;
-                    
+                    canMove = keypressForEachTile ? false : true;
                 }
             }
         } // end movement
