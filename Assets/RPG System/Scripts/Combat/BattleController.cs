@@ -37,6 +37,11 @@ public class BattleController : MonoBehaviour {
     #endregion
 
     //add any addition variables needed for battle rewards here
+    //Either modify GameMaster.BattleDone or create new methods to
+    //pass on addition reward variables.
+    //Around line 154 contains the call to BattleDone.  You can also
+    //use Find All References on victoryGold to find where to make
+    //changes.
     public int victoryGold = 1;
 
     private enum CommandState

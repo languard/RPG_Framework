@@ -281,7 +281,7 @@ public class CharController_RPG_Framework : MonoBehaviour {
             Fungus.Flowchart fc = hitList[i].collider.gameObject.GetComponent<Fungus.Flowchart>();
             if (fc != null)
             {                
-                fc.ExecuteBlock("InteractStart");
+                fc.ExecuteBlockDisableMove("InteractStart");
                 break;
             }//end if
         }//end for

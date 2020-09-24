@@ -40,7 +40,7 @@ public class Party : MonoBehaviour {
     {
         for(int i=0; i<partyList.Count; i++)
         {
-            if (partyList[i].name == name) return partyList[i];            
+            if (partyList[i].entityName == name) return partyList[i];            
         }
 
         return new Entity();

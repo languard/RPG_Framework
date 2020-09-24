@@ -6,8 +6,6 @@ using UnityEngine;
 [System.Serializable]
 public class EnemySkills : MonoBehaviour {
 
-
-
     private SkillDescriptor[] skills;
     public string[] skillNames;
     public int[] weights;

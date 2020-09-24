@@ -79,6 +79,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -128,30 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionDelay: 5
   useReaction: 0
-  entity:
-    name: DEFAULT
-    combatID: 
-    strength: 1
-    strengthBase: 1
-    constitution: 1
-    constitutionBase: 1
-    willpower: 1
-    willpowerBase: 1
-    intelligence: 1
-    intelligenceBase: 1
-    hitPoints: 500
-    hitPointsBase: 500
-    mana: 3
-    manaBase: 3
-    endurance: 3
-    enduranceBase: 3
-    reaction: 3
-    reactionBase: 3
-    entityLevel: 1
-    physicalArmor: 500
-    physicalArmorBase: 500
-    magicArmor: 500
-    magicArmorBase: 500
+  entity: {fileID: 11400000, guid: 509255f28d630a544bc8b4478dcd7033, type: 2}
 --- !u!114 &114298607451433564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +200,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -245,3 +226,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

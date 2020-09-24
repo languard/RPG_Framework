@@ -37,12 +37,16 @@ public class SimpleCharacterAnimator : MonoBehaviour {
     public void DoAnimation(CharController_RPG_Framework controler)
     {
         //animate and move if moving
-        if (controler.isMoving)
+        if (controler.isMoving && animationSpeed != 0)
         {
             animationFrame += animationSpeed;
             if (animationFrame >= maxAnimationFrame) animationFrame = 1;
 
             
+        }
+        else if(animationSpeed == 0)
+        {
+            animationFrame = 0;
         }
         else
         {

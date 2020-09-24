@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour {
 
+    public static GameMaster instance;
+
     [SerializeField] string startingMap = "NOT SET";
     [SerializeField] int startX = 0;
     [SerializeField] int startY = 0;
@@ -50,6 +52,9 @@ public class GameMaster : MonoBehaviour {
         systemChat = GameObject.Find("SystemChat").GetComponent<Fungus.Flowchart>();
 
         if (SceneManager.sceneCount > 1) SceneManager.LoadScene("Core");
+
+        if (instance == null) instance = this;
+        else Debug.LogError("WARNING: multiple instances of GameMaster created!");
     }
 	
 	// Update is called once per frame
@@ -83,6 +88,16 @@ public class GameMaster : MonoBehaviour {
             }
         }
 	}
+
+    public void DisableCharacterMovement()
+    {
+        playerController.canAct = false;
+    }
+
+    public void EnableCharacterMovement()
+    {
+        playerController.canAct = true;
+    }
 
     public void LoadStartMap()
     {

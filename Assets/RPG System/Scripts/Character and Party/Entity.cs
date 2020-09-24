@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 
 //Both monsters and Characters use the Entity class
 [System.Serializable]
-public class Entity
+public class Entity : ScriptableObject
 {
 
-    public string name;
+    public string entityName;
     public string combatID;
 
     public int strength;
@@ -39,6 +40,9 @@ public class Entity
     public int physicalArmorBase;
     public int magicArmor;
     public int magicArmorBase;
+
+    public PlayerSkills playerSkills;
+    public EnemySkills enemySkills;
 
 
     //property used by combat system
@@ -76,7 +80,7 @@ public class Entity
 
         entityLevel = 1;
 
-        name = "DEFAULT";
+        entityName = "DEFAULT";
     }
 
     public void CalculateAllStats()
@@ -117,6 +121,8 @@ public class Entity
         constitution = constitutionBase;
         willpower = willpowerBase;
         intelligence = intelligenceBase;
+        physicalArmor = physicalArmorBase;
+        magicArmor = magicArmorBase;
     }
 
     public void FullHeal()

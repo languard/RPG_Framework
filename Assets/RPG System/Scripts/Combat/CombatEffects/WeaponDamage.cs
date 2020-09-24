@@ -7,11 +7,13 @@ public class WeaponDamage : CombatEffectBase {
     public WeaponDamage(ActorCombatController source, ActorCombatController target, string damageExpression)
         :base(source, target, damageExpression, Effect.WeaponDamage)
     {
+        Debug.Log(damageExpression);
     }
 
     public override void ApplyEffect(int damage)
     {
         // TODO: Evaluate effectExpression to calculate damage
+        
         target.entity.hitPoints -= damage;
     }
 
