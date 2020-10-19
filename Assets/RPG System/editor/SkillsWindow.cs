@@ -22,6 +22,8 @@ public class SkillsWindow : EditorWindow
         // so we use 0 for everything.
         // This is the list of variables the user can enter into expression formulas
         // for effect magnitudes.
+        //fixing a bug where this is being called more than once
+        validVariables.Clear();
         validVariables.Add("SOURCE_STR", 0);
         validVariables.Add("SOURCE_CON", 0);
         validVariables.Add("SOURCE_WIL", 0);
@@ -65,7 +67,7 @@ public class SkillsWindow : EditorWindow
         SkillDatabase.LoadSkills();
     }
 
-    [MenuItem("Tools/Skills/Skills Editor")]
+    [MenuItem("RPG Framework/Skills Editor")]
     static void ShowWindow()
     {
         instance = (SkillsWindow)EditorWindow.GetWindow<SkillsWindow>();

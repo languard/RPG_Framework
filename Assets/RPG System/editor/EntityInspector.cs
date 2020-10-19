@@ -11,7 +11,7 @@ public class EntityInspector : Editor
         EditorGUILayout.LabelField("Please use the Entity Editor Window");
         if (GUILayout.Button("Open Window"))
         {
-            EntityEditor.MenuCreateWindow();
+            EnemyEntityEditor.MenuCreateWindow();
         }
     }
 }

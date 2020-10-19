@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class EntityEditor : EditorWindow
+public class EnemyEntityEditor : EditorWindow
 {
-    public static EntityEditor instance;
+    public static EnemyEntityEditor instance;
 
     string errorMessage = "";
 
@@ -18,8 +18,8 @@ public class EntityEditor : EditorWindow
     [MenuItem("RPG Framework/Monster Editor")]
     public static void MenuCreateWindow()
     {
-        if (instance == null) instance = CreateWindow<EntityEditor>();
-        else EditorWindow.FocusWindowIfItsOpen<EntityEditor>();
+        if (instance == null) instance = CreateWindow<EnemyEntityEditor>();
+        else EditorWindow.FocusWindowIfItsOpen<EnemyEntityEditor>();
         instance.UpdateSlection();
     }
 
@@ -28,9 +28,9 @@ public class EntityEditor : EditorWindow
     {
         //detects if the window is alread opened and grabs it.
         //Code recompiles causes the instance reference to be lost.
-        if (EditorWindow.HasOpenInstances<EntityEditor>())
+        if (EditorWindow.HasOpenInstances<EnemyEntityEditor>())
         {
-            instance = EditorWindow.GetWindow<EntityEditor>("", false);
+            instance = EditorWindow.GetWindow<EnemyEntityEditor>("", false);
             instance.UpdateSlection();
         }
     }

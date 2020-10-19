@@ -12,7 +12,7 @@ public class EnemyCombatControllerInspector : Editor
         EditorGUILayout.LabelField("You must also open the prefeb editor");
         if (GUILayout.Button("Open Window"))
         {
-            EntityEditor.MenuCreateWindow();
+            EnemyEntityEditor.MenuCreateWindow();
         }
         //The string labels can be changed without issue
         Entity temp = (Entity)serializedObject.FindProperty("entity").objectReferenceValue;
