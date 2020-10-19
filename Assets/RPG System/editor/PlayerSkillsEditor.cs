@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Experimental.TerrainAPI;
 using UnityEngine;
 
-#if UNITY_EDITOR
-//[CustomEditor(typeof(PlayerSkills))]
+[CustomEditor(typeof(PlayerSkills))]
 public class PlayerSkillsEditor : Editor
 {
+
+    /*
     private List<string> skillNames = new List<string>();
     private int selectedSkillIndex = 0;
 
     private void OnEnable()
-    {
+    {        
         // Reload skills database
         SkillDatabase.LoadSkills();
         skillNames = SkillDatabase.FindSkills(string.Empty);
@@ -106,5 +108,13 @@ public class PlayerSkillsEditor : Editor
 
         return;
     }
+    */
+    public override void OnInspectorGUI()
+    {
+        EditorGUILayout.LabelField("Please use the Party Editor Window");
+        if (GUILayout.Button("Open Window"))
+        {
+            PartyEditorWindow.MenuCreateWindow();
+        }
+    }
 }
-#endif

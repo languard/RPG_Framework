@@ -30,7 +30,7 @@ MonoBehaviour:
   enduranceBase: 96
   reaction: 121
   reactionBase: 121
-  entityLevel: 30
+  entityLevel: 35
   physicalArmor: 50
   physicalArmorBase: 50
   magicArmor: 80
