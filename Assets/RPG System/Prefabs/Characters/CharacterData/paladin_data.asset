@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa4c6bbf47e6ab2479d2edcf336f15d0, type: 3}
+  m_Name: paladin_data
+  m_EditorClassIdentifier: 
+  entityName: Paladin
+  combatID: paladin
+  strength: 15
+  strengthBase: 15
+  constitution: 16
+  constitutionBase: 16
+  willpower: 12
+  willpowerBase: 12
+  intelligence: 10
+  intelligenceBase: 10
+  hitPoints: 32
+  hitPointsBase: 32
+  mana: 23
+  manaBase: 23
+  endurance: 29
+  enduranceBase: 29
+  reaction: 26
+  reactionBase: 26
+  entityLevel: 1
+  physicalArmor: 5
+  physicalArmorBase: 5
+  magicArmor: 3
+  magicArmorBase: 3
+  playerSkills: {fileID: 0}
+  enemySkills: {fileID: 0}

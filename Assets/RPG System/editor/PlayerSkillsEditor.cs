@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditor.Experimental.TerrainAPI;
 using UnityEngine;
 
-[CustomEditor(typeof(PlayerSkills))]
+//[CustomEditor(typeof(PlayerSkills))]
 public class PlayerSkillsEditor : Editor
 {
 

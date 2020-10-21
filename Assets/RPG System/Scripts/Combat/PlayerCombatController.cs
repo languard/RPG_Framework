@@ -23,6 +23,7 @@ public class PlayerCombatController : ActorCombatController
         anim = GetComponent<Animator>();
         playerBattleUIController = GameObject.FindGameObjectWithTag("PlayerBattleUIController").GetComponent<PlayerBattleUIController>();
         playerSkills = GetComponent<PlayerSkills>();     
+        //playerSkills = entity.playerSkills;
     }
 
     protected override void OnReadyForCommand()
