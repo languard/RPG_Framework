@@ -129,6 +129,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -225,30 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionDelay: 2.5
   useReaction: 0
-  entity:
-    name: DEFAULT
-    combatID: 
-    strength: 1
-    strengthBase: 1
-    constitution: 1
-    constitutionBase: 1
-    willpower: 1
-    willpowerBase: 1
-    intelligence: 1
-    intelligenceBase: 1
-    hitPoints: 3
-    hitPointsBase: 3
-    mana: 3
-    manaBase: 3
-    endurance: 3
-    enduranceBase: 3
-    reaction: 3
-    reactionBase: 3
-    entityLevel: 1
-    physicalArmor: 0
-    physicalArmorBase: 0
-    magicArmor: 0
-    magicArmorBase: 0
+  entity: {fileID: 0}
   playerSkills: {fileID: 0}
   playerCombatID: fighter
 --- !u!114 &114772272222576836
@@ -266,6 +245,7 @@ MonoBehaviour:
   skillNames:
   - Player_Fight
   - Guel_Hunter_Shot
+  - Spell_Fireball
 --- !u!114 &114992821366229694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +382,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -426,6 +408,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &64863627316477422
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -436,9 +419,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1996503207883090
 GameObject:
@@ -494,6 +477,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -518,3 +503,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

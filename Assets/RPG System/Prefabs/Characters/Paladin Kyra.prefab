@@ -245,6 +245,7 @@ MonoBehaviour:
   - Player_Fight
   - Kyra_Healing_Prayer
   - Kill
+  - Blorp_Slam
 --- !u!1 &1845740922103368
 GameObject:
   m_ObjectHideFlags: 0

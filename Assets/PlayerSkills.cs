@@ -11,6 +11,7 @@ public class PlayerSkills : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         if (!SkillDatabase.isLoaded) SkillDatabase.LoadSkills();
+        if (skillNames == null) skillNames = new string[0];
         skills = new SkillDescriptor[skillNames.Length];
         for (int i = 0; i < skillNames.Length; i++)
         {

@@ -234,56 +234,9 @@ public class PartyEditorWindow : EditorWindow
 
     public void EditSkills()
     {
-        EditorGUILayout.LabelField("Not working yet.");
-        EditorGUILayout.LabelField("Select prefab and manually enter skill names.");
-        return;
-        //grab player skills from Entity
-        Entity currentEntity = gm.GetComponentInChildren<Party>().partyList[partySelected];
-        if (currentEntity.playerSkills == null) currentEntity.playerSkills = new PlayerSkills();
-        SerializedObject skills = new SerializedObject(entityTarget.FindProperty("playerSkills").objectReferenceValue);
-        //Grab skill names
-        SerializedProperty skillList = skills.FindProperty("skillNames");
-        if (!SkillDatabase.isLoaded) SkillDatabase.LoadSkills();
-
-        int skillCount = skillList.arraySize;
-        int deleteTarget = -1;
-        for (int i = 0; i < skillCount; i++)
-        {
-            SerializedProperty currentSkillName = skillList.GetArrayElementAtIndex(i);
-            SkillDescriptor currentSkill = SkillDatabase.GetSkill(currentSkillName.stringValue);
-            GUILayout.BeginHorizontal();
-
-            GUILayout.Label(currentSkill.displayText);
-            if (GUILayout.Button("Remove"))
-            {
-                deleteTarget = i;
-            }
-            GUILayout.EndHorizontal();
-        }
-        if (deleteTarget > -1)
-        {
-            skillList.DeleteArrayElementAtIndex(deleteTarget);
-        }
-
-        //put all skills into a combo box for selection
-        List<SkillDescriptor> allSkills = SkillDatabase.GetAllSkills();
-        string[] skillDisplay = new string[allSkills.Count];
-        for (int i = 0; i < allSkills.Count; i++)
-        {
-            skillDisplay[i] = allSkills[i].displayText;
-        }
-
-        GUILayout.BeginHorizontal();
-        currentSelectedPopUpSkill = EditorGUILayout.Popup(currentSelectedPopUpSkill, skillDisplay);
-        if (GUILayout.Button("Add"))
-        {
-            int targetIndex = skillList.arraySize;
-            skillList.InsertArrayElementAtIndex(targetIndex);
-            SerializedProperty newSkill = skillList.GetArrayElementAtIndex(targetIndex);
-            newSkill.stringValue = allSkills[currentSelectedPopUpSkill].name;
-        }
-
-        skills.ApplyModifiedProperties();
+        EditorGUILayout.LabelField("Not working yet here.");
+        EditorGUILayout.LabelField("Select prefab and use the Inspector.");
+        return;       
     }
 
     [UnityEditor.Callbacks.DidReloadScripts]

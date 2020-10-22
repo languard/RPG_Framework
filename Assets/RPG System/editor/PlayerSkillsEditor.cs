@@ -4,11 +4,9 @@ using UnityEditor;
 using UnityEditor.Experimental.TerrainAPI;
 using UnityEngine;
 
-//[CustomEditor(typeof(PlayerSkills))]
+[CustomEditor(typeof(PlayerSkills))]
 public class PlayerSkillsEditor : Editor
 {
-
-    /*
     private List<string> skillNames = new List<string>();
     private int selectedSkillIndex = 0;
 
@@ -46,8 +44,11 @@ public class PlayerSkillsEditor : Editor
     {
         serializedObject.Update();
 
-        PlayerSkills playerSkills = target as PlayerSkills;
-        if (playerSkills.skillNames == null) playerSkills.skillNames = new string[0];
+        SerializedObject playerSkills = new SerializedObject(target as PlayerSkills);
+        SerializedProperty skillNamesSP = playerSkills.FindProperty("skillNames");
+
+        //PlayerSkills playerSkills = target as PlayerSkills;
+        //if (playerSkills.skillNames == null) playerSkills.skillNames = new string[0];
 
         int y = 0, killIndex = -1;
         //EditorGUI.LabelField(new Rect(5, y, 50, 15), "Skill");
@@ -57,15 +58,15 @@ public class PlayerSkillsEditor : Editor
 
         EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(false));
         EditorGUILayout.LabelField("Skill", GUILayout.ExpandWidth(false));
-        for (int i = 0; i < playerSkills.skillNames.Length; i++)
+        for (int i = 0; i < skillNamesSP.arraySize; i++)
         {
-            EditorGUILayout.LabelField(playerSkills.skillNames[i], GUILayout.ExpandWidth(false));
+            EditorGUILayout.LabelField(skillNamesSP.GetArrayElementAtIndex(i).stringValue, GUILayout.ExpandWidth(false));
         }
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(false));
         EditorGUILayout.LabelField("Remove", GUILayout.ExpandWidth(false));
-        for (int i = 0; i < playerSkills.skillNames.Length; i++)
+        for (int i = 0; i < skillNamesSP.arraySize; i++)
         {
             if (GUILayout.Button("X", GUILayout.ExpandWidth(false)))
             {
@@ -74,13 +75,7 @@ public class PlayerSkillsEditor : Editor
         }
         if (killIndex >= 0)
         {
-            // Rebuild array without this one
-            List<string> newSkills = new List<string>();
-            for (int i = 0; i < playerSkills.skillNames.Length; i++)
-            {
-                if (i != killIndex) newSkills.Add(playerSkills.skillNames[i]);
-            }
-            playerSkills.skillNames = newSkills.ToArray();
+            skillNamesSP.DeleteArrayElementAtIndex(killIndex);
             serializedObject.ApplyModifiedProperties();
         }
         EditorGUILayout.EndVertical();
@@ -89,32 +84,31 @@ public class PlayerSkillsEditor : Editor
 
 
         EditorGUILayout.BeginHorizontal(GUILayout.ExpandWidth(false));
-        selectedSkillIndex = EditorGUILayout.Popup(selectedSkillIndex, skillNames.ToArray(), GUILayout.ExpandWidth(false));
+        selectedSkillIndex = EditorGUILayout.Popup(selectedSkillIndex, this.skillNames.ToArray(), GUILayout.ExpandWidth(false));
         if (GUILayout.Button("Add", GUILayout.ExpandWidth(false)))
         {
-            string selectedSkillName = skillNames[selectedSkillIndex];
+            string selectedSkillName = this.skillNames[selectedSkillIndex];
             selectedSkillIndex = -1;
 
-            List<string> newSkills = new List<string>();
-            newSkills.AddRange(playerSkills.skillNames);
-            newSkills.Add(selectedSkillName);
+            int targetIndex = skillNamesSP.arraySize;
 
-            playerSkills.skillNames = newSkills.ToArray();
-            serializedObject.ApplyModifiedProperties();
+            skillNamesSP.InsertArrayElementAtIndex(targetIndex);
+            skillNamesSP.GetArrayElementAtIndex(targetIndex).stringValue = selectedSkillName;
+            playerSkills.ApplyModifiedProperties();
         }
         EditorGUILayout.EndHorizontal();
 
-        //serializedObject.ApplyModifiedProperties();
+        serializedObject.ApplyModifiedProperties();
 
         return;
     }
-    */
-    public override void OnInspectorGUI()
-    {
-        EditorGUILayout.LabelField("Please use the Party Editor Window");
-        if (GUILayout.Button("Open Window"))
-        {
-            PartyEditorWindow.MenuCreateWindow();
-        }
-    }
+    
+    //public override void OnInspectorGUI()
+    //{
+    //    EditorGUILayout.LabelField("Please use the Party Editor Window");
+    //    if (GUILayout.Button("Open Window"))
+    //    {
+    //        PartyEditorWindow.MenuCreateWindow();
+    //    }
+    //}
 }
