@@ -557,10 +557,19 @@ namespace Fungus
             }
         }
 
+        /// <summary>
+        /// Custom code for RPG Framework, automatically disables movement and copies variables from GM to Flowchart
+        /// </summary>
+        /// <param name="blockName">Block to execute</param>
         public virtual void ExecuteBlockDisableMove(string blockName)
         {
+            //disable movement
             GameMaster.instance.DisableCharacterMovement();
             disableMoveWhenActive = true;
+            //Check for the copy component to automatically update variables
+            CopyQuestVariables cqv = GetComponent<CopyQuestVariables>();
+            if (cqv != null) cqv.CopyGameMasterToFlowchart();
+            //Excute Block
             ExecuteBlock(blockName);
         }
             
