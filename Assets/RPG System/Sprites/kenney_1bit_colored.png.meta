@@ -892,10 +892,10 @@ TextureImporter:
     second: colored_295
   - first:
       213: -2784276677790117873
-    second: colored_296
+    second: Chest_closed
   - first:
       213: -4438004198097265403
-    second: colored_297
+    second: chest_opened
   - first:
       213: 5632229701308644663
     second: colored_298
@@ -1021,7 +1021,7 @@ TextureImporter:
     second: colored_338
   - first:
       213: -3838732585716440413
-    second: colored_339
+    second: bookcase
   - first:
       213: -4821499376021919839
     second: colored_340
@@ -1171,7 +1171,7 @@ TextureImporter:
     second: colored_388
   - first:
       213: 8011179097440696663
-    second: colored_389
+    second: bed
   - first:
       213: -893408439627121702
     second: colored_390
@@ -3170,6 +3170,12 @@ TextureImporter:
   - first:
       213: -3483427931420312910
     second: colored_1055
+  - first:
+      213: -7569515612615164345
+    second: kenney_1bit_colored_0
+  - first:
+      213: 3472440637855881432
+    second: kenney_1bit_colored_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -6912,8 +6918,8 @@ TextureImporter:
         y: 306
         width: 16
         height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -6933,8 +6939,8 @@ TextureImporter:
         y: 306
         width: 16
         height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -9509,7 +9515,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_296
+      name: Chest_closed
       rect:
         serializedVersion: 2
         x: 136
@@ -9530,7 +9536,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_297
+      name: chest_opened
       rect:
         serializedVersion: 2
         x: 153
@@ -10412,7 +10418,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_339
+      name: bookcase
       rect:
         serializedVersion: 2
         x: 51
@@ -11462,7 +11468,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_389
+      name: bed
       rect:
         serializedVersion: 2
         x: 85
@@ -25464,6 +25470,48 @@ TextureImporter:
       bones: []
       spriteID: 2bab40b90c068afc0800000000000000
       internalID: -3483427931420312910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kenney_1bit_colored_0
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 238
+        width: 187
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74ebc44c7ada3f690800000000000000
+      internalID: -7569515612615164345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kenney_1bit_colored_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 815
+        height: 373
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d8d703cc56903030800000000000000
+      internalID: 3472440637855881432
       vertices: []
       indices: 
       edges: []

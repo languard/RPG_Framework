@@ -46,7 +46,10 @@ public class PlayerCombatController : ActorCombatController
     {
         if (entity.isDisabled)
         {
-            anim.SetTrigger("onKilled");
+            //HACK
+            //no animation, just disable sprite
+            //anim.SetTrigger("onKilled");
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
         }
     }
 }

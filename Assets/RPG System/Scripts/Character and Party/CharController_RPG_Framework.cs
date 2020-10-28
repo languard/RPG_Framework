@@ -252,6 +252,9 @@ public class CharController_RPG_Framework : MonoBehaviour {
 
     void CheckForUsableObject(int direction)
     {
+        //making sure this can't be triggered during a fight or character is otherwise locked down
+        if (!canAct || !canMove) return;
+
         Vector2 checkDir = Vector2.zero;
         RaycastHit2D[] hitList = new RaycastHit2D[5];
 

@@ -251,8 +251,6 @@ MonoBehaviour:
   questFlags: {fileID: 0}
   partyList:
   - {fileID: 11400000, guid: 54cdf2350e7eee546ac711f517d59534, type: 2}
-  - {fileID: 11400000, guid: f88c22d5babdce24baca98fb70246293, type: 2}
-  - {fileID: 0}
   partyGold: 0
 --- !u!1 &1688742831463146
 GameObject:

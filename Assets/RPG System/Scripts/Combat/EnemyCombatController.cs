@@ -16,7 +16,7 @@ public class EnemyCombatController : ActorCombatController
 
     protected override void OnUpdate()
     {
-        GetComponent<SpriteRenderer>().enabled = !entity.isDisabled;
+        GetComponentInChildren<SpriteRenderer>().enabled = !entity.isDisabled;
     }
 
     protected override void OnReadyForCommand()

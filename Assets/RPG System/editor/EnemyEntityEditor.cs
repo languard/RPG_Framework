@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class EnemyEntityEditor : EditorWindow
 {
@@ -88,6 +89,14 @@ public class EnemyEntityEditor : EditorWindow
             SerializedObject eccAsset = new SerializedObject(Selection.activeGameObject.GetComponent<EnemyCombatController>());
             SerializedProperty monsterDataAsset = eccAsset.FindProperty("entity");
             monsterDataAsset.objectReferenceValue = EditorGUILayout.ObjectField("Data:", monsterDataAsset.objectReferenceValue, typeof(Entity), false);
+
+            //HACK
+            if (monsterDataAsset.objectReferenceValue == null)
+            {
+                //need to save and bail to bring up the create data option
+                eccAsset.ApplyModifiedProperties();
+                return;
+            }
 
             Entity currentEntity = monsterDataAsset.objectReferenceValue as Entity;
             SerializedObject monsterStats = new SerializedObject(currentEntity);

@@ -16,6 +16,12 @@ public class EnemyCombatControllerInspector : Editor
         }
         //The string labels can be changed without issue
         Entity temp = (Entity)serializedObject.FindProperty("entity").objectReferenceValue;
+        //HACK
+        //if temp is null say so and bail
+        if(temp == null)
+        {
+            EditorGUILayout.LabelField("No enemy data");
+        }
         EditorGUILayout.LabelField("Health: " + temp.hitPoints);
         EditorGUILayout.LabelField("Endurance: " + temp.endurance);
         EditorGUILayout.LabelField("Magic: " + temp.mana);

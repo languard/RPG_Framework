@@ -1,9 +1,9 @@
-{"name":"Spell_Fireball","displayText":"Fireball","delay":4.0,"manaCost":0,"targets":27,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":2,"effectExpression":""},{"effectType":1,"effectExpression":""}]}
-{"name":"Monster_Attack","displayText":"Attack","delay":2.0,"manaCost":0,"targets":10,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectExpression":"SOURCE_STR + SOURCE_LVL * 2"}]}
+{"name":"Spell_Fireball","displayText":"Fireball","delay":4.0,"manaCost":0,"targets":16,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":1,"effectExpression":"SOURCE_INT + SOURCE_LVL * 2"}]}
+{"name":"Monster_Attack","displayText":"Attack","delay":2.0,"manaCost":0,"targets":10,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectExpression":"SOURCE_STR + SOURCE_LVL * 2 - TARGET_PARMOR / 2"}]}
 {"name":"Jaia_Hyper_Kick","displayText":"Hyper Kick","delay":2.0,"manaCost":0,"targets":16,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectExpression":""}]}
 {"name":"Kyra_Healing_Prayer","displayText":"Healing Prayer","delay":4.0,"manaCost":0,"targets":1,"startTarget":8,"isRetargetable":false,"effects":[{"effectType":3,"effectExpression":"SOURCE_WIL * 10"}]}
-{"name":"Player_Fight","displayText":"Fight","delay":2.0,"manaCost":0,"targets":10,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectExpression":"SOURCE_STR * 50 - TARGET_PARMOR"}]}
+{"name":"Player_Fight","displayText":"Fight","delay":2.0,"manaCost":0,"targets":10,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectExpression":"SOURCE_STR * 5 - TARGET_PARMOR"}]}
 {"name":"Guel_Hunter_Shot","displayText":"Hunter Shot","delay":5.0,"manaCost":0,"targets":8,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectExpression":"SOURCE_STR * (SOURCE_INT + 5)"}]}
-{"name":"Blorp_Slam","displayText":"Slam","delay":2.0,"manaCost":0,"targets":10,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectExpression":"20 + SOURCE_LVL"},{"effectType":1,"effectExpression":"26"}]}
+{"name":"Blorp_Slam","displayText":"Slam","delay":2.0,"manaCost":0,"targets":10,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":0,"effectExpression":"20 + SOURCE_LVL - TARGET_PARMOR"}]}
 {"name":"DragonBreath","displayText":"Dragon Breath","delay":8.0,"manaCost":0,"targets":16,"startTarget":8,"isRetargetable":true,"effects":[{"effectType":1,"effectExpression":"200"}]}
 {"name":"Kill","displayText":"All Death","delay":1.0,"manaCost":0,"targets":16,"startTarget":8,"isRetargetable":false,"effects":[{"effectType":0,"effectExpression":"99999"}]}
