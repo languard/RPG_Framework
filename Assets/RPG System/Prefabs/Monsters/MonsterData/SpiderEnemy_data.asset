@@ -10,30 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa4c6bbf47e6ab2479d2edcf336f15d0, type: 3}
-  m_Name: paladin_data
+  m_Name: SpiderEnemy_data
   m_EditorClassIdentifier: 
-  entityName: Paladin
-  combatID: fighter
-  strength: 15
-  strengthBase: 15
-  constitution: 20
-  constitutionBase: 20
-  willpower: 12
-  willpowerBase: 12
-  intelligence: 10
-  intelligenceBase: 10
-  hitPoints: 36
-  hitPointsBase: 36
-  mana: 23
-  manaBase: 23
-  endurance: 33
-  enduranceBase: 33
-  reaction: 26
-  reactionBase: 26
+  entityName: DEFAULT
+  combatID: 
+  strength: 12
+  strengthBase: 12
+  constitution: 15
+  constitutionBase: 15
+  willpower: 5
+  willpowerBase: 5
+  intelligence: 5
+  intelligenceBase: 5
+  hitPoints: 28
+  hitPointsBase: 28
+  mana: 11
+  manaBase: 11
+  endurance: 21
+  enduranceBase: 21
+  reaction: 18
+  reactionBase: 18
   entityLevel: 1
-  physicalArmor: 5
-  physicalArmorBase: 5
-  magicArmor: 3
-  magicArmorBase: 3
+  physicalArmor: 0
+  physicalArmorBase: 0
+  magicArmor: 0
+  magicArmorBase: 0
   playerSkills: {fileID: 0}
   enemySkills: {fileID: 0}

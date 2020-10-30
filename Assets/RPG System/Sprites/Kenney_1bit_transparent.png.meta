@@ -295,7 +295,7 @@ TextureImporter:
     second: Kenney_1bit_transparent_96
   - first:
       213: -127207932999471061
-    second: Kenney_1bit_transparent_97
+    second: k1bt_vine
   - first:
       213: -716346977209035171
     second: Kenney_1bit_transparent_98
@@ -805,7 +805,7 @@ TextureImporter:
     second: Kenney_1bit_transparent_266
   - first:
       213: -2824880184651137055
-    second: Kenney_1bit_transparent_267
+    second: k1bt_spider1
   - first:
       213: 9028755119885197756
     second: Kenney_1bit_transparent_268
@@ -1099,7 +1099,7 @@ TextureImporter:
     second: Kenney_1bit_transparent_364
   - first:
       213: -6639920901826137531
-    second: Kenney_1bit_transparent_365
+    second: k1bt_cat
   - first:
       213: 7211841402285262862
     second: Kenney_1bit_transparent_366
@@ -1246,7 +1246,7 @@ TextureImporter:
     second: Kenney_1bit_transparent_413
   - first:
       213: -5333123218086460669
-    second: Kenney_1bit_transparent_414
+    second: k1bt_dragon
   - first:
       213: -5597628835329008933
     second: Kenney_1bit_transparent_415
@@ -5327,15 +5327,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney_1bit_transparent_97
+      name: k1bt_vine
       rect:
         serializedVersion: 2
         x: 34
         y: 323
         width: 16
         height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -8897,7 +8897,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney_1bit_transparent_267
+      name: k1bt_spider1
       rect:
         serializedVersion: 2
         x: 476
@@ -10955,15 +10955,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney_1bit_transparent_365
+      name: k1bt_cat
       rect:
         serializedVersion: 2
         x: 510
         y: 238
         width: 16
         height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -11984,15 +11984,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney_1bit_transparent_414
+      name: k1bt_dragon
       rect:
         serializedVersion: 2
         x: 527
         y: 221
         width: 16
         height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

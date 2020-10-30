@@ -37,9 +37,13 @@ public class EnemySkills : MonoBehaviour {
             EnemyCombatController ecc = GetComponent<EnemyCombatController>();
             if (skills[i].manaCost <= ecc.entity.mana)
             {
-                thresholds.Add(weights[i]);
+                //HACK
+                //temp fix to weights not being used
+                //thresholds.Add(weights[i]);
+                thresholds.Add(1);
                 candidateSkills.Add(skills[i]);
-                runningTotal += weights[i];
+                //runningTotal += weights[i];
+                runningTotal += 1;
             }
 
         }

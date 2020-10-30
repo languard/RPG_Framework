@@ -482,7 +482,7 @@ PrefabInstance:
     - target: {fileID: 114479548914354376, guid: f7571f6ca39609b43846fde237c18c96,
         type: 3}
       propertyPath: startX
-      value: 96
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 114479548914354376, guid: f7571f6ca39609b43846fde237c18c96,
         type: 3}
@@ -512,7 +512,7 @@ PrefabInstance:
     - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
         type: 3}
       propertyPath: partyList.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114998847523292266, guid: f7571f6ca39609b43846fde237c18c96,
         type: 3}
@@ -830,6 +830,7 @@ GameObject:
   - component: {fileID: 1682379219}
   - component: {fileID: 1682379220}
   - component: {fileID: 1682379221}
+  - component: {fileID: 1682379222}
   m_Layer: 0
   m_Name: QuestFlags
   m_TagString: Untagged
@@ -879,6 +880,7 @@ MonoBehaviour:
   selectedCommands: []
   variables:
   - {fileID: 1682379221}
+  - {fileID: 1682379222}
   description: Quest Flags
   stepPause: 0
   colorCommands: 1
@@ -904,6 +906,21 @@ MonoBehaviour:
   scope: 0
   key: DragonQuest
   value: 0
+--- !u!114 &1682379222
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682379218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb91b566ceda411bad1e9d3c3243ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: 0
+  key: King
+  value: 20
 --- !u!1 &2077758746
 GameObject:
   m_ObjectHideFlags: 1
@@ -933,7 +950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 0}
+  selectedFlowchart: {fileID: 1682379220}
 --- !u!4 &2077758748
 Transform:
   m_ObjectHideFlags: 1

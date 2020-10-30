@@ -22,6 +22,7 @@ public class GameMaster : MonoBehaviour {
     bool switchingMaps = false;
     bool oldMapUnloaded = false;
     bool newMapLoaded = false;
+    bool inBattle = false;
 
     public bool showSystemChat = false;
     bool systemChatUp = false;
@@ -91,12 +92,18 @@ public class GameMaster : MonoBehaviour {
 
     public void DisableCharacterMovement()
     {
+        playerController.canMove = false;
         playerController.canAct = false;
     }
 
     public void EnableCharacterMovement()
     {
-        playerController.canAct = true;
+        //do not enable character movement if we are in battle mode
+        if (!inBattle)
+        {
+            playerController.canMove = true;
+            playerController.canAct = true;
+        }
     }
 
     public void LoadStartMap()
@@ -163,6 +170,7 @@ public class GameMaster : MonoBehaviour {
 
     public void LoadBattleScene(string sceneName)
     {
+        inBattle = true;
         playerController.DisableForBattle();
         returnScene = currentMap;
         StartCoroutine(HandleBattleMapLoad(sceneName));
@@ -170,6 +178,7 @@ public class GameMaster : MonoBehaviour {
 
     public void BattleDone(int gold)
     {
+        inBattle = false;
         party.partyGold += gold;
         Fungus.IntegerVariable iv = systemChat.GetVariable<Fungus.IntegerVariable>("gold");
         iv.Value = gold;
