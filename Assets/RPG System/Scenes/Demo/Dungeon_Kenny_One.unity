@@ -317,6 +317,11 @@ PrefabInstance:
       propertyPath: commandList.Array.data[14]
       value: 
       objectReference: {fileID: 236725396}
+    - target: {fileID: 114040996869387128, guid: fb66a782f848411468aefe0a5b740443,
+        type: 3}
+      propertyPath: nodeRect.y
+      value: -2038.4524
+      objectReference: {fileID: 0}
     - target: {fileID: 114053403932917326, guid: fb66a782f848411468aefe0a5b740443,
         type: 3}
       propertyPath: selectedBlocks.Array.size
@@ -1352,7 +1357,7 @@ MonoBehaviour:
   indentLevel: 0
   anyOrAllConditions: 0
   conditions:
-  - compareOperator: 0
+  - compareOperator: 2
     anyVar:
       variable: {fileID: 236725395}
       data:
@@ -1385,7 +1390,7 @@ MonoBehaviour:
           gameObjectVal: {fileID: 0}
         integerData:
           integerRef: {fileID: 0}
-          integerVal: 0
+          integerVal: 20
         materialData:
           materialRef: {fileID: 0}
           materialVal: {fileID: 0}
@@ -1593,7 +1598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &236725411
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1633,11 +1638,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4864426926037604, guid: 00f868c55028c1441a36631c8047ed05, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 528
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4864426926037604, guid: 00f868c55028c1441a36631c8047ed05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 256
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4864426926037604, guid: 00f868c55028c1441a36631c8047ed05, type: 3}
       propertyPath: m_LocalPosition.z

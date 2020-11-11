@@ -29,6 +29,13 @@ namespace Fungus
         {
             if (_targetGameObject.Value != null)
             {
+                //RPG System Modification
+                //Check to see if destroying self, if so release the player
+                //Flowchart handles releasing the player for non-destructive objects
+                if(_targetGameObject.Value == this.gameObject)
+                {
+                    GameMaster.instance.EnableCharacterMovement();
+                }
                 if (destroyInXSeconds.Value != 0)
                     Destroy(_targetGameObject, destroyInXSeconds.Value);
                 else

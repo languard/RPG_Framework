@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa4c6bbf47e6ab2479d2edcf336f15d0, type: 3}
-  m_Name: SpiderEnemy_data
+  m_Name: GoblinEnemy_data
   m_EditorClassIdentifier: 
   entityName: DEFAULT
   combatID: 
-  strength: 12
-  strengthBase: 12
-  constitution: 10
-  constitutionBase: 10
-  willpower: 5
-  willpowerBase: 5
-  intelligence: 5
-  intelligenceBase: 5
-  hitPoints: 70
-  hitPointsBase: 70
-  mana: 11
-  manaBase: 11
-  endurance: 16
-  enduranceBase: 16
-  reaction: 18
-  reactionBase: 18
+  strength: 1
+  strengthBase: 1
+  constitution: 1
+  constitutionBase: 1
+  willpower: 1
+  willpowerBase: 1
+  intelligence: 1
+  intelligenceBase: 1
+  hitPoints: 3
+  hitPointsBase: 3
+  mana: 3
+  manaBase: 3
+  endurance: 3
+  enduranceBase: 3
+  reaction: 3
+  reactionBase: 3
   entityLevel: 1
   physicalArmor: 0
   physicalArmorBase: 0

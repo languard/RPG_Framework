@@ -33,5 +33,10 @@ public class LinkGMToFungus : MonoBehaviour {
     {
         GM.LoadBattleScene(fightName);
     }
+
+    public void HealParty()
+    {
+        GM.GetPartyMember("Paladin").FullHeal();
+    }
 	
 }

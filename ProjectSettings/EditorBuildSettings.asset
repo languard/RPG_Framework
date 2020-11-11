@@ -24,9 +24,15 @@ EditorBuildSettings:
     path: Assets/RPG System/Scenes/Battles/Forest/DragonFight.unity
     guid: 2b063d78f84360044b80faeb9df78fab
   - enabled: 1
+    path: Assets/RPG System/Scenes/Battles/DragonAndSpiderAndGoblin.unity
+    guid: 65e2dcf624ba9bd4eaa2e942deeb6462
+  - enabled: 1
     path: Assets/RPG System/Scenes/Demo/Town_Kenney.unity
     guid: 26eb60dd2ef07d9448b3a402562e0f76
   - enabled: 1
     path: Assets/RPG System/Scenes/Demo/Dungeon_Kenny_One.unity
     guid: b6d37601a0581bd4dbd1307117b814ba
+  - enabled: 1
+    path: Assets/RPG System/Scenes/NewDemoScene.unity
+    guid: b47943e28ab038547beb8e08186a9a90
   m_configObjects: {}

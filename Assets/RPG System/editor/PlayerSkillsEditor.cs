@@ -76,7 +76,9 @@ public class PlayerSkillsEditor : Editor
         if (killIndex >= 0)
         {
             skillNamesSP.DeleteArrayElementAtIndex(killIndex);
-            serializedObject.ApplyModifiedProperties();
+            playerSkills.ApplyModifiedProperties();
+            //fix?
+            return;
         }
         EditorGUILayout.EndVertical();
 

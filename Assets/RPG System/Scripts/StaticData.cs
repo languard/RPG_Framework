@@ -13,11 +13,11 @@ public class StaticData
     public const int DIR_DOWN = 3;
 
     //HP Calculation constants
-    public const float HP_STR_SCALE = 1;
-    public const float HP_CON_SCALE = 1;
-    public const float HP_BASE = 1;
+    public const float HP_STR_SCALE = 0;
+    public const float HP_CON_SCALE = 5;
+    public const float HP_BASE = 20;
     public const float HP_STAT_SCALE = 1;
-    public const float HP_CL_SCALE = 1;
+    public const float HP_CL_SCALE = 10;
 
     //Mana Calculation constants
     public const float M_INT_SCALE = 1;
