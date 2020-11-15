@@ -43,6 +43,7 @@ public class BattleController : MonoBehaviour {
     //use Find All References on victoryGold to find where to make
     //changes.
     public int victoryGold = 1;
+    public int xp = 1;
 
     private enum CommandState
     {
@@ -153,7 +154,7 @@ public class BattleController : MonoBehaviour {
                 if (sceneOutroCountdown <= 0.0f)
                 {
                     //either create new methods to call, or modify BattleDone to pass on rewards
-                    GameObject.Find("GameMaster").GetComponent<GameMaster>().BattleDone(victoryGold);
+                    GameObject.Find("GameMaster").GetComponent<GameMaster>().BattleDone(victoryGold, xp);
                 }
                 break;
         }

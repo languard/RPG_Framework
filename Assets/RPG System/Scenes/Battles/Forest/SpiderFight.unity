@@ -2206,7 +2206,8 @@ MonoBehaviour:
   - {fileID: 1583176788}
   - {fileID: 2048737427}
   battleMusic: {fileID: 8300000, guid: 086a1d971cd49bc4482750dcfbfa7142, type: 3}
-  victoryGold: 1
+  victoryGold: 10
+  xp: 10
 --- !u!4 &1640505675
 Transform:
   m_ObjectHideFlags: 0

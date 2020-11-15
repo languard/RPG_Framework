@@ -176,12 +176,18 @@ public class GameMaster : MonoBehaviour {
         StartCoroutine(HandleBattleMapLoad(sceneName));
     }
 
-    public void BattleDone(int gold)
+    public void BattleDone(int gold, int xp)
     {
         inBattle = false;
         party.partyGold += gold;
+        //pretend xp is stored somehow
+
         Fungus.IntegerVariable iv = systemChat.GetVariable<Fungus.IntegerVariable>("gold");
         iv.Value = gold;
+
+        Fungus.IntegerVariable iv_XP = systemChat.GetVariable<Fungus.IntegerVariable>("xp");
+        iv_XP.Value = xp;
+
         showSystemChat = true;
 
         StartCoroutine(HandleBattleDone());

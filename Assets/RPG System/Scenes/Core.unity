@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 1357386448}
   - component: {fileID: 1357386447}
   - component: {fileID: 1357386450}
+  - component: {fileID: 1357386451}
   m_Layer: 0
   m_Name: SystemChat
   m_TagString: Untagged
@@ -269,7 +270,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 148.00421
     y: 192.61914
-    width: 122.94121
+    width: 118.23532
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -310,6 +311,7 @@ MonoBehaviour:
   - {fileID: 1357386450}
   variables:
   - {fileID: 1357386447}
+  - {fileID: 1357386451}
   description: 
   stepPause: 0
   colorCommands: 1
@@ -334,7 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 1
   indentLevel: 0
-  storyText: Your victory in combat earns you {$gold} gold.
+  storyText: Your victory in combat earns you {$gold} gold and {$xp} experience.
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -347,6 +349,21 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &1357386451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357386445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb91b566ceda411bad1e9d3c3243ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: 0
+  key: xp
+  value: 0
 --- !u!1 &1565408554
 GameObject:
   m_ObjectHideFlags: 0

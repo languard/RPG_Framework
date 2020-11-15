@@ -2038,7 +2038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 0}
+  selectedFlowchart: {fileID: 582119239}
 --- !u!4 &268450290
 Transform:
   m_ObjectHideFlags: 1
@@ -2136,7 +2136,7 @@ PrefabInstance:
     - target: {fileID: 114053403932917326, guid: fb66a782f848411468aefe0a5b740443,
         type: 3}
       propertyPath: selectedBlocks.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114053403932917326, guid: fb66a782f848411468aefe0a5b740443,
         type: 3}
@@ -2186,6 +2186,18 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 114589455713257090, guid: fb66a782f848411468aefe0a5b740443, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fb66a782f848411468aefe0a5b740443, type: 3}
+--- !u!114 &582119239 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114053403932917326, guid: fb66a782f848411468aefe0a5b740443,
+    type: 3}
+  m_PrefabInstance: {fileID: 582119238}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828677410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &781602760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3096,7 +3108,7 @@ MonoBehaviour:
   showAlways: 1
   showCount: 1
   extendPrevious: 0
-  fadeWhenDone: 1
+  fadeWhenDone: 0
   waitForClick: 1
   stopVoiceover: 1
   waitForVO: 0
@@ -3512,7 +3524,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1558.7386
     y: -2080.8408
-    width: 101.00001
+    width: 61.000008
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3539,7 +3551,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -1553.7386
     y: -1964.8408
-    width: 82
+    width: 60
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
