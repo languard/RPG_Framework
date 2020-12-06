@@ -141,6 +141,34 @@ public class GameMaster : MonoBehaviour {
         newMapLoaded = true;
     }
 
+    public void IncreaseStrength(int amount)
+    {
+        party.partyList[0].strengthBase += amount;
+        party.partyList[0].ResetStatsToBase();
+        party.partyList[0].CalculateAllStats();
+    }
+
+    public void IncreaseConstitution(int amount)
+    {
+        party.partyList[0].constitutionBase += amount;
+        party.partyList[0].ResetStatsToBase();
+        party.partyList[0].CalculateAllStats();
+    }
+
+    public void IncreaseWillpower(int amount)
+    {
+        party.partyList[0].willpowerBase += amount;
+        party.partyList[0].ResetStatsToBase();
+        party.partyList[0].CalculateAllStats();
+    }
+
+    public void IncreaseIntelligence(int amount)
+    {
+        party.partyList[0].intelligenceBase += amount;
+        party.partyList[0].ResetStatsToBase();
+        party.partyList[0].CalculateAllStats();
+    }
+
     public void GivePartyMoney(int amount)
     {
         party.partyGold += amount;

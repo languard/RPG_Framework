@@ -54,8 +54,14 @@ public class SkillDatabase
 
     public static SkillDescriptor GetSkill(string name)
     {
-        if (!skillsByName.ContainsKey(name)) return null;
-        return skillsByName[name];
+        if (!skillsByName.ContainsKey(name))
+        {
+            return skillsByName[skillsByName.Keys.First()];
+        }
+        else
+        {
+            return skillsByName[name];
+        }
     }
 
 

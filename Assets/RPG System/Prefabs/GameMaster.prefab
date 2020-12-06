@@ -250,7 +250,7 @@ MonoBehaviour:
   partyInvetory: {fileID: 0}
   questFlags: {fileID: 0}
   partyList:
-  - {fileID: 11400000, guid: 54cdf2350e7eee546ac711f517d59534, type: 2}
+  - {fileID: 11400000, guid: 23f829075c5597f40b6c1fffbfa4f9c6, type: 2}
   partyGold: 0
 --- !u!1 &1688742831463146
 GameObject:

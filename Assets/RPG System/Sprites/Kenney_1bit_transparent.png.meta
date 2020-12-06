@@ -217,10 +217,10 @@ TextureImporter:
     second: Kenney_1bit_transparent_70
   - first:
       213: -4574595414789424171
-    second: Kenney_1bit_transparent_71
+    second: k1bt_Wizard01
   - first:
       213: 8391112928572240569
-    second: Kenney_1bit_transparent_72
+    second: k1bt_Wizard02
   - first:
       213: -4299738796009863388
     second: Kenney_1bit_transparent_73
@@ -862,7 +862,7 @@ TextureImporter:
     second: Kenney_1bit_transparent_285
   - first:
       213: -5674586057397167312
-    second: Kenney_1bit_transparent_286
+    second: k1bt_lunchbox
   - first:
       213: 2397604949716197802
     second: Kenney_1bit_transparent_287
@@ -889,10 +889,10 @@ TextureImporter:
     second: Kenney_1bit_transparent_294
   - first:
       213: 4339926921838147983
-    second: Kenney_1bit_transparent_295
+    second: k1bt_chest_closed
   - first:
       213: 477643129933958696
-    second: Kenney_1bit_transparent_296
+    second: k1bt_chest_open
   - first:
       213: -6051673987301621357
     second: Kenney_1bit_transparent_297
@@ -1972,7 +1972,7 @@ TextureImporter:
     second: Kenney_1bit_transparent_655
   - first:
       213: 7486981141223452394
-    second: Kenney_1bit_transparent_656
+    second: k1bt_white_full_potion
   - first:
       213: 6132398711911929677
     second: Kenney_1bit_transparent_657
@@ -2116,7 +2116,7 @@ TextureImporter:
     second: Kenney_1bit_transparent_703
   - first:
       213: 466160591309394992
-    second: Kenney_1bit_transparent_704
+    second: k1bt_white_empty_potion
   - first:
       213: 6444228883471276595
     second: Kenney_1bit_transparent_705
@@ -4781,7 +4781,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney_1bit_transparent_71
+      name: k1bt_Wizard01
       rect:
         serializedVersion: 2
         x: 408
@@ -4802,7 +4802,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney_1bit_transparent_72
+      name: k1bt_Wizard02
       rect:
         serializedVersion: 2
         x: 425
@@ -9296,7 +9296,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney_1bit_transparent_286
+      name: k1bt_lunchbox
       rect:
         serializedVersion: 2
         x: 799
@@ -9485,7 +9485,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney_1bit_transparent_295
+      name: k1bt_chest_closed
       rect:
         serializedVersion: 2
         x: 136
@@ -9506,7 +9506,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney_1bit_transparent_296
+      name: k1bt_chest_open
       rect:
         serializedVersion: 2
         x: 153
@@ -17066,7 +17066,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney_1bit_transparent_656
+      name: k1bt_white_full_potion
       rect:
         serializedVersion: 2
         x: 561
@@ -18074,7 +18074,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kenney_1bit_transparent_704
+      name: k1bt_white_empty_potion
       rect:
         serializedVersion: 2
         x: 561

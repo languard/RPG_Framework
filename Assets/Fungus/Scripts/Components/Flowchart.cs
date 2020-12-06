@@ -89,6 +89,8 @@ namespace Fungus
         protected StringSubstituter stringSubstituer;
 
         bool disableMoveWhenActive = false;
+        bool enableMovement = false;
+        int frameDelay = 0;
 
 #if UNITY_EDITOR
         public bool SelectedCommandsStale { get; set; }
@@ -139,12 +141,35 @@ namespace Fungus
 
         private void Update()
         {
-            if(disableMoveWhenActive)
+            if(disableMoveWhenActive && !enableMovement)
             {
                 if (!HasExecutingBlocks())
                 {
-                    GameMaster.instance.EnableCharacterMovement();
-                    disableMoveWhenActive = false;
+                    if (!MenuDialog.GetMenuDialog().isActiveAndEnabled)
+                    {
+                        enableMovement = true;
+                        frameDelay = 0;
+                    }
+                }
+            }
+            else if(disableMoveWhenActive && enableMovement)
+            {
+                if (frameDelay >= 5)
+                {
+                    if (!HasExecutingBlocks())
+                    {
+                        GameMaster.instance.EnableCharacterMovement();
+                        disableMoveWhenActive = false;
+                    }
+                }
+                else if(HasExecutingBlocks())
+                {
+                    frameDelay = 0;
+                    enableMovement = false;
+                }
+                else
+                {
+                    frameDelay += 1;
                 }
             }
         }
@@ -566,6 +591,7 @@ namespace Fungus
             //disable movement
             GameMaster.instance.DisableCharacterMovement();
             disableMoveWhenActive = true;
+            enableMovement = false;
             //Check for the copy component to automatically update variables
             CopyQuestVariables cqv = GetComponent<CopyQuestVariables>();
             if (cqv != null) cqv.CopyGameMasterToFlowchart();
