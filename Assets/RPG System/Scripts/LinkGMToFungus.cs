@@ -41,6 +41,8 @@ public class LinkGMToFungus : MonoBehaviour {
 
     public void HealParty()
     {
+        //This heals a single character
+        //Additional lines needed for each character
         GM.GetPartyMember("The Witch").FullHeal();
     }
 
