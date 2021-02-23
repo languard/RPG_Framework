@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 114286785101955356}
   - component: {fileID: 1705825824043731201}
   m_Layer: 0
-  m_Name: AngryDragon
+  m_Name: SampleEnemy
   m_TagString: EnemyCharacter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,9 +160,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillNames:
   - Monster_Attack
+  - Kill
   - Monster_Attack
   - Monster_Attack
-  - DragonBreath
+  - Monster_Attack
+  - Monster_Attack
   weights: 0100000001000000
 --- !u!114 &1705825824043731201
 MonoBehaviour:
@@ -178,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionDelay: 5
   useReaction: 0
-  entity: {fileID: 0}
+  entity: {fileID: 11400000, guid: 43a814d072994654f83030b9e23de7fd, type: 2}
 --- !u!1 &582466250462251235
 GameObject:
   m_ObjectHideFlags: 0
