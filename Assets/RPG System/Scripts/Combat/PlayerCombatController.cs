@@ -23,6 +23,7 @@ public class PlayerCombatController : ActorCombatController
         anim = GetComponent<Animator>();
         playerBattleUIController = GameObject.FindGameObjectWithTag("PlayerBattleUIController").GetComponent<PlayerBattleUIController>();
         playerSkills = GetComponent<PlayerSkills>();     
+        //playerSkills = entity.playerSkills;
     }
 
     protected override void OnReadyForCommand()
@@ -45,7 +46,10 @@ public class PlayerCombatController : ActorCombatController
     {
         if (entity.isDisabled)
         {
-            anim.SetTrigger("onKilled");
+            //HACK
+            //no animation, just disable sprite
+            //anim.SetTrigger("onKilled");
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
         }
     }
 }

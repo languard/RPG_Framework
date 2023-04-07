@@ -132,7 +132,7 @@ public class EnemySkillsEditor : Editor
         EditorGUILayout.LabelField("Please use the Enemy Editor Window");
         if (GUILayout.Button("Open Window"))
         {
-            EntityEditor.MenuCreateWindow();
+            EnemyEntityEditor.MenuCreateWindow();
         }
     }
 }

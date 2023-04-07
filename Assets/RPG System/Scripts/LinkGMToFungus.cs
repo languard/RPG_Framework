@@ -23,6 +23,11 @@ public class LinkGMToFungus : MonoBehaviour {
         GM.GivePartyMoney(amount);
     }
 
+    public void TakePartyGold(int amount)
+    {
+        GM.TakePartyMoney(amount);
+    }
+
     public bool PartyHasGold(int amount)
     {
         if (GM.GetPartyMoney() >= amount) return true;
@@ -33,5 +38,32 @@ public class LinkGMToFungus : MonoBehaviour {
     {
         GM.LoadBattleScene(fightName);
     }
-	
+
+    public void HealParty()
+    {
+        //This heals a single character
+        //Additional lines needed for each character
+        GM.GetPartyMember("The Witch").FullHeal();
+    }
+
+    public void IncreaseIntelligence(int amount)
+    {
+        GM.IncreaseIntelligence(amount);
+    }
+
+    public void IncreaseWillpower(int amount)
+    {
+        GM.IncreaseWillpower(amount);
+    }
+
+    public void IncreaseStrength(int amount)
+    {
+        GM.IncreaseStrength(amount);
+    }
+
+    public void IncreaseConsitution(int amount)
+    {
+        GM.IncreaseConstitution(amount);
+    }
+
 }

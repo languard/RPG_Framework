@@ -6,8 +6,11 @@ Art Assets:
 Dark Forest Background by Dread Knight
 https://opengameart.org/content/dark-forest
 
-Mage City Arcanos by Hyptosis
-https://opengameart.org/content/mage-city-arcanos
-
 Paper Background by darkwood67
 https://www.deviantart.com/darkwood67/art/brown-age-136811979
+
+Kenny Tile Sets
+https://kenney.nl/assets/bit-pack
+
+Walking Sprites Generator:
+http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/

@@ -14,6 +14,8 @@ public class CopyQuestVariables : MonoBehaviour {
         CopyGameMasterToFlowchart();
 	}
 
+    //If a block is activated by the user, then this is not needed in the flowchart
+    //Copies the variables in the list from the GM flowcharts to the activated flowchart
     public void CopyGameMasterToFlowchart()
     {
         gm = GameObject.Find("GameMaster").GetComponent<GameMaster>();

@@ -22,6 +22,7 @@ public class GameMaster : MonoBehaviour {
     bool switchingMaps = false;
     bool oldMapUnloaded = false;
     bool newMapLoaded = false;
+    bool inBattle = false;
 
     public bool showSystemChat = false;
     bool systemChatUp = false;
@@ -91,12 +92,18 @@ public class GameMaster : MonoBehaviour {
 
     public void DisableCharacterMovement()
     {
+        playerController.canMove = false;
         playerController.canAct = false;
     }
 
     public void EnableCharacterMovement()
     {
-        playerController.canAct = true;
+        //do not enable character movement if we are in battle mode
+        if (!inBattle)
+        {
+            playerController.canMove = true;
+            playerController.canAct = true;
+        }
     }
 
     public void LoadStartMap()
@@ -134,6 +141,34 @@ public class GameMaster : MonoBehaviour {
         newMapLoaded = true;
     }
 
+    public void IncreaseStrength(int amount)
+    {
+        party.partyList[0].strengthBase += amount;
+        party.partyList[0].ResetStatsToBase();
+        party.partyList[0].CalculateAllStats();
+    }
+
+    public void IncreaseConstitution(int amount)
+    {
+        party.partyList[0].constitutionBase += amount;
+        party.partyList[0].ResetStatsToBase();
+        party.partyList[0].CalculateAllStats();
+    }
+
+    public void IncreaseWillpower(int amount)
+    {
+        party.partyList[0].willpowerBase += amount;
+        party.partyList[0].ResetStatsToBase();
+        party.partyList[0].CalculateAllStats();
+    }
+
+    public void IncreaseIntelligence(int amount)
+    {
+        party.partyList[0].intelligenceBase += amount;
+        party.partyList[0].ResetStatsToBase();
+        party.partyList[0].CalculateAllStats();
+    }
+
     public void GivePartyMoney(int amount)
     {
         party.partyGold += amount;
@@ -163,16 +198,24 @@ public class GameMaster : MonoBehaviour {
 
     public void LoadBattleScene(string sceneName)
     {
+        inBattle = true;
         playerController.DisableForBattle();
         returnScene = currentMap;
         StartCoroutine(HandleBattleMapLoad(sceneName));
     }
 
-    public void BattleDone(int gold)
+    public void BattleDone(int gold, int xp)
     {
+        inBattle = false;
         party.partyGold += gold;
+        //pretend xp is stored somehow
+
         Fungus.IntegerVariable iv = systemChat.GetVariable<Fungus.IntegerVariable>("gold");
         iv.Value = gold;
+
+        Fungus.IntegerVariable iv_XP = systemChat.GetVariable<Fungus.IntegerVariable>("xp");
+        iv_XP.Value = xp;
+
         showSystemChat = true;
 
         StartCoroutine(HandleBattleDone());
