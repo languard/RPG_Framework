@@ -111,7 +111,7 @@ TextureImporter:
       213: 8376318485577453846
     second: Mage_Walk_35
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -132,6 +132,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -140,9 +141,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -163,11 +164,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -219,6 +223,42 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -998,6 +1038,43 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Mage_Walk_0: 8547309865544047791
+      Mage_Walk_7: 7786181235377863246
+      Mage_Walk_11: -6905169257062583961
+      Mage_Walk_2: -1517401714251389091
+      Mage_Walk_32: -4969911285141476249
+      Mage_Walk_34: -7660678371612060791
+      Mage_Walk_23: -1840170829908217420
+      Mage_Walk_3: 5670700356781239702
+      Mage_Walk_28: -6722758670831585363
+      Mage_Walk_35: 8376318485577453846
+      Mage_Walk_1: -8697517970328194148
+      Mage_Walk_33: 5049592400291586281
+      Mage_Walk_24: -1659855970780454794
+      Mage_Walk_30: -1807560485629888716
+      Mage_Walk_20: -8545806260424881908
+      Mage_Walk_13: -7559712379436477262
+      Mage_Walk_10: 5818623550480378012
+      Mage_Walk_5: 4568067870581475715
+      Mage_Walk_6: 7918182504718429698
+      Mage_Walk_4: 4295422321071341678
+      Mage_Walk_8: 2048717345021502715
+      Mage_Walk_14: -8121828069828937093
+      Mage_Walk_29: 4633443220028771551
+      Mage_Walk_22: 3314596880540401670
+      Mage_Walk_12: -7816292542222832316
+      Mage_Walk_15: -1279264432951103619
+      Mage_Walk_27: 7860286577268160492
+      Mage_Walk_16: 5651476524504181777
+      Mage_Walk_26: -3042575160598975308
+      Mage_Walk_18: 8317518678525051954
+      Mage_Walk_9: -338694293393685102
+      Mage_Walk_31: -3801596667012746095
+      Mage_Walk_19: -2427682787908172514
+      Mage_Walk_17: -7594564059834589665
+      Mage_Walk_25: -8179967952435170792
+      Mage_Walk_21: -5534772293464200893
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
